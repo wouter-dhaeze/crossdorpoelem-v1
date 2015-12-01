@@ -49,7 +49,7 @@ $this->layout = false;
 							Voor deze eerste editie zijn de plaatsen beperkt, dus vroegtijdig inschrijven is de boodschap!</p>
 							<form name="interestForm" novalidate
 									ng-submit="submitInterest()"
-									ng-hide="showSuccess">
+									ng-hide="showSuccess || showInProgress">
 								<fieldset>
 									<input id="email" name="email" type="email" ng-model="email" placeholder="Vul hier je email adres in..." required></input>
 									<span ng-show="interestForm.email.$dirty && interestForm.email.$error.email">Ongeldig emailadres</span>
@@ -59,6 +59,7 @@ $this->layout = false;
 					                <input ng-disabled="interestForm.$invalid" type="submit" value="Hou me op de hoogte"></input>
 					            </fieldset>
 							</form>
+							<div ng-show="showInProgress">Bewaring in progressie...</div>
 							<div ng-show="showSuccess">Wij danken u voor uw enthousiasme</div>
 						</div>
 					</div>
