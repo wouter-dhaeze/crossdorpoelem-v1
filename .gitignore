@@ -6,3 +6,7 @@
 /logs
 /composer.json
 /composer.lock
+/bower_components
+/node_modules
+/gulpfile.js
+/package.json

@@ -1,0 +1,24 @@
+#site-title {
+	width: 100%;
+	color: white;
+	background-color: black;
+	padding: 10px 0;
+}
+
+#site-title .line {
+  white-space:no-wrap;
+  overflow:hidden;
+  text-align:center;
+}
+
+#site-title .title {
+	font-weight: bold;
+	font-size: 20px;
+	padding-top: 5px;
+	text-align:center;
+	
+	@include breakpoint(medium up) {
+		font-size: 28px;
+		padding-top: none;
+	}
+}
