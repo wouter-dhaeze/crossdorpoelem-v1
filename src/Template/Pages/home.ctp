@@ -94,7 +94,7 @@ $this->layout = false;
 					    <h1 class="uk-article-title">Voor jong en oud</h1>
 					    <p class="uk-article-lead">Iedereen mag meedoen (of toch bijna iedereen)</p>
 					    <p>De wedstrijd bestaat uit twee waves: jeugd ("kids" vinden we te bekakt) en volwassenen. De jeugd legt een parcours van 2,5 km af, maar wel in duo.
-					    Dus iedereen die denkt dat hij ongeveer 1,5 km kan lopen mag meedoen. Voor ons stopt de jeugd op 13 jaar.</p>
+					    Dus iedereen die denkt dat hij ongeveer 1,5 km kan lopen mag meedoen. Voor ons stopt de jeugd op 13 jaar. Dus als je geboren bent in het jaar 2003 of later mag je nog als duo inschrijven.</p>
 					    <p>Vanaf 14 jaar hoor je bij de grote kindjes, in de volksmond "volwassenen" genoemd. De volwassenen leggen een parcours van 5 &agrave; 6 km af. Dus ben je sportief
 					    en heb je eens zin in een ander parcours, of zoek je een goed voornemen voor 2016 om wat meer te sporten, stip dan zaterdag 26 maart 2016 met rood in je agenda aan.</p>
 				  	</div>
@@ -163,10 +163,10 @@ $this->layout = false;
 						<img class="img-responsive" src="sponsors/mozesmedia.jpg" />
 					</div>
 					<div class="small-6 medium-3 column">
-						<img class="img-responsive" src="sponsors/mozesmedia.jpg" />
+						<img class="img-responsive" src="sponsors/logo_crocodile.png" />
 					</div>
 					<div class="small-6 medium-3 column">
-						<img class="img-responsive" src="sponsors/mozesmedia.jpg" />
+						<img class="img-responsive" src="sponsors/logo_crocodile.png" />
 					</div>
 			  	</div>
 			</div>
