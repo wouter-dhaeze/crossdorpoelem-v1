@@ -4,9 +4,10 @@ $this->layout = false;
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="description" content="crossdorp oelem"/>
 
 <title>Crossdorp Oelem</title>
 
@@ -160,13 +161,21 @@ $this->layout = false;
 						<img class="img-responsive" src="sponsors/mozesmedia.jpg" />
 					</div>
 					<div class="small-6 medium-3 column">
-						<img class="img-responsive" src="sponsors/mozesmedia.jpg" />
-					</div>
-					<div class="small-6 medium-3 column">
 						<img class="img-responsive" src="sponsors/logo_crocodile.png" />
 					</div>
 					<div class="small-6 medium-3 column">
-						<img class="img-responsive" src="sponsors/logo_crocodile.png" />
+						<img class="img-responsive" src="sponsors/logo_tetard.png" />
+					</div>
+					<div class="small-6 medium-3 column">
+						<img class="img-responsive" src="sponsors/logo_gulf.png" />
+					</div>
+			  	</div>
+			  	<div class="row">
+			  		<div class="small-12 medium-6 column">
+						<img class="img-responsive" src="sponsors/logo_slagerij-franky.jpg" />
+					</div>
+					<div class="small-12 medium-6 column">
+						
 					</div>
 			  	</div>
 			</div>
@@ -334,18 +343,7 @@ $this->layout = false;
 		</div>
 	</section>
 	
-	<footer>
-		<div class="container">
-			<div class="row clearfix">
-				<div class="pull-left">Email: <a href="mailto:vzwfeles@gmail.com">vzwfeles@gmail.com</a></div>
-				<div class="pull-right">&copy; VZW Feles 2015 | Versie 1.0</div>
-			</div>
-			
-			<div class="row">
-				<div id="icon-creds">Icons made by <a href="http://www.flaticon.com/authors/daniel-bruce" title="Daniel Bruce">Daniel Bruce</a>, <a href="http://www.flaticon.com/authors/scott-de-jonge" title="Scott de Jonge">Scott de Jonge</a>, <a href="http://www.freepik.com" title="Freepik">Freepik</a>, <a href="http://www.flaticon.com/authors/icon-works" title="Icon Works">Icon Works</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a>             is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>
-			</div>
-		</div>
-	</footer>
+	<?= $this->element('footer'); ?>
 	
 	<script src="js/jquery/jquery-2.1.4.min.js"></script>
 	<script src="js/angularjs/angular.min.js"></script>
@@ -353,7 +351,7 @@ $this->layout = false;
 	<script src="js/foundation/foundation.min.js"></script>
 	<script src="js/bootstrap/bootstrap.min.js"></script>
 	<script src="js/app.js"></script>
-	<script src="js/cdo.js"></script>
+	<script src="js/cdo-interest.js"></script>
 </body>
 
 

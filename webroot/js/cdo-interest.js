@@ -1,7 +1,7 @@
 (function() {
-	var app = angular.module('cdoApp', []);
+	var cdoApp = angular.module('cdoApp', []);
 
-	app.controller('InterestCtrl', function($scope, $log, $http) {
+	cdoApp.controller('InterestCtrl', function($scope, $log, $http) {
 		$scope.email = '';
 		
 		$scope.showInProgress = false;
