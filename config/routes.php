@@ -73,11 +73,18 @@ Router::scope('/', function ($routes) {
     $routes->fallbacks('DashedRoute');
 });
 
+Router::connect(
+	'/subscription/*', 
+	['controller' => 'Subscription', 'action' => 'view']);
+
 Router::extensions(['json']);
 Router::scope('/api', function ($routes) {
 	$routes->extensions(['json']);
 	$routes->resources('Interest', [
 		'actions' => ['index' => 'all', 'create' => 'create']
+	]);
+	$routes->resources('Subscription', [
+		'actions' => ['create' => 'create']
 	]);
 });
 
