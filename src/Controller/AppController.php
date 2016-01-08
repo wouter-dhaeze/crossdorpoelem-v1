@@ -43,8 +43,32 @@ class AppController extends Controller
 
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
+        $this->loadComponent('Auth', 
+        		[
+        		//'authorize' => 'Controller',
+        		'loginRedirect' => [
+	        		'controller' => 'Pages',
+	        		'action' => 'display',
+        			'home'
+	        		],
+	        	'logoutRedirect' => [
+	        		'controller' => 'Pages',
+	        		'action' => 'display',
+	        		'home'
+	        		],
+        		'loginAction' => 'user/login'
+        		]);
+        
+        $this->Auth->config('authenticate', [
+        		'Form' => ['userModel' => 'User']
+        		]);
     }
 
+    public function beforeFilter(Event $event)
+    {
+    	$this->Auth->allow(['index', 'view', 'display']);
+    }
+    
     /**
      * Before render callback.
      *
@@ -59,4 +83,5 @@ class AppController extends Controller
             $this->set('_serialize', true);
         }
     }
+  
 }

@@ -6,6 +6,10 @@ use App\Controller\AppController;
 use Cake\Event\Event;
 use Cake\Log\Log;
 
+use PDOException;
+
+use Cake\Network\Exception\InternalErrorException;
+
 /**
  * Subscriptions Controller
  *
@@ -17,7 +21,9 @@ class SubscriptionController extends AppController
 	public function initialize()
 	{
 		parent::initialize();
-		$this->loadComponent('RequestHandler');
+		//$this->loadComponent('RequestHandler');
+		
+		$this->Auth->allow(['create']);
 	}
 	
 	/**
@@ -62,18 +68,58 @@ class SubscriptionController extends AppController
      */
     public function create()
     {
-    	//$subscription = $this->Subscriptions->newEntity($this->request->data);
-    	Log::debug("Subscription: " . implode($this->request->data));
-    	
-    	$firstName = $this->request->data['aFirstName'];
-    	Log::debug("Subscription: " . $firstName);
-    	
-    	/*if ($this->Subscriptions->save($subscription)) {
-    		Log::debug("Subscription saved for email " . $subscription.email);
-    	}*/
+    	try {
+    		//Log::debug("Subscription: " . implode($this->request->data));
+	    	$subscription = $this->Subscription->newEntity();
+	    	
+	    	$wave = $this->request->data['wave']['id'];
+	    	$subscription->wave = $wave;
+	    	$subscription->code = $this->generateCode();
+	    	
+	    	if ($wave == 'ADULT') {
+	    		
+	    	} else if ($wave == 'YOUTH') {
+	    		$firstName = $this->request->data['aFirstName'];
+	    		Log::debug("Subscription: " . $firstName);
+	    	} else {
+	    		//throw unknown wave
+	    	}
+	    	
+	    	
+	    	if ($this->Subscription->save($subscription)) {
+	    		Log::debug("Subscription saved for code: " . $subscription.code);
+	    	}
+	    
+	    	$this->response->body(json_encode($subscription));
+	    	return $this->response;
+    	} catch (PDOException $e) {
+    		throw new InternalErrorException('Er is een fout op de database gebeurd. Onze IT is alvast op de hoogte. Gelieve later opnieuw te proberen.');
+    		//send email
+    	}
+    }
     
-    	$this->response->body($this->request->data);
-    	return $this->response;
+    private function validateSubscription() {
+    	//1. email address max 2 occurrances
+    	
+    	//2. DOB of Youth Wave
+    	
+    	//3. Validate Sponsor code exists
+    	
+    	//4. Validate Sponsor code not used
+    }
+    
+    private function generateCode() {
+    	$length = 6;
+    	$randomString = substr(str_shuffle("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, $length);
+    	
+    	$query = $this->Subscription->findByCode($randomString);
+		$count = $query->count();
+		
+		if ($count != 0) {
+			return generateCode();
+		}
+			
+    	return $randomString;
     }
     
 }

@@ -6,11 +6,14 @@
 		
 		$scope.waveOptions = waveOptions;
 		//$scope.selectedWave = $scope.waveOptions[0];
-		$scope.selectedWave = $scope.waveOptions[2];
+		//$scope.selectedWave = $scope.waveOptions[2];
 		
 		$scope.subscription = emptySubscription;
 		
+		$scope.errorMessage = null;
+		
 		$scope.waveSelected = function() {
+			$log.debug('wave selected');
 			$scope.waveOptions[0].notAnOption = true;	
 		}
 		
@@ -21,11 +24,13 @@
 			$log.debug(angular.toJson($scope.subscription));
 			var res = $http.post('../api/subscription.json', $scope.subscription);
 			res.success(function(data, status, headers, config) {
-				alert("succes");
+				$scope.errorMessage = null;
 			});
 			res.error(function(data, status, headers, config) {
-				alert("failure message: " + status);
+				//alert("failure message: " + status);
 				//alert( "failure message: " + JSON.stringify({data: data}));
+				$scope.errorMessage = data.message;
+				
 				$log.debug(data);
 			});		
 		}
@@ -37,11 +42,14 @@
 	                   {id: 'ADULT', label: 'Big run (5,5 km)', notAnOption: false}];
 	
 	var emptySubscription = {
+		//wave: waveOptions[0],
+		wave: waveOptions[2],
 		aGender: '',
 		aFirstName: '',
 		aLastName: '',
 		aEmail: '',
-		aDob: ''
+		aDob: '',
+		sponsorCode: ''
 	};
 	
 })();
