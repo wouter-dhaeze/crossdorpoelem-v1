@@ -3,8 +3,8 @@
 		<label for="<?= $idPrefix?>gender" class="right inline">Geslacht</label>
 	</div>
 	<div class="large-10 columns">
-		<input type="radio" name="gender" value="MALE" ng-model="<?= $ngmodelGender ?>" required>Mannelijk</input>
-  		<input type="radio" name="gender" value="FEMALE" ng-model="<?= $ngmodelGender ?>" required>Vrouwelijk</input>
+		<input type="radio" name="gender" value="M" ng-model="<?= $ngmodelGender ?>" required>Mannelijk</input>
+  		<input type="radio" name="gender" value="F" ng-model="<?= $ngmodelGender ?>" required>Vrouwelijk</input>
 	</div>
 </div>
 <div class="row">

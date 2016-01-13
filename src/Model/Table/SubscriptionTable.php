@@ -50,13 +50,15 @@ class SubscriptionTable extends Table
 
         $validator
             ->requirePresence('code', 'create')
-            ->notEmpty('code');
+            ->notEmpty('code')
+            ->add('code', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
 
         $validator
             ->requirePresence('wave', 'create')
             ->notEmpty('wave');
 
         $validator
+            ->add('payed', 'valid', ['rule' => 'boolean'])
             ->requirePresence('payed', 'create')
             ->notEmpty('payed');
 

@@ -175,7 +175,21 @@ $this->layout = false;
 						<img class="img-responsive" src="sponsors/logo_slagerij-franky.jpg" />
 					</div>
 					<div class="small-12 medium-6 column">
-						
+						<img class="img-responsive" src="sponsors/logo_frietamientje.png" />
+					</div>
+			  	</div>
+			  	<div class="row">
+			  		<div class="small-6 medium-3 column">
+						<img class="img-responsive" src="sponsors/logo_bakkerij-coucke.jpg" />
+					</div>
+					<div class="small-6 medium-3 column">
+						<img class="img-responsive" src="sponsors/logo_frituur-geert.png" />
+					</div>
+					<div class="small-6 medium-3 column">
+						<img class="img-responsive" src="sponsors/logo_de-mess.png" />
+					</div>
+					<div class="small-6 medium-3 column">
+						<img class="img-responsive" src="sponsors/logo_vloeren-franssens.png" />
 					</div>
 			  	</div>
 			</div>

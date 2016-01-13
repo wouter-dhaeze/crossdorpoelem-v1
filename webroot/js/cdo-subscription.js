@@ -8,7 +8,8 @@
 		//$scope.selectedWave = $scope.waveOptions[0];
 		//$scope.selectedWave = $scope.waveOptions[2];
 		
-		$scope.subscription = emptySubscription;
+		//$scope.subscription = emptySubscription;
+		$scope.subscription = dummySubscription;
 		
 		$scope.errorMessage = null;
 		
@@ -49,6 +50,17 @@
 		aLastName: '',
 		aEmail: '',
 		aDob: '',
+		sponsorCode: ''
+	};
+	
+	var dummySubscription = {
+		//wave: waveOptions[0],
+		wave: waveOptions[2],
+		aGender: 'M',
+		aFirstName: 'first',
+		aLastName: 'last',
+		aEmail: 'email@email.com',
+		aDob: new Date(2013, 9, 22),
 		sponsorCode: ''
 	};
 	
