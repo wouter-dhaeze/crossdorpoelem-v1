@@ -19,6 +19,7 @@
     <title><?= $this->fetch('title') ?></title>
 </head>
 <body>
+	default
     <?= $this->fetch('content') ?>
 </body>
 </html>

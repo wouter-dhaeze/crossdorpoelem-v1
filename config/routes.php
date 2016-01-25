@@ -84,7 +84,7 @@ Router::scope('/api', function ($routes) {
 		'actions' => ['index' => 'all', 'create' => 'create']
 	]);
 	$routes->resources('Subscription', [
-		'actions' => ['create' => 'create']
+		'actions' => ['create' => 'create', 'index' => 'get'] 
 	]);
 });
 

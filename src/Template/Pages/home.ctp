@@ -192,6 +192,20 @@ $this->layout = false;
 						<img class="img-responsive" src="sponsors/logo_vloeren-franssens.png" />
 					</div>
 			  	</div>
+			  	<div class="row">
+			  		<div class="small-6 medium-3 column">
+						<img class="img-responsive" src="sponsors/logo_de-bokke.png" />
+					</div>
+					<div class="small-6 medium-3 column">
+						<img class="img-responsive" src="sponsors/logo_rb.jpg" />
+					</div>
+					<div class="small-6 medium-3 column">
+						<img class="img-responsive" src="sponsors/logo_sander.jpg" />
+					</div>
+					<div class="small-6 medium-3 column">
+						<img class="img-responsive" src="sponsors/logo_maximes.jpg" />
+					</div>
+			  	</div>
 			</div>
 		</div>
 	</section>

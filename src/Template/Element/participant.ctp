@@ -1,3 +1,4 @@
+<input type="hidden" name="id" ng-model="<?= $ngmodelId ?>" />
 <div class="row">
 	<div class="large-2 columns">
 		<label for="<?= $idPrefix?>gender" class="right inline">Geslacht</label>
@@ -47,5 +48,22 @@
 			ng-model="<?= $ngmodelDob ?>" required></input>
 		<div class="alert alert-danger" role="alert" ng-show="<?= $formName?>.<?= $idPrefix?>dob.$dirty && <?= $formName?>.<?= $idPrefix?>dob.$error.date">Ongeldige geboortedatum</div>
 	</div>
-
+</div>
+<div class="row" ng-hide="<?= $ngHideNumber ?>">
+	<div class="large-2 columns">
+		<label for="<?= $idPrefix?>number" class="right inline">Borstnummer</label>
+	</div>
+	<div class="large-10 columns">
+		<input type="text" id="<?= $idPrefix?>number" name="<?= $idPrefix?>number"
+			ng-model="<?= $ngmodelNumber ?>"></input>
+	</div>
+</div>
+<div class="row" ng-hide="<?= $ngHideOrder ?>">
+	<div class="large-2 columns">
+		<label for="<?= $idPrefix?>order" class="right inline">Volgorde</label>
+	</div>
+	<div class="large-10 columns">
+		<input type="text" id="<?= $idPrefix?>order" name="<?= $idPrefix?>order"
+			ng-model="<?= $ngmodelOrder ?>"></input>
+	</div>
 </div>

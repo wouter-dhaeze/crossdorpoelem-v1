@@ -13,7 +13,7 @@ use Cake\ORM\Entity;
  * @property string $email
  * @property \Cake\I18n\Time $dob
  * @property string $number
- * @property int $run_order
+ * @property int $start_order
  * @property int $subscription_id
  * @property \App\Model\Entity\Subscription $subscription
  */

@@ -1,1 +1,30 @@
-- send email on PDOException in SubscriptionControllere
+- send email on PDOException in SubscriptionController
+
+Flows
+------
+* Subscription WAVE 1 - no code
+	1. Subscribe on site
+	2. receive email with payment remark
+	3. Approval by admin -> assign number
+	4. receive email
+	
+* Subscription WAVE - 2 no code
+	1. Subscribe on site
+	2. Receive email with payment remark, on behalf of parents
+		-> REMARK: only pay once! (no refunds)
+	3. Approval by admin -> assign numbers
+	4. Receive email
+	
+* Subscription WAVE 1 - code
+	1. Subscribe on site
+	2. Receive email without payment remark
+	3. Receive email that sponsor subscribed (subscription@crossdorpoelem.be)
+	3. Approval by admin -> assign number
+	4. Receive email
+	
+* Subscription WAVE 2 - code
+	1. Subscribe on site
+	2. Receive email without payment remark, on behalf of parents
+	3. Receive email that sponsor subscribed (subscription@crossdorpoelem.be)
+	3. Approval by admin -> assign numbers
+	4. Receive email
