@@ -4,8 +4,10 @@
 		<label for="<?= $idPrefix?>gender" class="right inline">Geslacht</label>
 	</div>
 	<div class="large-10 columns">
-		<input type="radio" name="gender" value="M" ng-model="<?= $ngmodelGender ?>" required>Mannelijk</input>
-  		<input type="radio" name="gender" value="F" ng-model="<?= $ngmodelGender ?>" required>Vrouwelijk</input>
+		<input style="float: left" id="<?= $idPrefix?>genderMale" type="radio" name="<?= $idPrefix?>gender" value="M" ng-model="<?= $ngmodelGender ?>" required></input><label style="float: left; padding-right: 10px" for="<?= $idPrefix?>genderMale"><?= $maleLabel ?></label>
+  		<div style="clear: both"></div>
+  		<input style="float: left" id="<?= $idPrefix?>genderFemale" type="radio" name="<?= $idPrefix?>gender" value="F" ng-model="<?= $ngmodelGender ?>" required></input><label style="float: left; padding-right: 10px" for="<?= $idPrefix?>genderFemale"><?= $femaleLabel ?></label>
+  		<div style="clear: both"></div>
 	</div>
 </div>
 <div class="row">
@@ -44,9 +46,9 @@
 		<label for="<?= $idPrefix?>dob" class="right inline">Geboortedatum</label>
 	</div>
 	<div class="large-10 columns">
-		<input type="date" id="<?= $idPrefix?>dob" name="<?= $idPrefix?>dob" placeholder="dd/MM/yyyy"
-			ng-model="<?= $ngmodelDob ?>" required></input>
-		<div class="alert alert-danger" role="alert" ng-show="<?= $formName?>.<?= $idPrefix?>dob.$dirty && <?= $formName?>.<?= $idPrefix?>dob.$error.date">Ongeldige geboortedatum</div>
+		<input type="text" id="<?= $idPrefix?>dob" name="<?= $idPrefix?>dob" placeholder="dd/MM/yyyy"
+			ng-model="<?= $ngmodelDob ?>" required dob></input>
+		<div class="alert alert-danger" role="alert" ng-show="<?= $formName?>.<?= $idPrefix?>dob.$dirty && <?= $formName?>.<?= $idPrefix?>dob.$error.dob">Ongeldige geboortedatum</div>
 	</div>
 </div>
 <div class="row" ng-hide="<?= $ngHideNumber ?>">

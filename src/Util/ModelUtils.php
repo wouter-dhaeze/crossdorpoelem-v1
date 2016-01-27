@@ -2,6 +2,9 @@
 namespace App\Util;
 
 use Cake\ORM\TableRegistry;
+use Cake\I18n\Time;
+
+use DateTime;
 
 
 class ModelUtils
@@ -18,7 +21,7 @@ class ModelUtils
 		$spoquery2 = TableRegistry::get('Sponsor')->findByCode2($randomString);
 		$spocount = $spoquery1->count() + $spoquery2->count();
 		
-		if ($subcount != 0 || $spocount != 0) {
+		if ($subcount != 0 || ModelUtils::isSponsorCode($randomString)) {
 			return generateSubscriptionCode();
 		}
 			
@@ -27,6 +30,24 @@ class ModelUtils
     
     public static function generateChestNumber() {
     	return '001';
+    }
+    
+    public static function isSponsorCode($code) {
+    	$spoquery1 = TableRegistry::get('Sponsor')->findByCode1($code);
+		$spoquery2 = TableRegistry::get('Sponsor')->findByCode2($code);
+		$spocount = $spoquery1->count() + $spoquery2->count();
+		
+		return ($spocount > 0);
+    }
+    
+    public static function parseDate($date, $fromFormat, $toFormat) {
+    	$formatted = Time::createFromFormat($fromFormat, $date);
+    	return $formatted->format($toFormat);
+    }
+    
+    public static function getYear($date, $format) {
+    	$formatted = Time::createFromFormat($format, $date);
+    	return $formatted->year;
     }
 
 }

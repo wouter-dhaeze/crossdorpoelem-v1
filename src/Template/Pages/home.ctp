@@ -206,6 +206,17 @@ $this->layout = false;
 						<img class="img-responsive" src="sponsors/logo_maximes.jpg" />
 					</div>
 			  	</div>
+			  	<div class="row">
+			  		<div class="small-6 medium-3 column">
+						<img class="img-responsive" src="sponsors/logo_bakkerij-de-langhe.jpg" />
+					</div>
+					<div class="small-6 medium-3 column">
+					</div>
+					<div class="small-6 medium-3 column">
+					</div>
+					<div class="small-6 medium-3 column">
+					</div>
+			  	</div>
 			</div>
 		</div>
 	</section>

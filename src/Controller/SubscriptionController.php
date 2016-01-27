@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use App\Util\EmailUtils;
 use App\Util\ModelUtils;
 
 use Cake\Event\Event;
@@ -101,6 +102,16 @@ class SubscriptionController extends AppController
      */
     public function create()
     {
+    	//$code = 'W9VLU6';
+    	$code = 'MRTGKC';
+    	$this->sendValidationMail($code);
+    	$this->sendPaymentMail($code);
+    	$this->sendSubscriptionSuccessMail($code);
+    	
+    	throw new InternalErrorException('Mail gestuurd');
+    }
+    public function create2()
+    {
     	$subscription = null;
     	$participant1 = null;
     	$participant2 = null;
@@ -108,15 +119,19 @@ class SubscriptionController extends AppController
     	try {
     		//Log::debug("Subscription: " . implode($this->request->data));   		
     		
-    		$subscription = $this->Subscription->patchEntity($this->Subscription->newEntity(), $this->request->data);
+    		$subscription = $this->Subscription->patchEntity($this->Subscription->newEntity(), $this->request->data, ['validate' => false]);
     		$subscription->wave = $this->request->data['wave']['id'];
 
-    		$participant1 = $this->Participant->patchEntity($this->Participant->newEntity(), $this->request->data['participant1']);
-    		$participant1->dob = date("Y-m-d", strtotime($this->request->data['participant1']['dob']));
+    		$participant1 = $this->Participant->patchEntity($this->Participant->newEntity(), $this->request->data['participant1'], ['validate' => false]);
+    		$participant1->dob = ModelUtils::parseDate($this->request->data['participant1']['dob'], 'd/m/Y', 'Y-m-d');
+    		$participant1->number = "N/A";
+    		$participant1->start_order = 1;
     		$participant2 = null;
     		if ($subscription->wave == 'YOUTH') {
-    			$participant2 = $this->Participant->patchEntity($this->Participant->newEntity(), $this->request->data['participant2']);
+    			$participant2 = $this->Participant->patchEntity($this->Participant->newEntity(), $this->request->data['participant2'], ['validate' => false]);
     			$participant2->dob = date("Y-m-d", strtotime($this->request->data['participant2']['dob']));
+    			$participant2->number = "N/A";
+    			$participant2->start_order = 2;
     		}
     		
     		$this->validateSubscription($subscription, $participant1, $participant2);
@@ -210,13 +225,45 @@ class SubscriptionController extends AppController
     	}
     }
     
+    public function sendValidationMail($code) {
+    	$subscription =  $this->getSubscriptionByCode($code);
+    	
+    	EmailUtils::sendValidationMail($subscription);
+    }
+    
+    public function sendPaymentMail($code) {
+    	$subscription =  $this->getSubscriptionByCode($code);
+    	 
+    	EmailUtils::sendPaymentMail($subscription);
+    }
+    
+    public function sendSubscriptionSuccessMail($code) {
+    	$subscription =  $this->getSubscriptionByCode($code);
+    	
+    	EmailUtils::sendSubscriptionSuccessMail($subscription);
+    }
+    
     private function validateSubscription($subscription, $participant1, $participant2) {
     	if ($subscription->wave == 'ADULT') {
     		$this->validateParticipant($participant1);
+    		
+    		$year = ModelUtils::getYear($participant1->dob, 'Y-m-d');
+    		
+    		if ((2016 - $year) < 14) {
+    			Log::warning('Participant is to young ' . $year, 'warn');
+    			throw new InternalErrorException("Om deel te nemen aan de 'Big run' moet u geboren zijn in 2002 of later.");
+    		}
     	} else if ($subscription->wave == 'YOUTH') {
     		$this->validateParticipant($participant1);
     		$this->validateParticipant($participant2);
-    		//DOB of Youth Wave
+    		
+    		$year1 = ModelUtils::getYear($participant1->dob, 'Y-m-d');
+    		$year2 = ModelUtils::getYear($participant2->dob, 'Y-m-d');
+    		
+    		if ((2016 - $year1) > 13 || (2016 - $year2) > 13) {
+    			Log::warning('Participant is to old ' . $year, 'warn');
+    			throw new InternalErrorException("Om deel te nemen aan de 'Duo run' moet u geboren zijn in 2003 of vroeger.");
+    		}
     	} else {
     		Log::warning('Wrong wave code ' . $wave , 'warn');
     		throw new InternalErrorException("Er werd een verkeerde wave-code doorgegeven: " . $wave);
@@ -225,10 +272,7 @@ class SubscriptionController extends AppController
     	$code = $subscription->code;
     	if (!empty($code)) {
     		//3. Validate Sponsor code exists
-    		$sponsorq1 = $this->Sponsor->findByCode1($code);
-    		$sponsorq2 = $this->Sponsor->findByCode2($code);
-			$sponsorc = $sponsorq1->count() + $sponsorq2->count();
-			if ($sponsorc == 0) {
+    		if (!ModelUtils::isSponsorCode($code)) {
 				Log::warning('SponsorCode ' . $code . ' does not exist' , 'warn');
 				throw new InternalErrorException("De gebruikte sponsorcode '" . $code . "' is niet gekend. Weet u zeker dat die correct is?");
 			}
@@ -243,7 +287,6 @@ class SubscriptionController extends AppController
 	
     }
     
-    //private function validateParticipant($gender, $firstName, $lastName, $email, $dob) {
     private function validateParticipant($participant) {
     	if (empty($participant->gender)) {
     		Log::warning('Gender is empty' , 'warn');
@@ -286,6 +329,25 @@ class SubscriptionController extends AppController
     		Log::warning('DOB is empty' , 'warn');
     		throw new InternalErrorException("Het geboortedatum-veld is leeg.");
     	}
+    }
+    
+    private function getSubscriptionByCode($code) {
+   		$subscriptionq = $this->Subscription->findByCode($code);
+	    $count = $subscriptionq->count();
+	    if ($count == 0) {
+	    	Log::warning('Code ' . $code . ' not found' , 'error');
+	    	throw new InternalErrorException("De gezochte code '" . $code . "' werd niet gevonden.");
+	    }
+	    if ($count > 1) {
+	    	Log::warning('Multiple subscriptions with code ' . $code . 'found.' , 'error');
+	    	throw new InternalErrorException("Er werden meerdere inschrijvingen met code '" . $code . "' gevonden.");
+	    }
+	    
+	    $subscription = $subscriptionq->first();
+	    
+	    return $this->Subscription->get($subscription->id, [
+	    		'contain' => ['Participant']
+	    		]);
     }
     
 }

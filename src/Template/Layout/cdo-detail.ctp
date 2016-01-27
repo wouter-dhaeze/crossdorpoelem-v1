@@ -34,6 +34,8 @@
 	<?= $this->element('footer'); ?>
 	
 	<script src="../js/jquery/jquery-2.1.4.min.js"></script>
+	<script src="../js/jquery/jquery-ui.min.js"></script>
+	<script src="../js/jquery/jquery.maskedinput.js" type="text/javascript"></script>
 	<script src="../js/angularjs/angular.min.js"></script>
 	<script src="../js/uikit/uikit.min.js"></script>
 	<script src="../js/foundation/foundation.min.js"></script>
