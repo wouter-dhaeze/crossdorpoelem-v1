@@ -29,6 +29,7 @@ if (Configure::read('debug')):
 endif;
 ?>
 <h2><?= h($message) ?></h2>
+<h3>400</h3>
 <p class="error">
     <strong><?= __d('cake', 'Error') ?>: </strong>
     <?= sprintf(

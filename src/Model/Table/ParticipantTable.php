@@ -89,7 +89,7 @@ class ParticipantTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->isUnique(['email']));
+        //$rules->add($rules->isUnique(['email']));
         $rules->add($rules->existsIn(['subscription_id'], 'Subscription'));
         return $rules;
     }

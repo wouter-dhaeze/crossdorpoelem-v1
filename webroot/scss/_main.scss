@@ -1,0 +1,21 @@
+html { 
+  /*background: url(../img/background-logo.png) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  opacity: 0.5;
+  height: 100%;*/
+}
+
+.pageWrapper {
+	min-height: 100%;
+  	/* equal to footer height */
+  	margin-bottom: -100px; 
+}
+
+.pageWrapper:after {
+ 	content: "";
+ 	display: block;
+ 	height: 100px;
+}

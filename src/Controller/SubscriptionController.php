@@ -5,9 +5,11 @@ use App\Controller\AppController;
 use App\Util\EmailUtils;
 use App\Util\ModelUtils;
 
+use Cake\Core\Configure;
 use Cake\Event\Event;
 use Cake\Log\Log;
 use Cake\Mailer\Email;
+use Cake\I18n\Time;
 
 use PDOException;
 
@@ -30,8 +32,10 @@ class SubscriptionController extends AppController
 		$this->loadModel('Sponsor');
 		$this->loadModel('Participant');
 		
-		//$this->Auth->allow(['create']);
-		$this->Auth->allow(['create', 'edit']);
+		$this->Auth->allow(['create', 'validate']);
+		//$this->Auth->allow(['create', 'edit', 'validate', 'update']);
+		
+		Time::setJsonEncodeFormat('dd/MM/yyyy');
 	}
 	
 	/**
@@ -47,17 +51,47 @@ class SubscriptionController extends AppController
     	if (is_null($id)) {
     		$view = 'new';
     	} else {
-    		$this->set('code', $id);
+    		$subscription = $this->getSubscriptionByCode($id, true);
+    		
+    		$this->set('subscription', $subscription);
+        	$this->set('_serialize', ['subscription']);
     	}
     	
     	$this->layout = 'cdo-detail';
     	$this->render($view);
-    	 
-    	/*$subscription = $this->Subscriptions->get($id, [
-            'contain' => ['Participants']
-        ]);
-        $this->set('subscription', $subscription);
-        $this->set('_serialize', ['subscription']);*/
+    }
+    
+    public function validate($code) {
+    	$code = strtoupper($code);
+    	Log::debug("Validating subscription code " . $code);
+    	
+    	$subscription = $this->getSubscriptionByCode($code, false);
+    	if (empty($subscription)) {
+    		Log::error("No subscription found with " . $code);
+    		$this->layout = 'cdo-detail';
+    		$this->set('message', "Er is geen schrijving met code '" . $code . "' gevonden.");
+    		$this->render('error');
+    	} else {
+    		$subscription->validated = true;
+    		$subscription = $this->Subscription->save($subscription);
+    		
+    		if ($subscription == false) {
+    			Log::error("Save returend false for subscription code " . $code);
+    			$this->layout = 'cdo-detail';
+    			$this->set('message', "Er is een fout gebeurd tijdens het valideren van uw inschrijving. Gelieve later opnieuw te proberen.");
+    			$this->render('error');
+    		}
+    		
+    		if (ModelUtils::isSponsorCode($code)) {
+    			$this->sendSponsorMail($code);
+    		} else {
+    			$this->sendPaymentMail($code);
+    		}
+    		
+    		Log::debug("Subscription code '" . $code . "' validated");
+    		
+    		return $this->redirect(['action' => 'view', $code]);
+    	}
     }
     
     /**
@@ -75,21 +109,69 @@ class SubscriptionController extends AppController
     	try {
     		$code = $this->request->query('code');
     		
-    		$subscriptionq = $this->Subscription->findByCode($code);
-    		
-    		$subscription = $subscriptionq->first();
-    		
-    		if (empty($subscription)) {
-    			throw new InternalErrorException("Geen inschrijving gevonden met code " . $code);
+    		if (!empty($code)) {
+	    		$subscriptionq = $this->Subscription->findByCode($code);
+	    		
+	    		$subscription = $subscriptionq->first();
+	    		
+	    		if (empty($subscription)) {
+	    			throw new InternalErrorException("Geen inschrijving met code '" . $code . "' gevonden.");
+	    		}
+	    		
+	    		$subscription = $this->Subscription->get($subscription->id, [
+		    			'contain' => ['Participant']
+		    			]);
+	    		
+	    		$this->response->type('json');
+	    		$this->response->body($this->json_encode($subscription));
+	    		return $this->response;
+    		} else {
+    			$filter = [];
+    			
+    			$wave = $this->request->query('wave');
+    			$validated = $this->request->query('validated');
+    			$payed = $this->request->query('payed');
+    			$sponsor = $this->request->query('sponsor');
+    			
+    			if (!empty($wave) && $wave != 'undefined') {
+    				$filter['wave'] = $wave;
+    			}
+    			if (!empty($validated) && $validated != 'undefined') {
+    				$filter['validated'] = $validated == 'TRUE' ? true : false;
+    			}
+    			if (!empty($payed) && $payed != 'undefined') {
+    				$filter['payed'] = $payed == 'TRUE' ? true : false;
+    			}
+    			if (!empty($sponsor) && $sponsor != 'undefined') {
+    				
+    			}
+    			
+    			$subscriptionq = $this->Subscription
+    						->find()
+    						->where($filter);
+    			$subscriptions = $subscriptionq->toArray(); 
+    			$subscriptionCount = $subscriptionq->count();
+    			
+    			$list = [];
+    			if (!empty($sponsor) && $sponsor != 'undefined') {
+    				$sponsor = $sponsor == 'TRUE' ? true : false;
+	    			foreach ($subscriptions as $s) {
+	    				if (ModelUtils::isSponsorCode($s->code) && $sponsor) {
+	    					array_push($list, $s);
+	    				} else if (!ModelUtils::isSponsorCode($s->code) && !$sponsor) {
+	    					array_push($list, $s);
+	    				}
+	    			}
+	    		} else {
+	    			$list = $subscriptions;
+	    		}
+
+    			$result = ["count" => $subscriptionCount, "subscriptions" => $list];
+    			
+    			$this->response->type('json');
+    			$this->response->body(json_encode($result));
+    			return $this->response;
     		}
-    		
-    		$subscription = $this->Subscription->get($subscription->id, [
-	    			'contain' => ['Participant']
-	    			]);
-    		
-    		$this->response->type('json');
-    		$this->response->body(json_encode($subscription));
-    		return $this->response;
     	} catch (PDOException $e) {
     		$this->log('PDOException occurred: ' . $e->getMessage() . '\n' . $e->getTraceAsString() , 'error');
     		throw new InternalErrorException('Er is een fout op de database gebeurd.');
@@ -102,16 +184,6 @@ class SubscriptionController extends AppController
      */
     public function create()
     {
-    	//$code = 'W9VLU6';
-    	$code = 'MRTGKC';
-    	$this->sendValidationMail($code);
-    	$this->sendPaymentMail($code);
-    	$this->sendSubscriptionSuccessMail($code);
-    	
-    	throw new InternalErrorException('Mail gestuurd');
-    }
-    public function create2()
-    {
     	$subscription = null;
     	$participant1 = null;
     	$participant2 = null;
@@ -120,7 +192,6 @@ class SubscriptionController extends AppController
     		//Log::debug("Subscription: " . implode($this->request->data));   		
     		
     		$subscription = $this->Subscription->patchEntity($this->Subscription->newEntity(), $this->request->data, ['validate' => false]);
-    		$subscription->wave = $this->request->data['wave']['id'];
 
     		$participant1 = $this->Participant->patchEntity($this->Participant->newEntity(), $this->request->data['participant1'], ['validate' => false]);
     		$participant1->dob = ModelUtils::parseDate($this->request->data['participant1']['dob'], 'd/m/Y', 'Y-m-d');
@@ -129,70 +200,37 @@ class SubscriptionController extends AppController
     		$participant2 = null;
     		if ($subscription->wave == 'YOUTH') {
     			$participant2 = $this->Participant->patchEntity($this->Participant->newEntity(), $this->request->data['participant2'], ['validate' => false]);
-    			$participant2->dob = date("Y-m-d", strtotime($this->request->data['participant2']['dob']));
+    			$participant2->dob = ModelUtils::parseDate($this->request->data['participant2']['dob'], 'd/m/Y', 'Y-m-d');
     			$participant2->number = "N/A";
     			$participant2->start_order = 2;
     		}
     		
     		$this->validateSubscription($subscription, $participant1, $participant2);
     		
-    		if (!empty($subscription->code)) {
-    			$subscription->payed = 1;
-    			
-    		} else {
+    		if (empty($subscription->code)) {
     			$subscription->code = ModelUtils::generateSubscriptionCode();
     			$subscription->payed = 0;
     		}
 
 			$subscription->validate = false;
     		
-	    	$subscription = $this->Subscription->connection()->transactional(function () use ($subscription, $participant1, $participant2) {
-	    		$subscription = $this->Subscription->save($subscription);	    		
-	    		
-	    		if ($subscription != false) {
-		    		$participant1->subscription = $subscription;
-		    		$saveSuccess = $this->Participant->save($participant1);
-		    		
-		    		if ($saveSuccess == false) {
-		    			Log::debug("Participant1 saved: false");
-		    			return false;
-		    		} 
-		    		
-		    		if ($participant2 != null) {
-		    			$participant2->subscription = $subscription;
-		    			$saveSuccess = $this->Participant->save($participant2);
-		    			
-		    			if ($saveSuccess == false) {
-		    				Log::debug($this->Participant->validationErrors);
-		    				Log::debug("Participant2 saved: false");
-			    			return false;
-			    		}
-		    		}
-	    		} else {
-	    			Log::debug("Persisting subscription resulted in false.");
-	    		}
-	    		
-	    		return $subscription;
-	    	});	
+	    	$subscription = $this->saveSubscription($subscription, $participant1, $participant2);
 	    	
 	    	if (!$subscription == false) {
 	    		$subscription = $this->Subscription->get($subscription->id, [
 	    			'contain' => ['Participant']
 	    			]);
 	    		
+	    		$code = $subscription->code;
 	    		//send mail
-	    		// if no sponsorcode
-	    		
-	    		// if sponsorcode 
-	    		// => 1.payment ok
-	    		// => 2. send mail to inschrijvingen that sponsor needs chestnumber
+	    		$this->sendValidationMail($code);
 	    	} else {
 	    		$this->log('Save returned false' , 'error');
 	    		throw new InternalErrorException('De inschrijving kon niet worden bewaard. Zijn alle velden correct ingevuld?');
 	    	}
 	    	
 	    	$this->response->type('json');
-	    	$this->response->body(json_encode($subscription));
+	    	$this->response->body($this->json_encode($subscription));
 	    	return $this->response;
     	} catch (PDOException $e) {
     		$this->log('PDOException occurred: ' . $e->getMessage() . '\n' . $e->getTraceAsString() , 'error');
@@ -202,18 +240,51 @@ class SubscriptionController extends AppController
     }
     
     /**
-     * API call subscribe (HTTP POST)
+     * API call subscribe (HTTP PUT)
+     * 
+     * Currenlty only implemented to send update payment
      */
-    public function edit($id = null) {
+    public function edit($id) {
     	try {
 	    	$subscription = $this->Subscription->get($id);
+	    	
+	    	$subscription = $this->getSubscriptionByCode($subscription->code, true);
+	    	$participant1 = $subscription->participant[0];
+	    	$participant2 = $subscription->participant[1];
 	    	if (empty($subscription)) {
 	    		$this->log('No subscription found with id' . $id, 'error');
 	    		throw new InternalErrorException('Geen beschrijving gevonden met id ' . $this->request->data['id']);
 	    	}
 	    	
+	    	if ($subscription->payed) {
+	    		$this->log('Subscription with id' . $id . ' already payed.', 'error');
+	    		throw new InternalErrorException('De inschrijving met id ' . $id . ' heeft reeds betaald.');
+	    	}
+	    	
+	    	if ($this->request->data['payed']) {
+	    		$participant1->number = $this->request->data['participant1']['number'];
+	    		if ($subscription->wave == 'YOUTH') {
+	    			$participant2->number = $this->request->data['participant2']['number'];
+	    		}
+	    		
+	    		$subscription->payed = true;
+	    		$subscription = $this->updateSubscription($subscription, $participant1, $participant2);
+	    		if (!$subscription == false) {
+	    			$subscription = $this->Subscription->get($subscription->id, [
+	    					'contain' => ['Participant']
+	    					]);
+	    			 
+	    			$code = $subscription->code;
+	    			//send mail
+	    			$this->sendSubscriptionSuccessMail($code);
+		    	} else {
+	    				$this->log('Save returned false' , 'error');
+	    				throw new InternalErrorException('De betaling kon niet worden geregistreerd. Check database.');
+	    		}
+	    	}
+	    	
 	    	$this->response->type('json');
-	    	$this->response->body(json_encode($subscription));
+	    	$this->response->body($this->json_encode($subscription));
 	    	return $this->response;
     	} catch (PDOException $e) {
     		$this->log('PDOException occurred: ' . $e->getMessage() . '\n' . $e->getTraceAsString() , 'error');
@@ -226,32 +297,44 @@ class SubscriptionController extends AppController
     }
     
     public function sendValidationMail($code) {
-    	$subscription =  $this->getSubscriptionByCode($code);
+    	$subscription =  $this->getSubscriptionByCode($code, true);
     	
     	EmailUtils::sendValidationMail($subscription);
     }
     
     public function sendPaymentMail($code) {
-    	$subscription =  $this->getSubscriptionByCode($code);
+    	$subscription =  $this->getSubscriptionByCode($code, true);
     	 
     	EmailUtils::sendPaymentMail($subscription);
     }
     
+    public function sendSponsorMail($code) {
+    	$subscription =  $this->getSubscriptionByCode($code, true);
+    
+    	EmailUtils::sendSponsorMail($subscription);
+    }
+    
     public function sendSubscriptionSuccessMail($code) {
-    	$subscription =  $this->getSubscriptionByCode($code);
+    	$subscription =  $this->getSubscriptionByCode($code, true);
     	
     	EmailUtils::sendSubscriptionSuccessMail($subscription);
     }
     
     private function validateSubscription($subscription, $participant1, $participant2) {
+    	if (!$subscription->consent) {
+    		Log::warning('Subscriber did not consent', 'warn');
+    		throw new InternalErrorException("U dient akkoord te gaan met de gezondheidsvoorwaarde.");
+    	}
+    	
     	if ($subscription->wave == 'ADULT') {
     		$this->validateParticipant($participant1);
     		
     		$year = ModelUtils::getYear($participant1->dob, 'Y-m-d');
     		
-    		if ((2016 - $year) < 14) {
+    		$age1 = 2016 - $year;
+    		if ($age1 < 14) {
     			Log::warning('Participant is to young ' . $year, 'warn');
-    			throw new InternalErrorException("Om deel te nemen aan de 'Big run' moet u geboren zijn in 2002 of later.");
+    			throw new InternalErrorException("Om deel te nemen aan de 'Big run' moet u geboren zijn in 2002 of vroeger.");
     		}
     	} else if ($subscription->wave == 'YOUTH') {
     		$this->validateParticipant($participant1);
@@ -260,9 +343,12 @@ class SubscriptionController extends AppController
     		$year1 = ModelUtils::getYear($participant1->dob, 'Y-m-d');
     		$year2 = ModelUtils::getYear($participant2->dob, 'Y-m-d');
     		
-    		if ((2016 - $year1) > 13 || (2016 - $year2) > 13) {
-    			Log::warning('Participant is to old ' . $year, 'warn');
-    			throw new InternalErrorException("Om deel te nemen aan de 'Duo run' moet u geboren zijn in 2003 of vroeger.");
+    		$age1 = 2016 - $year1;
+    		$age2 = 2016 - $year2;
+    		if ($age1 > 13 || $age1 < 10 || 
+    				$age2 > 13 || $age2 < 10) {
+    			Log::warning('Participant is to old or to young', 'warn');
+    			throw new InternalErrorException("Om deel te nemen aan de 'Duo run' moet u geboren zijn tussen 01/01/2003 en 31/12/2006.");
     		}
     	} else {
     		Log::warning('Wrong wave code ' . $wave , 'warn');
@@ -314,10 +400,12 @@ class SubscriptionController extends AppController
     	}
     	
     	//email address unique over Subscription
+    	if (Configure::read('CDO.email_unique')) {
     	$participantq = $this->Participant->findByEmail($participant->email);
-    	if ($participantq->count() > 0) {
-    		Log::warning('Email already exists: ' . $participant->email, 'warn');
-    		throw new InternalErrorException("Er bestaat al een inschrijving met dit emailadres. Gelieve een ander (geldig) adres te kiezen.");
+	    	if ($participantq->count() > 0) {
+	    		Log::warning('Email already exists: ' . $participant->email, 'warn');
+	    		throw new InternalErrorException("Er bestaat al een inschrijving met dit emailadres. Gelieve een ander (geldig) adres te kiezen.");
+	    	}
     	}
     	
     	if (!filter_var($participant->email, FILTER_VALIDATE_EMAIL)) {
@@ -331,16 +419,29 @@ class SubscriptionController extends AppController
     	}
     }
     
-    private function getSubscriptionByCode($code) {
+    private function json_encode($subscription) {
+    	//$subscription->participant[0]->dob = ModelUtils::parseDate($subscription->participant[0]->dob, 'Y-m-d', 'd/m/Y');
+    	return json_encode($subscription);
+    }
+    
+    private function getSubscriptionByCode($code, $throw) {
    		$subscriptionq = $this->Subscription->findByCode($code);
 	    $count = $subscriptionq->count();
 	    if ($count == 0) {
 	    	Log::warning('Code ' . $code . ' not found' , 'error');
-	    	throw new InternalErrorException("De gezochte code '" . $code . "' werd niet gevonden.");
+	    	if ($throw) {
+	    		throw new InternalErrorException("De gezochte code '" . $code . "' werd niet gevonden.");
+	    	} else {
+	    		return null;
+	    	}
 	    }
 	    if ($count > 1) {
 	    	Log::warning('Multiple subscriptions with code ' . $code . 'found.' , 'error');
-	    	throw new InternalErrorException("Er werden meerdere inschrijvingen met code '" . $code . "' gevonden.");
+	    	if ($throw) {
+	    		throw new InternalErrorException("Er werden meerdere inschrijvingen met code '" . $code . "' gevonden.");
+	    	} else {
+	    		return null;
+	    	}
 	    }
 	    
 	    $subscription = $subscriptionq->first();
@@ -349,5 +450,82 @@ class SubscriptionController extends AppController
 	    		'contain' => ['Participant']
 	    		]);
     }
+    
+    private function saveSubscription($subscription, $participant1, $participant2) {
+    	$subscription = $this->Subscription->connection()->transactional(function () use ($subscription, $participant1, $participant2) {
+    		$subscription = $this->Subscription->save($subscription);	    		
+    		
+    		if ($subscription != false) {
+	    		$participant1->subscription = $subscription;
+	    		$saveSuccess = $this->Participant->save($participant1);
+	    		
+	    		if ($saveSuccess == false) {
+	    			Log::debug("Participant1 saved: false");
+	    			return false;
+	    		} 
+	    		
+	    		if ($participant2 != null) {
+	    			$participant2->subscription = $subscription;
+	    			$saveSuccess = $this->Participant->save($participant2);
+	    			
+	    			if ($saveSuccess == false) {
+	    				//Log::debug($this->Participant->validationErrors);
+	    				Log::debug("Participant2 saved: false");
+		    			return false;
+		    		}
+	    		}
+    		} else {
+    			Log::debug("Persisting subscription resulted in false.");
+    		}
+    		
+    		return $subscription;
+    	});	
+    	
+    	return $subscription;
+    }
+    
+    private function updateSubscription($subscription, $participant1, $participant2) {
+    	$subscription = $this->Subscription->connection()->transactional(function () use ($subscription, $participant1, $participant2) {
+    		$subscription = $this->Subscription->save($subscription);
+    
+    		if ($subscription != false) {
+    			$saveSuccess = $this->Participant->save($participant1);
+    	   
+    			if ($saveSuccess == false) {
+    				Log::debug("Participant1 updated: false");
+    				return false;
+    			}
+    	   
+    			if ($participant2 != null) {
+    				$saveSuccess = $this->Participant->save($participant2);
+    
+    				if ($saveSuccess == false) {
+    					Log::debug($this->Participant->validationErrors);
+    					Log::debug("Participant2 updated: false");
+    					return false;
+    				}
+    			}
+    		} else {
+    			Log::debug("Persisting subscription resulted in false.");
+    		}
+    
+    		return $subscription;
+    	});
+    		 
+    	return $subscription;
+    }
+    
+    /*
+     * public function create2()
+    {
+    	//$code = 'W9VLU6';
+    	$code = 'MRTGKC';
+    	$this->sendValidationMail($code);
+    	$this->sendPaymentMail($code);
+    	$this->sendSubscriptionSuccessMail($code);
+    	
+    	throw new InternalErrorException('Mail gestuurd');
+    }
+     */
     
 }

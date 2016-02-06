@@ -46,8 +46,13 @@
 		<label for="<?= $idPrefix?>dob" class="right inline">Geboortedatum</label>
 	</div>
 	<div class="large-10 columns">
-		<input type="text" id="<?= $idPrefix?>dob" name="<?= $idPrefix?>dob" placeholder="dd/MM/yyyy"
-			ng-model="<?= $ngmodelDob ?>" required dob></input>
+		<input type="text" id="<?= $idPrefix?>dob" name="<?= $idPrefix?>dob" 
+			placeholder="dd/MM/yyyy" ui-mask="99/99/9999" ui-mask-placeholder ui-mask-placeholder-char="_" model-view-value="true"
+			ng-model="<?= $ngmodelDob ?>" required></input>
+			
+		<!--<input type="text" id="<?= $idPrefix?>dob" name="<?= $idPrefix?>dob" 
+			placeholder="dd/MM/yyyy" ui-mask="99/99/9999" ui-mask-placeholder ui-mask-placeholder-char="_"
+			ng-model="<?= $ngmodelDob ?>" required dob></input>-->
 		<div class="alert alert-danger" role="alert" ng-show="<?= $formName?>.<?= $idPrefix?>dob.$dirty && <?= $formName?>.<?= $idPrefix?>dob.$error.dob">Ongeldige geboortedatum</div>
 	</div>
 </div>

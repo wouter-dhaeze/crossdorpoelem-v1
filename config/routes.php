@@ -77,6 +77,10 @@ Router::connect(
 	'/subscription/*', 
 	['controller' => 'Subscription', 'action' => 'view']);
 
+Router::connect(
+	'/validatesubscription/*',
+	['controller' => 'Subscription', 'action' => 'validate']);
+
 Router::extensions(['json']);
 Router::scope('/api', function ($routes) {
 	$routes->extensions(['json']);

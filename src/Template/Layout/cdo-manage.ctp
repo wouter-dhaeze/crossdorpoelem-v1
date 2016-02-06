@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <meta name="description" content="crossdorp oelem"/>
 
-<title>Crossdorp Oelem - Inschrijving</title>
+<title>Crossdorp Oelem - Beheer</title>
 
 <link href="../css/bootstrap.min.css" rel="stylesheet" />
 <link href="../css/uikit.min.css" rel="stylesheet" />
@@ -25,19 +25,13 @@
 
 </head>
 <body>
-	<div class="pageWrapper">
-		<div class="row">
-			<div class="large-9 columns"><?= $this->fetch('content') ?></div>
-			<div class="large-3 columns">sponsors</div>
-		</div>
-	</div>
+	<?= $this->fetch('content') ?></div>
+
 	
 	
-	<?= $this->element('footer', ["class" => "fixed"]); ?>
+	<?= $this->element('footer'); ?>
 	
 	<script src="../js/jquery/jquery-2.1.4.min.js"></script>
-	<script src="../js/jquery/jquery-ui.min.js"></script>
-<!-- 	<script src="../js/jquery/jquery.maskedinput.js" type="text/javascript"></script> -->
 	<script src="../js/angularjs/angular.min.js"></script>
 	<script src="../js/angularjs/mask.min.js"></script>
 	<script src="../js/uikit/uikit.min.js"></script>
