@@ -12,6 +12,9 @@
 		$numberText = $subscription->participant[0] . ' heeft borstnummer <b>' . $subscription->participant[0]->number . '</b><br/>';
 		$numberText .= $subscription->participant[1] . ' heeft borstnummer <b>' . $subscription->participant[1]->number . '</b><br/>';
 	}
+	
+	$subscriptionUrl = $baseUrl . '/subscription/' . $subscription->code;
+	
 ?>
 
 <p>Beste <?= $addressing ?>,</p>
@@ -25,10 +28,12 @@
 <div>
 	<h2>Uw borstnummer: </h2>
 	<h1><?= $numberText ?></h1>
-	<p>Gelieve uw borstnummer goed bij te houden. De dag van het spektakel kunt u zich aanmelden met dit borstnummer.</p>
+	<p>Gelieve uw borstnummer te onthouden. De dag van het spektakel dient u zich met dit borstnummer aan te aanmelden.</p>
 </div>
 <br/>
 <div>
+	<h2>Uw inschrijving</h2>
+	Klik op volgende link om uw inschrijving te bekijken: <a href="<?= $subscriptionUrl?>"><?= $subscriptionUrl?></a>
 	<h2>Praktische info</h2>
 	Alle praktische info en veel meer vindt u op onze website <a href="<?= $baseUrl?>"><?= $baseUrl?></a>.
 </div>

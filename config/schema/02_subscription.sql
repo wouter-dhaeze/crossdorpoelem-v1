@@ -1,29 +1,29 @@
-CREATE TABLE `subscriptions` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `created` datetime DEFAULT NULL,
-  `code` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-);
+delimiter $$
 
-CREATE TABLE `subscribers` (
+CREATE TABLE `subscription` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `created` datetime DEFAULT NULL,
-  `fname` varchar(255) DEFAULT NULL,
-  `lname` varchar(255) DEFAULT NULL,
-  `email` varchar(255) NOT NULL,
-  `subscription_id` int(11) NOT NULL,
+  `code` varchar(8) NOT NULL,
+  `wave` varchar(45) NOT NULL DEFAULT 'ADULT',
+  `payed` tinyint(1) NOT NULL DEFAULT '0',
+  `validated` tinyint(1) NOT NULL DEFAULT '0',
+  `consent` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
-  KEY `subscribers_ibfk_1_idx` (`subscription_id`),
-  CONSTRAINT `subscribers_ibfk_1` FOREIGN KEY (`subscription_id`) REFERENCES `subscriptions` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
-);
+  UNIQUE KEY `code_UNIQUE` (`code`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8$$
 
-CREATE TABLE `participants` (
+
+CREATE TABLE `participant` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `fname` varchar(255) DEFAULT NULL,
-  `lname` varchar(255) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
+  `gender` varchar(1) NOT NULL,
+  `fname` varchar(255) NOT NULL,
+  `lname` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `dob` datetime NOT NULL,
+  `number` varchar(4) DEFAULT '000',
+  `start_order` int(11) NOT NULL DEFAULT '0',
   `subscription_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `participants_ibfk_1` (`subscription_id`),
-  CONSTRAINT `participants_ibfk_1` FOREIGN KEY (`subscription_id`) REFERENCES `subscriptions` (`id`) ON DELETE CASCADE
-);
+  CONSTRAINT `participants_ibfk_1` FOREIGN KEY (`subscription_id`) REFERENCES `subscription` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8$$

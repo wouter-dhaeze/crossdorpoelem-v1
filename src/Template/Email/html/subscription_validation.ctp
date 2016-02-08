@@ -13,7 +13,7 @@
 	<h2>We hebben uw inschrijvingsgegevens goed ontvangen!</h2>
 	<p>Stap 1 is met succes voltooid! Hoogtijd om uw inschrijving te valideren.</p>
 	<p>Hieronder vindt u uw inschrijvingscode terug:</p>
-	<h3><?= $subscription->code ?></h3>
+	<h1><?= $subscription->code ?></h1>
 	<p>Deze code is belangrijk omdat u die zal moeten meegeven in uw overschrijving. Ook kunt u later deze code gebruiken om de status van uw inschrijving te bekijken.
 	</p>
 </div>

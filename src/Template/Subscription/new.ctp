@@ -8,8 +8,8 @@
 		<p>Gelieve deze aandachtig te lezen. De inschrijving gebeurt in 4 stappen:</p>
 		<ol>
 			<li><b><i>Vul uw gegevens in</i></b><br/>Vul het inschrijvingsformulier in. (Het komt tevoorschijn wanneer u op onderstaande knop klikt.)</li>
-			<li><b><i>Valideer uw inschrijving</i></b><br/>Wanneer we uw gegevens uit stap 1 ontvangen hebben, zal u een eerste email ontvangen. Volg de  instructies in de email om uw inschrijving te valideren.</li>
-			<li><b><i>Uw inschrijving betalen</i></b><br/>Wanneer uw inschrijving correct gevalideerd werd, zal u een tweede mail ontvangen met daarin de betaalgegevens. Volg opnieuw de instructies in de email. (Sponsors krijgen ook deze mail maar hoeven niet te betalen.)</li>
+			<li><b><i>Valideer uw inschrijving</i></b><br/>Wanneer we uw gegevens uit stap 1 ontvangen hebben, zal u een eerste email ontvangen. Volg de  instructies in de email om uw inschrijving te valideren. Het is dus van uiterst belang dat u een emailadres waar u toegang toe heeft, gebruikt.</li>
+			<li><b><i>Uw inschrijving betalen</i></b><br/>Wanneer uw inschrijving correct gevalideerd werd, zal u een tweede email ontvangen met daarin de betaalgegevens. Volg opnieuw de instructies in de email. (Sponsors krijgen ook deze mail maar hoeven niet te betalen.)</li>
 			<li><b><i>Uw inschrijving is voltooid</i></b><br/>Wanneer we uw betaling ontvangen hebben sturen we u een derde mail. Daarin vindt u de bevestiging van uw betaling en uw borstnummer.</li>
 		</ol>
 		<p><b><i>Let op: U bent pas officieel ingeschreven nadat we uw betaling per storting ontvangen hebben! Wanneer u wacht om te betalen tot de dag zelf bestaat de kans dat de wedstrijd reeds volzet is.</i></b></p>
@@ -30,7 +30,7 @@
 				</select>
 			</div>
 			<div ng-hide="subscription.wave == 'CHOOSE'">
-				<div class="alert alert-warning" ng-show="aSubscriptionForm.$invalid && ySubscriptionForm.$invalid">Formulier nog niet volledig correct ingevuld.</div>
+				<!-- <div class="alert alert-warning" ng-show="aSubscriptionForm.$invalid && ySubscriptionForm.$invalid">Formulier nog niet volledig correct ingevuld.</div> -->
 				<form name="aSubscriptionForm" novalidate>
 					<div id="pnl-adult" class="row" ng-show="subscription.wave == 'ADULT'">
 						<h3>Deelnemer - 6 KM</h3>
@@ -106,7 +106,7 @@
 						<input type="text" placeholder="Code" 
 							ng-model="subscription.code"/>
 					</div>
-					<button class="button large" role="button" ng-disabled="(aSubscriptionForm.$invalid && ySubscriptionForm.$invalid) || !subscription.consent">Inschrijven</button>
+					<button class="button large" role="button" ng-disabled="aSubscriptionForm.$invalid || (subscription.wave == 'YOUTH' && ySubscriptionForm.$invalid) || !subscription.consent">Inschrijven</button>
 				</form>
 			</div>
 		</div>
@@ -140,8 +140,8 @@
 			<div><h4>Duo Run</h4>
   				<ul>
   					<li><b>Voor jongeren</b>: Bent u tussen de 10 en 13 jaar oud (geboren tussen 01/01/2003 en 31/12/2006) dan neemt u deel aan de "Duo Run".</li>
-  					<li>Het parcours is om en bij de <b>2,5 km lang</b> en u legt het parcours in duo af.</li>
-  					<li>Jullie lopen <b>in duo</b>. Na ongeveer 1 km is er een aflossing en gaat je vriend of vriendin verder met de rest van het parcours.</li>
+  					<li>Het parcours is om en bij de <b>2,5 km lang</b>.</li>
+  					<li>Jullie schrijven in <b>in duo</b> en lopen om beurt een stuk van het parcours. Na ongeveer 1,5 km is er een aflossing en gaat je teamgenoot verder met de rest van het parcours.</li>
   					<li>Uw inschrijving kost <b>6 euro per duo</b>. (Dus voor alle duidelijkheid, jullie betalen &eacute;&eacute;nmalig 6 euro.)</li>
   				</ul>
   			</div>
