@@ -396,7 +396,7 @@ class SubscriptionController extends AppController
     	
     	if (empty($participant->email)) {
     		Log::warning('Email is empty' , 'warn');
-    		throw new InternalErrorException("Het email-veld is leeg of ongeldig");
+    		throw new InternalErrorException("Het e-mailveld is leeg of ongeldig");
     	}
     	
     	//email address unique over Subscription
@@ -404,13 +404,13 @@ class SubscriptionController extends AppController
     	$participantq = $this->Participant->findByEmail($participant->email);
 	    	if ($participantq->count() > 0) {
 	    		Log::warning('Email already exists: ' . $participant->email, 'warn');
-	    		throw new InternalErrorException("Er bestaat al een inschrijving met dit emailadres. Gelieve een ander (geldig) adres te kiezen.");
+	    		throw new InternalErrorException("Er bestaat al een inschrijving met dit e-mailadres. Gelieve een ander (geldig) adres te kiezen.");
 	    	}
     	}
     	
     	if (!filter_var($participant->email, FILTER_VALIDATE_EMAIL)) {
     		Log::warning('Email wrong format: ' . $email, 'warn');
-    		throw new InternalErrorException("Het emailadres is ongeldig.");
+    		throw new InternalErrorException("Het e-mailadres is ongeldig.");
     	}
     	
     	if (empty($participant->dob)) {

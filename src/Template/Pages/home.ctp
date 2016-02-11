@@ -158,64 +158,86 @@ $this->layout = false;
 				</div>
 			  	<div class="row">
 			  		<div class="small-6 medium-3 column">
-						<img class="img-responsive" src="sponsors/mozesmedia.jpg" />
+						<img class="img-responsive" src="sponsors/deformatie.jpg" />
 					</div>
 					<div class="small-6 medium-3 column">
-						<img class="img-responsive" src="sponsors/logo_crocodile.png" />
+						<img class="img-responsive" src="sponsors/crocodile.jpg" />
 					</div>
 					<div class="small-6 medium-3 column">
-						<img class="img-responsive" src="sponsors/logo_tetard.png" />
+						<img class="img-responsive" src="sponsors/tetard.jpg" />
 					</div>
 					<div class="small-6 medium-3 column">
-						<img class="img-responsive" src="sponsors/logo_gulf.png" />
-					</div>
-			  	</div>
-			  	<div class="row">
-			  		<div class="small-12 medium-6 column">
-						<img class="img-responsive" src="sponsors/logo_slagerij-franky.jpg" />
-					</div>
-					<div class="small-12 medium-6 column">
-						<img class="img-responsive" src="sponsors/logo_frietamientje.png" />
+						<img class="img-responsive" src="sponsors/alphamservice.jpg" />
 					</div>
 			  	</div>
 			  	<div class="row">
 			  		<div class="small-6 medium-3 column">
-						<img class="img-responsive" src="sponsors/logo_bakkerij-coucke.jpg" />
+						<img class="img-responsive" src="sponsors/gulf.jpg" />
+					</div>
+			  		<div class="small-12 medium-3 column">
+						<img class="img-responsive" src="sponsors/vanhulle.jpg" />
+					</div>
+					<div class="small-12 medium-3 column">
+						<img class="img-responsive" src="sponsors/frietamientje.jpg" />
 					</div>
 					<div class="small-6 medium-3 column">
-						<img class="img-responsive" src="sponsors/logo_frituur-geert.png" />
+						<img class="img-responsive" src="sponsors/coucke.jpg" />
+					</div>
+			  	</div>
+			  	<div class="row">
+					<div class="small-6 medium-3 column">
+						<img class="img-responsive" src="sponsors/frituurgeert.jpg" />
 					</div>
 					<div class="small-6 medium-3 column">
-						<img class="img-responsive" src="sponsors/logo_de-mess.png" />
+						<img class="img-responsive" src="sponsors/demess.jpg" />
 					</div>
 					<div class="small-6 medium-3 column">
-						<img class="img-responsive" src="sponsors/logo_vloeren-franssens.png" />
+						<img class="img-responsive" src="sponsors/vloerenfranssens.jpg" />
+					</div>
+					<div class="small-6 medium-3 column">
+						<img class="img-responsive" src="sponsors/debokke.jpg" />
 					</div>
 			  	</div>
 			  	<div class="row">
 			  		<div class="small-6 medium-3 column">
-						<img class="img-responsive" src="sponsors/logo_de-bokke.png" />
+						<img class="img-responsive" src="sponsors/rikbeuselinck.jpg" />
 					</div>
 					<div class="small-6 medium-3 column">
-						<img class="img-responsive" src="sponsors/logo_rb.jpg" />
+						<img class="img-responsive" src="sponsors/sanderbellen.jpg" />
 					</div>
 					<div class="small-6 medium-3 column">
-						<img class="img-responsive" src="sponsors/logo_sander.jpg" />
+						<img class="img-responsive" src="sponsors/maxims.jpg" />
 					</div>
 					<div class="small-6 medium-3 column">
-						<img class="img-responsive" src="sponsors/logo_maximes.jpg" />
+						<img class="img-responsive" src="sponsors/delanghe.jpg" />
 					</div>
 			  	</div>
 			  	<div class="row">
 			  		<div class="small-6 medium-3 column">
-						<img class="img-responsive" src="sponsors/logo_bakkerij-de-langhe.jpg" />
+						<img class="img-responsive" src="sponsors/debaene.jpg" />
 					</div>
 					<div class="small-6 medium-3 column">
-						<img class="img-responsive" src="sponsors/logo_garage-de-baene.png" />
+						<img class="img-responsive" src="sponsors/jomar.jpg" />
 					</div>
 					<div class="small-6 medium-3 column">
+						<img class="img-responsive" src="sponsors/mitra.jpg" />
 					</div>
 					<div class="small-6 medium-3 column">
+						<img class="img-responsive" src="sponsors/patscoffee.jpg" />
+					</div>
+			  	</div>
+			  	<div class="row">
+			  		<div class="small-6 medium-3 column">
+						<img class="img-responsive" src="sponsors/schepens_advocaten.jpg" />
+					</div>
+					<div class="small-6 medium-3 column">
+						<img class="img-responsive" src="sponsors/mens.jpg" />
+					</div>
+					<div class="small-6 medium-3 column">
+						
+					</div>
+					<div class="small-6 medium-3 column">
+						
 					</div>
 			  	</div>
 			</div>

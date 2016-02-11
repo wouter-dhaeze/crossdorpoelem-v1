@@ -93,7 +93,7 @@
 				</form>
 				
 				<form name="consentForm" novalidate>
-					<input style="float: left" id="consent" type="checkbox" name="consent" ng-model="subscription.consent"><label for="consent">Door dit aan te vinken verklaar u dat u of de loper(s) waarvoor u inschrijft, fit en gezond zijn om aan de wedstrijd deel te nemen.</label>
+					<input style="float: left" id="consent" type="checkbox" name="consent" ng-model="subscription.consent"><label for="consent">Door dit aan te vinken verklaart u dat u of de loper(s) waarvoor u inschrijft, fit en gezond zijn om aan de wedstrijd deel te nemen.</label>
 					<div style="clear: both"></div>
 				</form>
 				<form name="sponsorForm" novalidate
