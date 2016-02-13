@@ -3,8 +3,15 @@
 use Cake\I18n\Time;
 Time::setToStringFormat('dd/MM/yyyy');
 
+if (empty($subscription))
+
 ?>
 
+<?php if (empty($subscription)) : ?>
+    <div class="alert alert-danger">Er werd geen inschrijving met deze code gevonden.</div>
+<?php endif; ?>
+
+<?php if (!empty($subscription)) : ?>
 <div ng-app="subscriptionApp" ng-controller="subscriptionCtrl">
 	<div class="row">
 		<h1>Mijn inschrijving</h1>
@@ -26,22 +33,6 @@ Time::setToStringFormat('dd/MM/yyyy');
 			<?= $this->element('view_participant', 
 								["participant" => $subscription->participant[1]]); ?>
 		<?php endif; ?>
-			<h2>Uw resultaat</h2>
-			<div class="row">
-				<div class="large-2 columns">
-					<label class="right inline">Plaats</label>
-				</div>
-				<div class="large-10 columns">
-					<span>Nog niet gekend</span>
-				</div>
-			</div>
-			<div class="row">
-				<div class="large-2 columns">
-					<label class="right inline">Tijd</label>
-				</div>
-				<div class="large-10 columns">
-					<span>Nog niet gekend</span>
-				</div>
-			</div>
 	</div>
 </div>
+<?php endif; ?>

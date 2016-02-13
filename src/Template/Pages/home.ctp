@@ -11,12 +11,11 @@ $this->layout = false;
 
 <title>Crossdorp Oelem</title>
 
-<!-- <link href="css/bootstrap.min.css" rel="stylesheet" />-->
 <link href="css/foundation.css" rel="stylesheet" />
 <link href="css/bootstrap.min.css" rel="stylesheet" />
 <link href="css/uikit.min.css" rel="stylesheet" />
 <link href="css/app.css" rel="stylesheet" type="text/css" />
-<link href="css/crossdorpoelem2.css" rel="stylesheet" type="text/css" />
+<link href="css/crossdorpoelem.css" rel="stylesheet" type="text/css" />
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -26,7 +25,7 @@ $this->layout = false;
 	    <![endif]-->
 
 </head>
-<body ng-app="cdoApp">
+<body ng-app="cdo.app">
 	
 	<?= $this->element('menu_bar'); ?>
 	<div id="header">
@@ -45,7 +44,7 @@ $this->layout = false;
 	
 	<section id="pnlInfo" >
 		<div class="row">
-			<div class="small-12 medium-4 column">
+			<div id="urban-short" class="small-12 medium-4 column">
 				<div class="text-center title">
 				    <h2>Urban wadde?</h2>
 				    <div class="line"></div>
@@ -57,39 +56,39 @@ $this->layout = false;
 				    waar je hoogst waarschijnlijk nog nooit bent binnen geweest. Beloofd!</p>
 				</article>
 			</div>
-			<div class="small-12 medium-8 column">
+			<div class="small-12 medium-offset-1 medium-7 column">
 				<div class="text-center title">
 				    <h2>Info</h2>
 				    <div class="line"></div>
 				</div>
 				<div class="info-container">
 					<div class="info-thumb"><img src="../img/calendar70.png"></div>
-					<div class="info-content">De wedstrijd gaat door op zaterdag 26 maart.</div>
+					<div class="info-content"><p class="lead">De wedstrijd gaat door op <b>zaterdag 26 maart</b>.</p></div>
 					<div style="clear: both;"></div>
 				</div>
 				<div class="info-container">
 					<div class="info-thumb"><img src="../img/bird58.png"></div>
-					<div class="info-content">Voor (jong-)volwassenen ligt een parcours van 6 km te wachten.</div>
+					<div class="info-content"><p class="lead">Voor <b>(jong-)volwassenen</b> ligt een parcours van <b>6 km </b>te wachten.</p></div>
 					<div style="clear: both;"></div>
 				</div>
 				<div class="info-container">
 					<div class="info-thumb"><img src="../img/crawling.png"></div>
-					<div class="info-content">Voor de jeugd (geboren tussen 2003 en 2006) hebben we een parcours van 2,5 km. Jeugd schrijft in als duo. In de helft van het parcours wordt de eerste loper afgelost.</div>
+					<div class="info-content"><p class="lead">Voor <b>de jeugd</b> (geboren tussen 2003 en 2006) hebben we een parcours van <b>2,5 km</b>. Jeugd schrijft in als duo. In de helft van het parcours wordt de eerste loper afgelost.</p></div>
 					<div style="clear: both;"></div>
 				</div>
 				<div class="info-container">
 					<div class="info-thumb"><img src="../img/alarm54.png"></div>
-					<div class="info-content">De jeugd run start om 15u, de volwassenen om 16u.</div>
+					<div class="info-content"><p class="lead">De <b>jeugd</b> run start <b>om 15u</b>, de <b>volwassenen om 16u</b>.</p></div>
 					<div style="clear: both;"></div>
 				</div>
 				<div class="info-container">
 					<div class="info-thumb"><img src="../img/money390.png"></div>
-					<div class="info-content">Voorafschrijven kost u 6 euro, aan de deur betaalt u 8 euro (enkel indien er nog plaats is).</div>
+					<div class="info-content"><p class="lead">Voorafschrijven kost u <b>6 euro</b>, aan de deur betaalt u <b>8 euro</b> (enkel indien er nog plaats is).</p></div>
 					<div style="clear: both;"></div>
 				</div>
 				<div class="info-container">
 					<div class="info-thumb"><img src="../img/location76.png"></div>
-					<div class="info-content">De start en de aankomst ligt in sportcomplex Den Akker te Oedelem.</div>
+					<div class="info-content"><p class="lead">De start en de aankomst ligt in <b>sportcomplex Den Akker te Oedelem</b>.</p></div>
 					<div style="clear: both;"></div>
 				</div>
 			</div>	
@@ -108,27 +107,41 @@ $this->layout = false;
 				</div>
 			  	<div class="row">
 			  		<div class="small-6 medium-3 column">
-						<img class="img-responsive" src="sponsors/deformatie.jpg" />
+			  			<a href="http://de-formatie.be/" target="_blank">
+							<img class="img-responsive" src="sponsors/deformatie.jpg" />
+						</a>
 					</div>
 					<div class="small-6 medium-3 column">
-						<img class="img-responsive" src="sponsors/crocodile.jpg" />
+						<a href="https://nl-nl.facebook.com/The-Crocodile-217830311574780/" target="_blank">
+							<img class="img-responsive" src="sponsors/crocodile.jpg" />
+						</a>
 					</div>
 					<div class="small-6 medium-3 column">
-						<img class="img-responsive" src="sponsors/tetard.jpg" />
+						<a href="http://www.tetard.be/" target="_blank">
+							<img class="img-responsive" src="sponsors/tetard.jpg" />
+						</a>
 					</div>
 					<div class="small-6 medium-3 column">
-						<img class="img-responsive" src="sponsors/alphamservice.jpg" />
+						<a href="http://www.alphamservice.be/" target="_blank">
+							<img class="img-responsive" src="sponsors/alphamservice.jpg" />
+						</a>
 					</div>
 			  	</div>
 			  	<div class="row">
 			  		<div class="small-6 medium-3 column">
-						<img class="img-responsive" src="sponsors/gulf.jpg" />
+				  		<a href="https://www.facebook.com/nonkelpetrol/" target="_blank">
+							<img class="img-responsive" src="sponsors/gulf.jpg" />
+						</a>
 					</div>
 			  		<div class="small-12 medium-3 column">
-						<img class="img-responsive" src="sponsors/vanhulle.jpg" />
+				  		<a href="http://www.traiteur-vanhulle.be/" target="_blank">
+							<img class="img-responsive" src="sponsors/vanhulle.jpg" />
+						</a>
 					</div>
 					<div class="small-12 medium-3 column">
-						<img class="img-responsive" src="sponsors/frietamientje.jpg" />
+						<a href="http://www.frietamientje.be/" target="_blank">
+							<img class="img-responsive" src="sponsors/frietamientje.jpg" />
+						</a>
 					</div>
 					<div class="small-6 medium-3 column">
 						<img class="img-responsive" src="sponsors/coucke.jpg" />
@@ -138,47 +151,67 @@ $this->layout = false;
 					<div class="small-6 medium-3 column">
 						<img class="img-responsive" src="sponsors/frituurgeert.jpg" />
 					</div>
-					<div class="small-6 medium-3 column">
-						<img class="img-responsive" src="sponsors/demess.jpg" />
+					<div class="small-6 medium-3 column">				
+						<a href="http://www.demess.be/" target="_blank">
+							<img class="img-responsive" src="sponsors/demess.jpg" />
+						</a>
+					</div>
+					<div class="small-6 medium-3 column">			
+						<a href="http://vloerenfranssens.be/" target="_blank">
+							<img class="img-responsive" src="sponsors/vloerenfranssens.jpg" />
+						</a>
 					</div>
 					<div class="small-6 medium-3 column">
-						<img class="img-responsive" src="sponsors/vloerenfranssens.jpg" />
-					</div>
-					<div class="small-6 medium-3 column">
-						<img class="img-responsive" src="sponsors/debokke.jpg" />
+						<a href="http://www.debokke.be/" target="_blank">
+							<img class="img-responsive" src="sponsors/debokke.jpg" />
+						</a>
 					</div>
 			  	</div>
 			  	<div class="row">
 			  		<div class="small-6 medium-3 column">
-						<img class="img-responsive" src="sponsors/rikbeuselinck.jpg" />
+				  		<a href="http://rikbeuselinck.be/" target="_blank">
+							<img class="img-responsive" src="sponsors/rikbeuselinck.jpg" />
+						</a>
 					</div>
-					<div class="small-6 medium-3 column">
-						<img class="img-responsive" src="sponsors/sanderbellen.jpg" />
+					<div class="small-6 medium-3 column">					
+						<a href="http://www.snoeienvellensander.be/" target="_blank">
+							<img class="img-responsive" src="sponsors/sanderbellen.jpg" />
+						</a>
 					</div>
-					<div class="small-6 medium-3 column">
-						<img class="img-responsive" src="sponsors/maxims.jpg" />
+					<div class="small-6 medium-3 column">				
+						<a href="http://www.maximsfashion.be/" target="_blank">
+							<img class="img-responsive" src="sponsors/maxims.jpg" />
+						</a>
 					</div>
 					<div class="small-6 medium-3 column">
 						<img class="img-responsive" src="sponsors/delanghe.jpg" />
 					</div>
 			  	</div>
 			  	<div class="row">
-			  		<div class="small-6 medium-3 column">
-						<img class="img-responsive" src="sponsors/debaene.jpg" />
+			  		<div class="small-6 medium-3 column">		  		
+				  		<a href="http://www.garagedebaene.be/" target="_blank">
+							<img class="img-responsive" src="sponsors/debaene.jpg" />
+						</a>
 					</div>
 					<div class="small-6 medium-3 column">
 						<img class="img-responsive" src="sponsors/jomar.jpg" />
 					</div>
 					<div class="small-6 medium-3 column">
-						<img class="img-responsive" src="sponsors/mitra.jpg" />
+						<a href="https://nl-nl.facebook.com/Caf%C3%A9-Mitra-341235192573657/" target="_blank">
+							<img class="img-responsive" src="sponsors/mitra.jpg" />
+						</a>
 					</div>
 					<div class="small-6 medium-3 column">
-						<img class="img-responsive" src="sponsors/patscoffee.jpg" />
+						<a href="http://www.baristas.be/" target="_blank">
+							<img class="img-responsive" src="sponsors/patscoffee.jpg" />
+						</a>
 					</div>
 			  	</div>
 			  	<div class="row">
 			  		<div class="small-6 medium-3 column">
-						<img class="img-responsive" src="sponsors/schepens_advocaten.jpg" />
+				  		<a href="http://www.schepens-partners.be/" target="_blank">
+							<img class="img-responsive" src="sponsors/schepens_advocaten.jpg" />
+						</a>
 					</div>
 					<div class="small-6 medium-3 column">
 						<img class="img-responsive" src="sponsors/mens.jpg" />
@@ -336,12 +369,13 @@ $this->layout = false;
 				  	</div>
 				  	<div class="small-12 medium-6 column">
 				  		<article class="uk-article">
-					    <h1 class="uk-article-title">Onze opzet</h1>
-					    <p class="uk-article-lead">VZW Feles zet in op een mix van sport en plezier.</p>
-					    <p>Omdat we graag wat leven in de brouwerij hebben, en omdat we toch niks anders te doen hadden, kwam het idee om
-					    een sportwedstrijd te organiseren. Eerst dachten we aan een rugbytornooi maar daar zijn ze in Beernem al aan bezig. 
-					    Ide&euml;en stelen doet VZW Feles niet. Na wat breinstormen kwam onze boekhouder met het voorstel om het idee van "Urban trail" te stelen
-					    en te implementeren in ons dorp. En zo geschiede. Onze loopwedstrijd werd gedoopt in de keuken van onze secretaris: Crossdorp Oelem.</p>
+						    <h1 class="uk-article-title">Onze opzet</h1>
+						    <p class="uk-article-lead">VZW Feles zet in op een mix van sport en plezier.</p>
+						    <p>Omdat we graag wat leven in de brouwerij hebben, en omdat we toch niks anders te doen hadden, kwam het idee om
+						    een sportwedstrijd te organiseren. Eerst dachten we aan een rugbytornooi maar daar zijn ze in Beernem al aan bezig. 
+						    Ide&euml;en stelen doet VZW Feles niet. Na wat breinstormen kwam onze boekhouder met het voorstel om het idee van "Urban trail" te stelen
+						    en te implementeren in ons dorp. En zo geschiede. Onze loopwedstrijd werd gedoopt in de keuken van onze secretaris: Crossdorp Oelem.</p>
+					    </article>
 				  	</div>
 				  </div>
 			  	<div class="divider"></div>
@@ -350,12 +384,13 @@ $this->layout = false;
 				  <div class="row">
 				  	<div class="small-12 medium-6 column">
 				  		<article class="uk-article">
-					    <h1 class="uk-article-title">Voor jong en oud</h1>
-					    <p class="uk-article-lead">Iedereen mag meedoen (of toch bijna iedereen)</p>
-					    <p>De wedstrijd bestaat uit twee waves: jeugd ("kids" vinden we te bekakt) en volwassenen. De jeugd legt een parcours van 2,5 km af, maar wel in duo.
-					    Dus iedereen die denkt dat hij ongeveer 1,5 km kan lopen mag meedoen. Voor ons stopt de jeugd op 13 jaar. Dus als je geboren bent in het jaar 2003 of later mag je nog als duo inschrijven.</p>
-					    <p>Vanaf 14 jaar hoor je bij de grote kindjes, in de volksmond "volwassenen" genoemd. De volwassenen leggen een parcours van 5 &agrave; 6 km af. Dus ben je sportief
-					    en heb je eens zin in een ander parcours, of zoek je een goed voornemen voor 2016 om wat meer te sporten, stip dan zaterdag 26 maart 2016 met rood in je agenda aan.</p>
+						    <h1 class="uk-article-title">Voor jong en oud</h1>
+						    <p class="uk-article-lead">Iedereen mag meedoen (of toch bijna iedereen)</p>
+						    <p>De wedstrijd bestaat uit twee waves: jeugd ("kids" vinden we te bekakt) en volwassenen. De jeugd legt een parcours van 2,5 km af, maar wel in duo.
+						    Dus iedereen die denkt dat hij ongeveer 1,5 km kan lopen mag meedoen. Voor ons stopt de jeugd op 13 jaar. Dus als je geboren bent in het jaar 2003 of later mag je nog als duo inschrijven.</p>
+						    <p>Vanaf 14 jaar hoor je bij de grote kindjes, in de volksmond "volwassenen" genoemd. De volwassenen leggen een parcours van 5 &agrave; 6 km af. Dus ben je sportief
+						    en heb je eens zin in een ander parcours, of zoek je een goed voornemen voor 2016 om wat meer te sporten, stip dan zaterdag 26 maart 2016 met rood in je agenda aan.</p>
+					    </article>
 				  	</div>
 				  	<div class="small-12 medium-6 column">
 				  		<img src="img/old-athletes.jpg" class="img-responsive">
@@ -370,13 +405,12 @@ $this->layout = false;
 				  	</div>
 				  	<div class="small-12 medium-6 column">
 				  		<article class="uk-article">
-					    <h1 class="uk-article-title">Ik loop mee</h1>
-					    <p class="uk-article-lead">Een moedige beslissing, waarmee je je omgeving kan aansporen ook de asics aan te binden.</p>
-					    <p>Heb je na een aantal slapeloze nachten toch beslist deel te nemen, dan zullen we je binnenkort vragen vooraf in te schrijven.
-					    De inschrijving kost u 6 euro (ook voor duo's) in voorverkoop. Zijn er nog wat plaatsen over dan kunt u zich ter plaatse inschrijven voor 8 euro.
-						Een eerste stap richting een succesvolle inschrijving is klikken op onderstaande blauwe knop: 
-					    Ga met uw muisaanwijzer op de knop staan en druk de linkertoets van uw muis korstondig in.</p>
-<!-- 					    <a href="#pnlSubscribe" class="button large" role="button" data-uk-smooth-scroll>Eerste stap naar een succesvolle inschrijving...</a> -->
+						    <h1 class="uk-article-title">Ik loop mee</h1>
+						    <p class="uk-article-lead">Een moedige beslissing, waarmee je je omgeving kan aansporen ook de asics aan te binden.</p>
+						    <p>Heb je na een aantal slapeloze nachten toch beslist deel te nemen, dan zullen we je binnenkort vragen vooraf in te schrijven.
+						    De inschrijving kost u 6 euro (ook voor duo's) in voorverkoop. Zijn er nog wat plaatsen over dan kunt u zich ter plaatse inschrijven voor 8 euro.</p>
+	<!-- 					    <a href="#pnlSubscribe" class="button large" role="button" data-uk-smooth-scroll>Eerste stap naar een succesvolle inschrijving...</a> -->
+					    </article>
 				  	</div>
 				  </div>
 				  <div class="divider"></div>
@@ -385,15 +419,16 @@ $this->layout = false;
 				  <div class="row">
 				  	<div class="small-12 medium-6 column">
 				  		<article class="uk-article">
-					    <h1 class="uk-article-title">De supportersbus</h1>
-					    <p class="uk-article-lead">De minder sportieve mens doet ook mee</p>
-					    <p>Is het lichaam na een lange sportcarri&egrave;re wat uitgeblust? Geen nood, van ons mag je ook meekomen. Vrienden en familie 
-					    rekenen op je om hen vooruit te schreeuwen.</p>
-					    <p>
-					    Her en der op het parcours
-					    zorgen we ook voor wat randanimatie. Meer nog, iedereen die iets wil doen om centrum Oelem eens goed op stelten te zetten (binnen 
-					    het wettelijke kader), nodigen we uit. Speel je blokfluit, spuw je vuur of verkleed je je stiekem graag als middeleeuwse jonkvrouw, laat je maar gaan.</p>
-					    <p style="font-size: 8px; font-style: italic;">Mogelijks wordt er hier en daar ook wel eens een biertje geproefd.</p>				    
+						    <h1 class="uk-article-title">De supportersbus</h1>
+						    <p class="uk-article-lead">De minder sportieve mens doet ook mee</p>
+						    <p>Is het lichaam na een lange sportcarri&egrave;re wat uitgeblust? Geen nood, van ons mag je ook meekomen. Vrienden en familie 
+						    rekenen op je om hen vooruit te schreeuwen.</p>
+						    <p>
+						    Her en der op het parcours
+						    zorgen we ook voor wat randanimatie. Meer nog, iedereen die iets wil doen om centrum Oelem eens goed op stelten te zetten (binnen 
+						    het wettelijke kader), nodigen we uit. Speel je blokfluit, spuw je vuur of verkleed je je stiekem graag als middeleeuwse jonkvrouw, laat je maar gaan.</p>
+						    <p style="font-size: 8px; font-style: italic;">Mogelijks wordt er hier en daar ook wel eens een biertje geproefd.</p>
+					    </article>				    
 				  	</div>
 				  	<div class="small-12 medium-6 column">
 				  		<img src="img/supporters.jpeg" class="img-responsive">
@@ -407,14 +442,13 @@ $this->layout = false;
 	<?= $this->element('footer'); ?>
 
 	<script src="js/jquery/jquery-2.1.4.min.js"></script>
+	<script src="js/jquery/jquery-ui.min.js"></script>
 	<script src="js/angularjs/angular.min.js"></script>
+	<script src="js/angularjs/mask.min.js"></script>
 	<script src="js/uikit/uikit.min.js"></script>
 	<script src="js/foundation/foundation.min.js"></script>
 	<script src="js/bootstrap/bootstrap.min.js"></script>
 	<script src="js/app.js"></script>
-	<script src="js/cdo-interest.js"></script>
+	<script src="js/cdo-menu-bar.js"></script>
 </body>
-
-
-
 </html>

@@ -1,7 +1,7 @@
 <div class="row">
 	<h1>Inschrijvingen</h1>
 </div>
-<div ng-app="subscriptionApp" ng-controller="subscriptionCtrl">
+<div ng-controller="subscriptionCtrl">
 	<div class="row">
 		<div class="alert alert-danger" ng-show="errorMessage">{{errorMessage}}</div>
 		<div class="large-6 column">

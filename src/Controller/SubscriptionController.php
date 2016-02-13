@@ -51,7 +51,7 @@ class SubscriptionController extends AppController
     	if (is_null($id)) {
     		$view = 'new';
     	} else {
-    		$subscription = $this->getSubscriptionByCode($id, true);
+    		$subscription = $this->getSubscriptionByCode($id, false);
     		
     		$this->set('subscription', $subscription);
         	$this->set('_serialize', ['subscription']);

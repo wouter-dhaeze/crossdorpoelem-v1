@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <meta name="description" content="crossdorp oelem"/>
 
-<title>Crossdorp Oelem - Inschrijving</title>
+<title>Crossdorp Oelem - <?= h($this->fetch('title')) ?></title>
 
 <link href="../css/bootstrap.min.css" rel="stylesheet" />
 <link href="../css/uikit.min.css" rel="stylesheet" />
@@ -24,26 +24,37 @@
 	    <![endif]-->
 
 </head>
-<body>
+<body ng-app="cdo.app">
+	<?= $this->element('menu_bar'); ?>
+	<div id="header-detail">
+		<div class="row">
+			<!-- <img src="../img/crossdorp_logo_02_med.png"></img>-->
+			<img src="../img/crossdorp_logo-02_low.png"></img>
+		</div>
+		<div class="row">
+			<div class="small-10 small-offset-1 medium-8 medium-offset-2 large-6 large-offset-3 column title"><?= h($this->fetch('title')) ?></div>
+		</div>
+	</div>
+	
 	<div class="pageWrapper">
 		<div class="row">
-			<div class="large-9 columns"><?= $this->fetch('content') ?></div>
-			<div class="large-3 columns">sponsors</div>
+			<div class="small-11 medium-9 column"><?= $this->fetch('content') ?></div>
+			<div class="small-1 medium-3 column"><?= $this->element('sponsors'); ?></div>
 		</div>
 	</div>
 	
 	
 	<?= $this->element('footer', ["class" => "fixed"]); ?>
 	
-	<script src="../js/jquery/jquery-2.1.4.min.js"></script>
-	<script src="../js/jquery/jquery-ui.min.js"></script>
-<!-- 	<script src="../js/jquery/jquery.maskedinput.js" type="text/javascript"></script> -->
-	<script src="../js/angularjs/angular.min.js"></script>
-	<script src="../js/angularjs/mask.min.js"></script>
-	<script src="../js/uikit/uikit.min.js"></script>
-	<script src="../js/foundation/foundation.min.js"></script>
-	<script src="../js/app.js"></script>
-	<script src="../js/cdo-subscription.js"></script>
+	<script src="/js/jquery/jquery-2.1.4.min.js"></script>
+	<script src="/js/jquery/jquery-ui.min.js"></script>
+	<script src="/js/angularjs/angular.min.js"></script>
+	<script src="/js/angularjs/mask.min.js"></script>
+	<script src="/js/uikit/uikit.min.js"></script>
+	<script src="/js/foundation/foundation.min.js"></script>
+	<script src="/js/app.js"></script>
+	<script src="/js/cdo-menu-bar.js"></script>
+	<script src="/js/cdo-subscription.js"></script>
 </body>
 
 </html>

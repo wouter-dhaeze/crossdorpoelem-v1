@@ -1,4 +1,4 @@
-(function() {
+/*(function() {
 	var cdoApp = angular.module('cdoApp', []);
 
 	cdoApp.controller('InterestCtrl', function($scope, $log, $http) {
@@ -19,17 +19,12 @@
 			
 			var res = $http.post('/api/interest.json', angular.toJson(i));
 			res.success(function(data, status, headers, config) {
-				//alert("save success: " + data);
-				//$scope.subscription = data;
-				//$scope.debugHelp = data;
 				$scope.showError = false;
 				$scope.showSuccess = true;
 				$scope.showInProgress = false;
 				modal.hide();
 			});
 			res.error(function(data, status, headers, config) {
-				//alert("failure message: " + status);
-				//alert( "failure message: " + JSON.stringify({data: data}));
 				$log.debug(data);
 				$scope.showError = true;
 				$scope.showSuccess = false;
@@ -44,4 +39,4 @@
 		
 	});
 	
-})();
+})();*/

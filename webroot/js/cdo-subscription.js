@@ -1,7 +1,7 @@
 (function() {
-	var subscriptionApp = angular.module('subscriptionApp', ['ui.mask']);
-
-	subscriptionApp.controller('subscriptionCtrl', function($scope, $log, $http) {
+	var modSubscription = angular.module('cdo.subscription', ['ui.mask']);
+	
+	modSubscription.controller('subscriptionCtrl', function($scope, $log, $http) {
 		$scope.debugHelp = "test";
 		$scope.showInfo = true;
 		$scope.lookupcode = '';
@@ -186,7 +186,7 @@
 		
 	});
 	
-	subscriptionApp.directive('dob', function() {
+	modSubscription.directive('dob', function() {
 		  return {
 		    require: 'ngModel',
 		    link: function(scope, elm, attrs, ctrl) {

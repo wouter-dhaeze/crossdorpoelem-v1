@@ -1,0 +1,8 @@
+#pnlInfo .info-container {
+  padding: 5px; }
+
+#pnlInfo .info-thumb {
+  float: left; }
+
+#pnlInfo .info-content {
+  margin-left: 100px; }

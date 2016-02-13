@@ -1,7 +1,11 @@
-<div class="row">
-<h1>Inschrijvingen</h1>
-</div>
-<div ng-app="subscriptionApp" ng-controller="subscriptionCtrl">
+<?php 
+
+$this->layout = 'cdo-detail';
+$this->assign('title', 'Inschrijving');
+
+?>
+
+<div ng-controller="subscriptionCtrl">
 	<div id="pnlInfo" class="row animate-show" ng-show="showInfo">
 		<h2>Instructies</h2>
 		<p class="lead">Om in te schrijven voor Crossdorp Oelem volgt u onderstaande instructies.</p>

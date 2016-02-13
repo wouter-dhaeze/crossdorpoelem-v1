@@ -1,6 +1,8 @@
 <?php
 use Cake\Core\Configure;
 
+$this->layout = 'cdo-detail';
+
 if (Configure::read('debug')):
     $this->layout = 'dev_error';
 

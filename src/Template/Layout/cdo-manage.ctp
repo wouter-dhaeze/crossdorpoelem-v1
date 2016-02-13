@@ -24,7 +24,7 @@
 	    <![endif]-->
 
 </head>
-<body>
+<body ng-app="cdo.app">
 	<?= $this->fetch('content') ?></div>
 
 	
