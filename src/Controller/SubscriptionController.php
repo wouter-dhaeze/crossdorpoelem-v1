@@ -268,6 +268,9 @@ class SubscriptionController extends AppController
 	    		}
 	    		
 	    		$subscription->payed = true;
+	    		
+	    		$this->validateSubscription($subscription, $participant1, $participant2);
+	    		
 	    		$subscription = $this->updateSubscription($subscription, $participant1, $participant2);
 	    		if (!$subscription == false) {
 	    			$subscription = $this->Subscription->get($subscription->id, [
@@ -416,6 +419,15 @@ class SubscriptionController extends AppController
     	if (empty($participant->dob)) {
     		Log::warning('DOB is empty' , 'warn');
     		throw new InternalErrorException("Het geboortedatum-veld is leeg.");
+    	}
+    	
+    	//chest number unique for each participant
+    	if (!empty($participant->number)) {
+    		$participantq = $this->Participant->findByNumber($participant->number);
+    		if ($participantq->count() > 0) {
+    			Log::warning('Number already exists: ' . $participant->number, 'warn');
+    			throw new InternalErrorException("Er bestaat al een inschrijving met dit borstnummer.");
+    		}
     	}
     }
     

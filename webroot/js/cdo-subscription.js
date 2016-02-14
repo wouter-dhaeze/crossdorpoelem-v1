@@ -23,6 +23,7 @@
 		//$scope.subscription = dummySubscription;
 		
 		$scope.errorMessage = null;
+		$scope.saveErrorMessage = null;
 		
 		$scope.subscriptionSuccess = false;
 		
@@ -83,16 +84,22 @@
 		};
  		
 		$scope.lookup = function(lookupcode) {
+			$('#modalError').foundation('close');
+			$('#modalSearching').foundation('open');
+			
 			$scope.errorMessage = null;
+			$scope.saveErrorMessage = null;
 			
 			var res = $http.get('../api/subscription.json?code=' + lookupcode);
 			res.success(function(data, status, headers, config) {
+				$('#modalSearching').foundation('close');
 				$log.debug(data);
 				
 				//alert(angular.toJson(data));
 				populateSubscription(data)
 			});
 			res.error(function(data, status, headers, config) {
+				$('#modalSearching').foundation('close');
 				$scope.errorMessage = data.message;
 				
 				$log.debug(data);
@@ -126,16 +133,21 @@
 				res.error(function(data, status, headers, config) {
 					$scope.new_number1 = null;
 					$scope.new_number2 = null;
-					$scope.subscription.payed = false;
+					//$scope.subscription.payed = false;
 					
 					//alert("failure message: " + status);
 					//alert( "failure message: " + JSON.stringify({data: data}));
-					$scope.errorMessage = data.message;
+					//$scope.errorMessage = data.message;
 					$scope.subscriptionSuccess = false;
 					
 					$('#modalSaving').foundation('close');
 					//$('#modalSaveFail').foundation('open');
 					$log.debug(data);
+					
+					$scope.saveErrorMessage = data.message;
+					$('#modalError').foundation('open');
+					
+					//$scope.lookup($scope.subscription.code);
 				});	
 				
 				$scope.search();
