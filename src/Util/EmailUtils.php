@@ -23,6 +23,21 @@ class EmailUtils
     	EmailUtils::sendMail('subscription_number', 'Crossdorp Oelem - Inschrijving voltooid', $subscription);
     }
     
+    public static function sendSponsorInvite($sponsor) {
+    	$wwwRoot = Configure::read('App.fullBaseUrl');
+    	
+    	$viewVars = ['sponsor' => $sponsor,
+    	'baseUrl' => $wwwRoot];
+    	 
+    	$email = new Email('default');
+    	$email->template('sponsor_invite', 'cdo')
+		    	->emailFormat('html')
+		    	->to($sponsor->email)
+		    	->subject('Crossdorp Oelem - Inschrijvingscodes')
+		    	->viewVars($viewVars);
+    	$email->send();
+    }
+    
     private static function sendMail($template, $subject, $subscription) {
     	$wwwRoot = Configure::read('App.fullBaseUrl');
     	

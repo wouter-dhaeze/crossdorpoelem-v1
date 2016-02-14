@@ -51,6 +51,7 @@
 	<br/>
 	Tot gauw
 	<br/>
-	VZW Feles
+	VZW Feles<br/>
+	<a href="https://www.crossdorpoelem.be">https://www.crossdorpoelem.be</a>
 </div>
 

@@ -118,7 +118,7 @@ $this->assign('title', 'Inschrijving');
 			<p><b><i>Hoera! We hebben uw inschrijvingsgegevens goed ontvangen!</i></b></p>
 			<img src="../img/haas-blij.png"></img>
 			<p class="lead">Binnen enkele ogenblikken ontvangt u een e-mail op het adres <a href="mailto:{{subscription.participant1.email}}">{{subscription.participant1.email}}</a>. Gelieve de instructies in deze e-mail goed op te volgen. Nog drie stappen en u bent ingeschreven!</p>
-			<p style="text-align: left;">Mocht u de e-mail na enkele uren niet ontvangen hebben, gelieve dan opnieuw te proberen met een ander e-mail adres. Mocht dit niet lukken, kunt u een e-mail sturen naar <a href="mailto:inschrijving@crossdorpoelem.be">inschrijving@crossdorpoelem.be</a>. We proberen die zo snel mogelijk te beantwoorden.</p>
+			<p style="text-align: left;">Mocht u de e-mail na enkele uren niet ontvangen hebben, gelieve dan eerst even uw spam-box te bekijken en daarna eventueel opnieuw te proberen met een ander e-mail adres. Mocht dit niet lukken, kunt u een e-mail sturen naar <a href="mailto:inschrijving@crossdorpoelem.be">inschrijving@crossdorpoelem.be</a>. We proberen die zo snel mogelijk te beantwoorden.</p>
 		</div>
 		<div id="modalSaving" class="reveal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
   			<h2 id="modalTitle">Inschrijving opslaan</h2>
