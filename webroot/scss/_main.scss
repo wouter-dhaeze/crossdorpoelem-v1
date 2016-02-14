@@ -8,13 +8,13 @@ html {
   height: 100%;*/
 }
 
-.pageWrapper {
+.page-wrapper {
 	min-height: 100%;
   	/* equal to footer height */
   	margin-bottom: -100px; 
 }
 
-.pageWrapper:after {
+.page-wrapper:after {
  	content: "";
  	display: block;
  	height: 100px;

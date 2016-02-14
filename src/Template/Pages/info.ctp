@@ -10,6 +10,6 @@ $this->assign('title', 'Praktische info');
 
 <div>
 	<div class="row">
-		<p class="lead">Hier vindt u later alle practische info voor deelnemers terug.</p>
+		<p class="lead">Hier vindt u later alle praktische info voor deelnemers terug.</p>
 	</div>
 </div>

@@ -1,5 +1,5 @@
 <div id="sponsors" class="column">
-	<div class="row">
+	<!-- <div class="row">
   		<div class="small-12 medium-6 column">
   			<a href="http://de-formatie.be/" target="_blank">
 				<img class="img-responsive" src="/sponsors/deformatie.jpg" />
@@ -66,7 +66,7 @@
 				<img class="img-responsive" src="/sponsors/debokke.jpg" />
 			</a>
 		</div>
-  	</div>
+  	</div>-->
   	<div class="row">
   		<div class="small-12 medium-6 column">
 	  		<a href="http://rikbeuselinck.be/" target="_blank">

@@ -36,10 +36,11 @@
 		</div>
 	</div>
 	
-	<div class="pageWrapper">
-		<div class="row">
-			<div class="small-11 medium-9 column"><?= $this->fetch('content') ?></div>
-			<div class="small-1 medium-3 column"><?= $this->element('sponsors'); ?></div>
+	<div class="page-wrapper">
+		<div class="expanded row">
+			<div class="small-1 medium-2 large-3 column"><?= $this->element('sponsors-left'); ?></div>
+			<div class="small-10 medium-8 large-6 column"><?= $this->fetch('content') ?></div>
+			<div class="small-1 medium-2 large-3 column"><?= $this->element('sponsors-right'); ?></div>
 		</div>
 	</div>
 	
