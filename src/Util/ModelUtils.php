@@ -46,8 +46,16 @@ class ModelUtils
     }
     
     public static function getYear($date, $format) {
-    	$formatted = Time::createFromFormat($format, $date);
-    	return $formatted->year;
+    	$year = null;
+    	
+    	if ($date instanceof Time) {
+    		$year = $date->year;
+    	} else {
+	    	$formatted = Time::createFromFormat($format, $date);
+	    	$year = $formatted->year;
+    	}
+    	
+    	return $year;
     }
 
 }

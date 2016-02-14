@@ -51,7 +51,7 @@ $this->layout = false;
 				</div>
 				<article class="uk-article">
 				    <p class="uk-article-lead">Een loopwedstrijd door gebouwen</p>
-				    <p>Het "Urban Trail" concept wint de laatste jaren aan populariteit. Het decor van deze wedstrijden is een stads- of in ons geval 
+				    <p>Het "Urban Trail" concept wint de laatste jaren aan populariteit. Het decor van deze wedstrijden is een stads- of, in ons geval, 
 				    onze Oedelemse dorpskern. Ons parcours baant zich een weg door de welgekende Oedelemse gebouwen, maar je zal ook op plaatsen komen 
 				    waar je hoogst waarschijnlijk nog nooit bent binnen geweest. Beloofd!</p>
 				</article>
@@ -83,7 +83,7 @@ $this->layout = false;
 				</div>
 				<div class="info-container">
 					<div class="info-thumb"><img src="../img/money390.png"></div>
-					<div class="info-content"><p class="lead">Voorafschrijven kost u <b>6 euro</b>, aan de deur betaalt u <b>8 euro</b> (enkel indien er nog plaats is).</p></div>
+					<div class="info-content"><p class="lead">Vooraf inschrijven kost u <b>6 euro</b>, aan de deur betaalt u <b>8 euro</b> (enkel indien er nog plaats is).</p></div>
 					<div style="clear: both;"></div>
 				</div>
 				<div class="info-container">

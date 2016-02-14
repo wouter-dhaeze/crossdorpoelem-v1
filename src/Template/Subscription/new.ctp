@@ -107,7 +107,7 @@ $this->assign('title', 'Inschrijving');
 						<div>Heeft u een code, gelieve dan de code hieronder in te
 							vullen. Let wel, een code kan slechts &eacute;&eacute;nmaal
 							gebruikt worden.</div>
-						<input type="text" placeholder="Code" 
+						<input type="text" placeholder="Code" style="text-transform: uppercase" maxlength="6"
 							ng-model="subscription.code"/>
 					</div>
 					<button class="button large" role="button" ng-disabled="aSubscriptionForm.$invalid || (subscription.wave == 'YOUTH' && ySubscriptionForm.$invalid) || !subscription.consent">Inschrijven</button>
@@ -117,7 +117,7 @@ $this->assign('title', 'Inschrijving');
 		<div id="pnlSubscriptionSuccess" class="row" style="text-align: center;" ng-show="subscriptionSuccess">
 			<p><b><i>Hoera! We hebben uw inschrijvingsgegevens goed ontvangen!</i></b></p>
 			<img src="../img/haas-blij.png"></img>
-			<p class="lead">Binnen enkele ogenblikken ontvangt u een e-mail op het adres <a href="mailto:{{subscription.participant1.email}}">{{subscription.participant1.email}}</a>. Gelieve de instructies in deze mail goed op te volgen. Nog drie stappen en u bent ingeschreven!</p>
+			<p class="lead">Binnen enkele ogenblikken ontvangt u een e-mail op het adres <a href="mailto:{{subscription.participant1.email}}">{{subscription.participant1.email}}</a>. Gelieve de instructies in deze e-mail goed op te volgen. Nog drie stappen en u bent ingeschreven!</p>
 			<p style="text-align: left;">Mocht u de e-mail na enkele uren niet ontvangen hebben, gelieve dan opnieuw te proberen met een ander e-mail adres. Mocht dit niet lukken, kunt u een e-mail sturen naar <a href="mailto:inschrijving@crossdorpoelem.be">inschrijving@crossdorpoelem.be</a>. We proberen die zo snel mogelijk te beantwoorden.</p>
 		</div>
 		<div id="modalSaving" class="reveal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">

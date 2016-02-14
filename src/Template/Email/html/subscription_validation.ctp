@@ -14,13 +14,13 @@
 	<p>Stap 1 is met succes voltooid! Hoogtijd om uw inschrijving te valideren.</p>
 	<p>Hieronder vindt u uw inschrijvingscode terug:</p>
 	<h1><?= $subscription->code ?></h1>
-	<p>Deze code is belangrijk omdat u die zal moeten meegeven in uw overschrijving. Ook kunt u later deze code gebruiken om de status van uw inschrijving te bekijken.
+	<p>Deze code is belangrijk omdat u die zal moeten meegeven in uw overschrijving (niet voor sponsors). Ook kunt u later deze code gebruiken om de status van uw inschrijving te bekijken.
 	</p>
 </div>
 <br/>
 <div>
 	<h2>Op naar stap 2!</h2>
-	<p>Voor u de betaalgegevens ontvangt, vragen wij u uw inschrijving te valideren. Dit doet u door op onderstaande link te klikken. U ontvangt spoedig een tweede mail met de betaalgegevens.</p>
+	<p>Voor u de betaalgegevens ontvangt, vragen wij u uw inschrijving te valideren. Dit doet u door op onderstaande link te klikken. U ontvangt spoedig een tweede e-mail met de betaalgegevens.</p>
 	<h3><a href="<?= $validationUrl?>">Valideer mijn inschrijving</a></h3>
 	<br/>
 	<p>Mocht deze link niet werken, kopieer dan <?= $validationUrl?> naar de adresbalk van uw browser.</p>

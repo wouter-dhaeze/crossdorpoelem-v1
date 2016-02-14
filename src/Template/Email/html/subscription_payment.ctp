@@ -13,12 +13,12 @@
 <br/>
 <div>
 	<h2>Stap 2 is voltooid!</h2>
-	<p>Uw inschrijving is gevalideerd. Er rest u nog een laatste stap naar de eeuwige roem: betalen.</p>
+	<p>Uw inschrijving is gevalideerd.</p>
 </div>
 <br/>
 <div>
 	<h2>Op naar stap 3!</h2>
-	<p>Mogen wij u vragen het bedrag van <b><?= Configure::read('CDO.cost')?> euro</b> te storten. (Duo's hoeven slechts eenmalig te betalen.)</p>
+	<p>Mogen wij u vragen het bedrag van <b><?= Configure::read('CDO.cost')?> euro</b> te storten. (Duo's hoeven slechts eenmaal te betalen.)</p>
 	<h3>LET OP! Vergeet uw inschrijvingscode niet in de vrije mededeling te zetten. Zo kunnen we uw inschrijving aan uw storting koppelen.</h3>
 	<h4>Bedrag: <?= Configure::read('CDO.cost')?> euro<br/>
 	Rekening: <?= Configure::read('CDO.bank_account')?><br/>

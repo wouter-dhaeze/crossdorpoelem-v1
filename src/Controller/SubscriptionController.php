@@ -329,9 +329,8 @@ class SubscriptionController extends AppController
     		throw new InternalErrorException("U dient akkoord te gaan met de gezondheidsvoorwaarde.");
     	}
     	
+    	$this->validateParticipant($participant1);
     	if ($subscription->wave == 'ADULT') {
-    		$this->validateParticipant($participant1);
-    		
     		$year = ModelUtils::getYear($participant1->dob, 'Y-m-d');
     		
     		$age1 = 2016 - $year;
@@ -340,7 +339,6 @@ class SubscriptionController extends AppController
     			throw new InternalErrorException("Om deel te nemen aan de 'Big run' moet u geboren zijn in 2002 of vroeger.");
     		}
     	} else if ($subscription->wave == 'YOUTH') {
-    		$this->validateParticipant($participant1);
     		$this->validateParticipant($participant2);
     		
     		$year1 = ModelUtils::getYear($participant1->dob, 'Y-m-d');
@@ -361,14 +359,14 @@ class SubscriptionController extends AppController
     	$code = $subscription->code;
     	if (!empty($code)) {
     		//3. Validate Sponsor code exists
-    		if (!ModelUtils::isSponsorCode($code)) {
+    		if (empty($subscription->id) && !ModelUtils::isSponsorCode($code)) {
 				Log::warning('SponsorCode ' . $code . ' does not exist' , 'warn');
 				throw new InternalErrorException("De gebruikte sponsorcode '" . $code . "' is niet gekend. Weet u zeker dat die correct is?");
 			}
 			
 			//4. Validate Sponsor code not used
 			$subscriptionq = $this->Subscription->findByCode($code);
-			if ($subscriptionq->count() > 0) {
+			if (empty($subscription->id) && $subscriptionq->count() > 0) {
 				Log::warning('SponsorCode ' . $code . ' already in use' , 'warn');
 				throw new InternalErrorException("De sponsorcode '" . $code . "' wordt al gebruikt. Gelieve uw andere code te gebruiken.");
 			}
@@ -422,7 +420,7 @@ class SubscriptionController extends AppController
     	}
     	
     	//chest number unique for each participant
-    	if (!empty($participant->number)) {
+    	if (!empty($participant->number) && $participant->number != 'N/A') {
     		$participantq = $this->Participant->findByNumber($participant->number);
     		if ($participantq->count() > 0) {
     			Log::warning('Number already exists: ' . $participant->number, 'warn');

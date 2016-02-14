@@ -26,6 +26,8 @@
 </div>
 <br/>
 <div>
+	<h2>Stap 4 afgerond!</h2>
+	<p>De vierde een laatste stap, namelijk het toekennen van uw borstnummer, is ook afgerond.</p>
 	<h2>Uw borstnummer: </h2>
 	<h1><?= $numberText ?></h1>
 	<p>Gelieve uw borstnummer te onthouden. De dag van het spektakel dient u zich met dit borstnummer aan te aanmelden.</p>
