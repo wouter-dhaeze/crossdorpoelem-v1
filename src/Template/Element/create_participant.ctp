@@ -32,13 +32,13 @@
 </div>
 <div class="row">
 	<div class="large-2 columns">
-		<label for="<?= $idPrefix?>email" class="right inline">Email</label>
+		<label for="<?= $idPrefix?>email" class="right inline">E-mail</label>
 	</div>
 	<div class="large-10 columns">
-		<input type="email" id="<?= $idPrefix?>email" name="<?= $idPrefix?>email" placeholder="Email" type="email"
+		<input type="email" id="<?= $idPrefix?>email" name="<?= $idPrefix?>email" placeholder="E-mail" type="email"
 			ng-model="<?= $ngmodelEmail ?>" required></input>
-		<div class="alert alert-warning" role="alert" ng-show="<?= $formName?>.<?= $idPrefix?>email.$error.email">Ongeldig emailadres</div>
-		<div class="alert alert-danger" role="alert" ng-show="<?= $formName?>.<?= $idPrefix?>email.$dirty && <?= $formName?>.<?= $idPrefix?>email.$error.required">Emailadres verplicht</div>
+		<div class="alert alert-warning" role="alert" ng-show="<?= $formName?>.<?= $idPrefix?>email.$error.email">Ongeldig e-mailadres</div>
+		<div class="alert alert-danger" role="alert" ng-show="<?= $formName?>.<?= $idPrefix?>email.$dirty && <?= $formName?>.<?= $idPrefix?>email.$error.required">E-mailadres verplicht</div>
 	</div>
 </div>
 <div class="row">

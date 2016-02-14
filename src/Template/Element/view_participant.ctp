@@ -9,7 +9,7 @@
 </div>
 <div class="row">
 	<div class="large-2 columns">
-		<label class="right inline">Email</label>
+		<label class="right inline">E-mail</label>
 	</div>
 	<div class="large-10 columns">
 		<span><?= $participant->email ?></span>

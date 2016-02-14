@@ -12,9 +12,9 @@ $this->assign('title', 'Inschrijving');
 		<p>Gelieve deze aandachtig te lezen. De inschrijving gebeurt in 4 stappen:</p>
 		<ol>
 			<li><b><i>Vul uw gegevens in</i></b><br/>Vul het inschrijvingsformulier in. (Het komt tevoorschijn wanneer u op onderstaande knop klikt.)</li>
-			<li><b><i>Valideer uw inschrijving</i></b><br/>Wanneer we uw gegevens uit stap 1 ontvangen hebben, zal u een eerste email ontvangen. Volg de  instructies in de email om uw inschrijving te valideren. Het is dus van uiterst belang dat u een emailadres waar u toegang toe heeft, gebruikt.</li>
-			<li><b><i>Uw inschrijving betalen</i></b><br/>Wanneer uw inschrijving correct gevalideerd werd, zal u een tweede email ontvangen met daarin de betaalgegevens. Volg opnieuw de instructies in de email. (Sponsors krijgen ook deze mail maar hoeven niet te betalen.)</li>
-			<li><b><i>Uw inschrijving is voltooid</i></b><br/>Wanneer we uw betaling ontvangen hebben sturen we u een derde mail. Daarin vindt u de bevestiging van uw betaling en uw borstnummer.</li>
+			<li><b><i>Valideer uw inschrijving</i></b><br/>Wanneer we uw gegevens uit stap 1 ontvangen hebben, zal u een eerste e-mail ontvangen. Volg de  instructies in de e-mail om uw inschrijving te valideren. Het is dus van uiterst belang dat u een e-mailadres waar u toegang toe heeft, gebruikt.</li>
+			<li><b><i>Uw inschrijving betalen</i></b><br/>Wanneer uw inschrijving correct gevalideerd werd, zal u een tweede e-mail ontvangen met daarin de betaalgegevens. Volg opnieuw de instructies in de e-mail. (Sponsors krijgen ook deze mail maar hoeven niet te betalen.)</li>
+			<li><b><i>Uw inschrijving is voltooid</i></b><br/>Wanneer we uw betaling ontvangen hebben sturen we u een derde e-mail (dit kan evenwel enkele dagen duren). Daarin vindt u de bevestiging van uw betaling en uw borstnummer.</li>
 		</ol>
 		<p><b><i>Let op: U bent pas officieel ingeschreven nadat we uw betaling per storting ontvangen hebben! Wanneer u wacht om te betalen tot de dag zelf bestaat de kans dat de wedstrijd reeds volzet is.</i></b></p>
 		<button class="button" role="button" ng-click="showInfo = false">Ik begrijp de instructies en wens me in te schrijven.</button>
@@ -117,8 +117,8 @@ $this->assign('title', 'Inschrijving');
 		<div id="pnlSubscriptionSuccess" class="row" style="text-align: center;" ng-show="subscriptionSuccess">
 			<p><b><i>Hoera! We hebben uw inschrijvingsgegevens goed ontvangen!</i></b></p>
 			<img src="../img/haas-blij.png"></img>
-			<p class="lead">Binnen enkele ogenblikken ontvangt u een email op het adres <a href="mailto:{{subscription.participant1.email}}">{{subscription.participant1.email}}</a>. Gelieve de instructies in deze mail goed op te volgen. Nog drie stappen en u bent ingeschreven!</p>
-			<p style="text-align: left;">Mocht u de email na enkele uren niet ontvangen hebben, gelieve dan opnieuw te proberen met een ander email adres. Mocht dit niet lukken kunt u een mail sturen naar <a href="mailto:inschrijving@crossdorpoelem.be">inschrijving@crossdorpoelem.be</a>. We proberen die zo snel mogelijk te beantwoorden.</p>
+			<p class="lead">Binnen enkele ogenblikken ontvangt u een e-mail op het adres <a href="mailto:{{subscription.participant1.email}}">{{subscription.participant1.email}}</a>. Gelieve de instructies in deze mail goed op te volgen. Nog drie stappen en u bent ingeschreven!</p>
+			<p style="text-align: left;">Mocht u de e-mail na enkele uren niet ontvangen hebben, gelieve dan opnieuw te proberen met een ander e-mail adres. Mocht dit niet lukken, kunt u een e-mail sturen naar <a href="mailto:inschrijving@crossdorpoelem.be">inschrijving@crossdorpoelem.be</a>. We proberen die zo snel mogelijk te beantwoorden.</p>
 		</div>
 		<div id="modalSaving" class="reveal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
   			<h2 id="modalTitle">Inschrijving opslaan</h2>

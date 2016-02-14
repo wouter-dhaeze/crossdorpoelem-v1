@@ -1,7 +1,7 @@
 <footer class="<?= $class ?>">
 	<div class="container">
 		<div class="row clearfix">
-			<div class="pull-left">Email: <a href="mailto:vzwfeles@gmail.com">vzwfeles@gmail.com</a></div>
+			<div class="pull-left">E-mail: <a href="mailto:vzwfeles@gmail.com">vzwfeles@gmail.com</a></div>
 			<div class="pull-right">&copy; VZW Feles 2016 | Versie 2.0</div>
 		</div>
 		

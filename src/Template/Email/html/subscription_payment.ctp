@@ -27,7 +27,7 @@
 </div>
 <br/>
 <div>
-	Nadat we uw storting hebben ontvangen, sturen we u een derde en laatste email met daarin uw borstnummer. Op de dag van de wedstrijd kunt u zich aanmelden aan de inschrijvingsstand waar u een enveloppe met uw borstnummer en spelden ontvangt. 
+	Nadat we uw storting hebben ontvangen, sturen we u een derde en laatste e-mail met daarin uw borstnummer. Op de dag van de wedstrijd kunt u zich aanmelden aan de inschrijvingsstand waar u een enveloppe met uw borstnummer en spelden ontvangt. 
 </div>
 <br/>
 <br/>
