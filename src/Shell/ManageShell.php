@@ -19,6 +19,7 @@ class ManageShell extends Shell
 		$this->loadModel('Subscription');
 		$this->loadModel('Participant');
 		$this->loadModel('Sponsor');
+		$this->loadModel('Interest');
 	}
 	
 	/**
@@ -84,8 +85,18 @@ class ManageShell extends Shell
 		$sponsors = $this->Sponsor;
 		$query = $sponsors->find('all');
 		foreach ($query as $sponsor) {
-			$this->out('Sending invite to ' . $sponsor->email);
-			EmailUtils::sendSponsorInvite($sponsor);
+			$this->out('Send email disabled');
+			//$this->out('Sending invite to ' . $sponsor->email);
+			//EmailUtils::sendSponsorInvite($sponsor);
+		}
+	}
+	
+	public function sendPublicInvite() {
+		$interests = $this->Interest;
+		$query = $interests->find('all');
+		foreach ($query as $interest) {
+			$this->out('Sending invite to ' . $interest->email);
+			EmailUtils::sendPublicInvite($interest);
 		}
 	}
 	
