@@ -109,7 +109,7 @@ class SubscriptionController extends AppController
     	try {
     		$code = $this->request->query('code');
     		
-    		if (!empty($filter)) {
+    		if (!empty($code)) {
 	    		$subscriptionq = $this->Subscription->findByCode($code);
 	    		
 	    		$subscription = $subscriptionq->first();
@@ -128,34 +128,50 @@ class SubscriptionController extends AppController
     		} else {
     			$filter = [];
     			
+    			$term = $this->request->query('term');
     			$wave = $this->request->query('wave');
     			$validated = $this->request->query('validated');
     			$payed = $this->request->query('payed');
     			$sponsor = $this->request->query('sponsor');
     			
-    			if (!empty($wave) && $wave != 'undefined') {
-    				$filter['wave'] = $wave;
-    			}
-    			if (!empty($validated) && $validated != 'undefined') {
-    				$filter['validated'] = $validated == 'TRUE' ? true : false;
-    			}
-    			if (!empty($payed) && $payed != 'undefined') {
-    				$filter['payed'] = $payed == 'TRUE' ? true : false;
-    			}
-    			if (!empty($sponsor) && $sponsor != 'undefined') {
+    			$subscriptiona = $this->Subscription->find('all');
+    			
+    			$subscriptionq = null;
+    			if (!empty($term)) {
+    				//$filter['code'] = $term;
+    				$filter['OR'] = [['code' => $term], ['email'=>$term]];
     				
+    				$subscriptionq = $this->Subscription
+    								->find('all', ['contain' => ['Participant']]);
+    				
+    				$subscriptionq->innerJoinWith('Participant', function($q) use ($term) {
+						return $q->where(['OR' => [['code' => $term], ['email' => $term], ['fname' => $term], ['lname' => $term]]]);
+    				});
+    			} else {
+	    			if (!empty($wave) && $wave != 'undefined') {
+	    				$filter['wave'] = $wave;
+	    			}
+	    			if (!empty($validated) && $validated != 'undefined') {
+	    				$filter['validated'] = $validated == 'TRUE' ? true : false;
+	    			}
+	    			if (!empty($payed) && $payed != 'undefined') {
+	    				$filter['payed'] = $payed == 'TRUE' ? true : false;
+	    			}
+	    			if (!empty($sponsor) && $sponsor != 'undefined') {
+	    				
+	    			}
+	    			
+	    			$subscriptionq = $this->Subscription
+							    			->find('all', ['contain' => ['Participant']])
+							    			->where($filter);
     			}
     			
-    			$subscriptiona = $this->Subscription->find('all');
-    			$subscriptionq = $this->Subscription
-    						->find('all', ['contain' => ['Participant']])
-    						->where($filter);
     			$subscriptions = $subscriptionq->toArray(); 
     			$subscriptionTotal = $subscriptiona->count();
     			$subscriptionCount = $subscriptionq->count();
     			
     			$list = [];
-    			if (!empty($sponsor) && $sponsor != 'undefined') {
+    			if (empty($term) && !empty($sponsor) && $sponsor != 'undefined') {
     				$subscriptionCount = 0;
     				$sponsor = $sponsor == 'TRUE' ? true : false;
 	    			foreach ($subscriptions as $s) {

@@ -1,7 +1,7 @@
 <div class="row">
 	<h1>Inschrijvingen</h1>
 </div>
-<div ng-controller="manageCtrl" ng-init="search()">
+<div ng-controller="manageCtrl" ng-init="searchByFilter()">
 	<div class="row" ng-show="showTable">
 		<div class="alert alert-danger" ng-show="errorMessage">{{errorMessage}}</div>
 		<div class="large-12 column">
@@ -32,11 +32,11 @@
 				</div>
 			</div>
 			<div>
-				<button class="button" role="button" ng-click="search()">Zoeken op filter</button>
+				<button class="button" role="button" ng-click="searchByFilter()">Zoeken op filter</button>
 			</div>
 			<div>
-				<input type="text" placeholder="Code" ng-model="lookupcode" maxlength="6" style="text-transform: uppercase"/>
-				<button class="button" role="button" ng-click="lookup(lookupcode)">Zoeken op code</button>
+				<input type="text" placeholder="Zoekterm" ng-model="searchTerm" maxlength="80"/>
+				<button class="button" role="button" ng-click="searchByTerm(searchTerm)">Zoeken op zoekterm</button>
 			</div>
 			<h4>Aantal inschrijvingen: {{result.count}}/{{result.total}}</h4>
 			<table border="1">
@@ -60,7 +60,7 @@
 					<td>{{s.participant[0].email}}</td>
 					<td>{{s.validated}}</td>
 					<td>{{s.payed}}</td>
-					<td><a ng-click="lookup(s.code);">openen</a></td>
+					<td><a ng-click="openDetails(s.code);">openen</a></td>
 				</tr>
 			</table>
 		</div>

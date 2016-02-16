@@ -4,7 +4,7 @@
 	modManage.controller('manageCtrl', function($scope, $log, $http) {
 		$scope.debugHelp = "test";
 		$scope.showTable = true;
-		$scope.lookupcode = '';
+		$scope.searchTerm = '';
 		$scope.new_number1 = null;
 		$scope.new_number2 = null;
 		$scope.result = null;
@@ -32,10 +32,22 @@
 			$scope.waveOptions[0].notAnOption = true;
 		};
 		
-		$scope.search = function() {
+		$scope.searchByFilter = function() {
+			$scope.searchTerm = '';
+			var queryParams = 'wave=' + $scope.filter.wave + '&validated=' + $scope.filter.validated + '&payed=' + $scope.filter.payed + '&sponsor=' + $scope.filter.sponsor;
+			$scope.search(queryParams);
+		};
+		
+		$scope.searchByTerm = function(term) {
+			var queryParams = 'term=' + term; 
+			$scope.search(queryParams);	
+		};
+		
+		$scope.search = function(queryParams) {
 			$('#modalSearching').foundation('open');
 			
-			var res = $http.get('../api/subscription.json?wave=' + $scope.filter.wave + '&validated=' + $scope.filter.validated + '&payed=' + $scope.filter.payed + '&sponsor=' + $scope.filter.sponsor);
+			//var res = $http.get('../api/subscription.json?wave=' + $scope.filter.wave + '&validated=' + $scope.filter.validated + '&payed=' + $scope.filter.payed + '&sponsor=' + $scope.filter.sponsor);
+			var res = $http.get('../api/subscription.json?' + queryParams);
 			res.success(function(data, status, headers, config) {
 				$('#modalSearching').foundation('close');
 				
@@ -53,14 +65,14 @@
 			});
 		};
  		
-		$scope.lookup = function(lookupcode) {
+		$scope.openDetails = function(code) {
 			$('#modalError').foundation('close');
 			$('#modalSearching').foundation('open');
 			
 			$scope.errorMessage = null;
 			$scope.saveErrorMessage = null;
 			
-			var res = $http.get('../api/subscription.json?code=' + lookupcode);
+			var res = $http.get('../api/subscription.json?code=' + code);
 			res.success(function(data, status, headers, config) {
 				$('#modalSearching').foundation('close');
 				$log.debug(data);
