@@ -162,13 +162,22 @@
 					
 					//$scope.lookup($scope.subscription.code);
 				});	
-				
-				$scope.search();
 			} catch (e) {
 				$scope.subscription.payed = false;
 				$scope.errorMessage = e.message;
 			}
 		};
+		
+		$scope.closeDetails = function() {
+			$scope.showTable = true;
+			if ($scope.searchTerm != null && $scope.searchTerm != '') {
+				//alert("serach by term");
+				$scope.searchByTerm($scope.searchTerm);
+			} else {
+				//alert("search by filter");
+				$scope.searchByFilter();
+			}
+		}
 		
 		function populateSubscription(data) {
 			$scope.subscription.id = data.id;

@@ -81,7 +81,7 @@
 				<div>
 					<div>
 						<button class="button" role="button" ng-click="sendValidationMail()" ng-disabled="true">Validatie-mail sturen</button>
-						<a ng-click="showTable = true; search()">Sluit detail</a>
+						<a ng-click="closeDetails()">Sluit detail</a>
 					</div>
 					<table style="float: left;">
 						<tr>
@@ -149,7 +149,7 @@
 							<td>{{subscription.participant1.start_order}}</td>
 						</tr>
 					</table>
-					<table style="float: left;">
+					<table style="float: left;" ng-show="subscription.wave == 'YOUTH'">
 						<tr>
 							<th colspan="2">Deelnemer 2</th>
 						</tr>
