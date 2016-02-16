@@ -109,7 +109,7 @@ class SubscriptionController extends AppController
     	try {
     		$code = $this->request->query('code');
     		
-    		if (!empty($code)) {
+    		if (!empty($filter)) {
 	    		$subscriptionq = $this->Subscription->findByCode($code);
 	    		
 	    		$subscription = $subscriptionq->first();
@@ -146,27 +146,32 @@ class SubscriptionController extends AppController
     				
     			}
     			
+    			$subscriptiona = $this->Subscription->find('all');
     			$subscriptionq = $this->Subscription
-    						->find()
+    						->find('all', ['contain' => ['Participant']])
     						->where($filter);
     			$subscriptions = $subscriptionq->toArray(); 
+    			$subscriptionTotal = $subscriptiona->count();
     			$subscriptionCount = $subscriptionq->count();
     			
     			$list = [];
     			if (!empty($sponsor) && $sponsor != 'undefined') {
+    				$subscriptionCount = 0;
     				$sponsor = $sponsor == 'TRUE' ? true : false;
 	    			foreach ($subscriptions as $s) {
 	    				if (ModelUtils::isSponsorCode($s->code) && $sponsor) {
 	    					array_push($list, $s);
+	    					$subscriptionCount++;
 	    				} else if (!ModelUtils::isSponsorCode($s->code) && !$sponsor) {
 	    					array_push($list, $s);
+	    					$subscriptionCount++;
 	    				}
 	    			}
 	    		} else {
 	    			$list = $subscriptions;
 	    		}
 
-    			$result = ["count" => $subscriptionCount, "subscriptions" => $list];
+    			$result = ["count" => $subscriptionCount, "total" => $subscriptionTotal, "subscriptions" => $list];
     			
     			$this->response->type('json');
     			$this->response->body(json_encode($result));
@@ -267,6 +272,7 @@ class SubscriptionController extends AppController
 	    			$participant2->number = $this->request->data['participant2']['number'];
 	    		}
 	    		
+	    		$subscription->validated = true;
 	    		$subscription->payed = true;
 	    		
 	    		$this->validateSubscription($subscription, $participant1, $participant2);

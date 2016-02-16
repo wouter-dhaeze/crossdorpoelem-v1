@@ -439,7 +439,7 @@ $this->layout = false;
 		</div>
 	</section>
 	
-	<?= $this->element('footer'); ?>
+	<?= $this->element('footer', ["class" => ""]); ?>
 
 	<script src="js/jquery/jquery-2.1.4.min.js"></script>
 	<script src="js/jquery/jquery-ui.min.js"></script>

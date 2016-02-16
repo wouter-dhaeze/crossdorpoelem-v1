@@ -90,6 +90,12 @@ Router::scope('/api', function ($routes) {
 	$routes->resources('Subscription', [
 		'actions' => ['create' => 'create', 'index' => 'get'] 
 	]);
+	$routes->resources('Email', [
+		'actions' => ['create' => 'create']
+	]);
+	$routes->resources('Number', [
+		'actions' => ['index' => 'get']
+	]);
 });
 
 /**

@@ -4,11 +4,11 @@ namespace App\Controller;
 use App\Controller\AppController;
 
 use Cake\Event\Event;
+use Cake\Log\Log;
 
 /**
- * Manage Controller
+ * Email Controller
  *
- * @property \App\Model\Table\ManageTable $Manage
  */
 class ManageController extends AppController
 {
@@ -27,14 +27,13 @@ class ManageController extends AppController
 		$this->Auth->deny();
 	}
 	
-    /**
-     * Index method
-     *
-     * @return void
-     */
-    public function index()
-    {
-    	$this->viewBuilder()->layout('cdo-manage');
-    }
+	/**
+	 * API call email (HTTP PUT)
+	 */
+	public function create()
+	{
+		Log::info('resend validation mail');
+	}
+	
 
 }

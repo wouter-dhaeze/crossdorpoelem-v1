@@ -29,7 +29,7 @@
 
 	
 	
-	<?= $this->element('footer'); ?>
+	<?= $this->element('footer', ["class" => ""]); ?>
 	
 	<script src="../js/jquery/jquery-2.1.4.min.js"></script>
 	<script src="../js/angularjs/angular.min.js"></script>
@@ -37,7 +37,7 @@
 	<script src="../js/uikit/uikit.min.js"></script>
 	<script src="../js/foundation/foundation.min.js"></script>
 	<script src="../js/app.js"></script>
-	<script src="../js/cdo-subscription.js"></script>
+	<script src="../js/cdo-manage.js"></script>
 </body>
 
 </html>
