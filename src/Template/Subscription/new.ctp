@@ -2,6 +2,7 @@
 
 $this->layout = 'cdo-detail';
 $this->assign('title', 'Inschrijving');
+$this->assign('ogmetadata', 'fb_subscription');
 
 ?>
 

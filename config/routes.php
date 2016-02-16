@@ -96,6 +96,9 @@ Router::scope('/api', function ($routes) {
 	$routes->resources('Number', [
 		'actions' => ['index' => 'get']
 	]);
+	$routes->resources('Participant', [
+		'actions' => ['index' => 'get']
+	]);
 });
 
 /**

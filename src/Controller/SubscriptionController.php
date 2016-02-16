@@ -145,7 +145,7 @@ class SubscriptionController extends AppController
     								->find('all', ['contain' => ['Participant']]);
     				
     				$subscriptionq->innerJoinWith('Participant', function($q) use ($term) {
-						return $q->where(['OR' => [['code' => $term], ['email' => $term], ['fname LIKE' => '%' . $term . '%'], ['lname LIKE' => '%' . $term . '%']]]);
+						return $q->where(['OR' => [['code' => $term], ['number' => $term], ['email' => $term], ['fname LIKE' => '%' . $term . '%'], ['lname LIKE' => '%' . $term . '%']]]);
     				});
     			} else {
 	    			if (!empty($wave) && $wave != 'undefined') {

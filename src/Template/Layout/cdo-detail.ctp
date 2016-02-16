@@ -1,5 +1,8 @@
 <?php
-
+	$ogmetadata = $this->fetch('ogmetadata');
+	if (empty($ogmetadata)) {
+		$ogmetadata = 'fb_default';
+	}
 ?>
 <!DOCTYPE html>
 <html lang="nl">
@@ -7,6 +10,9 @@
 <meta charset="utf-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<?= $this->element($ogmetadata); ?>
+
 <meta name="description" content="crossdorp oelem"/>
 
 <title>Crossdorp Oelem - <?= h($this->fetch('title')) ?></title>
@@ -56,6 +62,7 @@
 	<script src="/js/app.js"></script>
 	<script src="/js/cdo-menu-bar.js"></script>
 	<script src="/js/cdo-subscription.js"></script>
+	<script src="/js/cdo-participant.js"></script>
 </body>
 
 </html>
