@@ -23,15 +23,18 @@ if (empty($subscription))
 		<?php if ($subscription->wave == 'ADULT'): ?>
 			<h2>Uw gegevens</h2>
 			<?= $this->element('view_participant', 
-								["participant" => $subscription->participant[0]]); ?>
+								["participant" => $subscription->participant[0],
+								"ngmodelId" => $subscription->id]); ?>
 		<?php endif; ?>
 		<?php if ($subscription->wave == 'YOUTH'): ?>
 			<h2>Gegevens eerste loper</h2>
 			<?= $this->element('view_participant', 
-								["participant" => $subscription->participant[0]]); ?>
+								["participant" => $subscription->participant[0],
+								"ngmodelId" => $subscription->id]); ?>
 			<h2>Gegevens tweede loper</h2>
 			<?= $this->element('view_participant', 
-								["participant" => $subscription->participant[1]]); ?>
+								["participant" => $subscription->participant[1],
+								"ngmodelId" => $subscription->id]); ?>
 		<?php endif; ?>
 	</div>
 </div>

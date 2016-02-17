@@ -8,9 +8,9 @@
 	
 	$numberText = '<b>' . $subscription->participant[0]->number . '</b>';
 	
-	if ($subsciption->wave == 'YOUTH') {
-		$numberText = $subscription->participant[0] . ' heeft borstnummer <b>' . $subscription->participant[0]->number . '</b><br/>';
-		$numberText .= $subscription->participant[1] . ' heeft borstnummer <b>' . $subscription->participant[1]->number . '</b><br/>';
+	if ($subscription->wave == 'YOUTH') {
+		$numberText = $subscription->participant[0]->fname . ' heeft borstnummer <b>' . $subscription->participant[0]->number . '</b><br/>';
+		$numberText .= $subscription->participant[1]->fname . ' heeft borstnummer <b>' . $subscription->participant[1]->number . '</b><br/>';
 	}
 	
 	$subscriptionUrl = $baseUrl . '/subscription/' . $subscription->code;

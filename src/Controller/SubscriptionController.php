@@ -57,7 +57,7 @@ class SubscriptionController extends AppController
         	$this->set('_serialize', ['subscription']);
     	}
     	
-    	$this->layout = 'cdo-detail';
+    	$this->viewBuilder()->layout('cdo-detail');
     	$this->render($view);
     }
     
@@ -68,7 +68,7 @@ class SubscriptionController extends AppController
     	$subscription = $this->getSubscriptionByCode($code, false);
     	if (empty($subscription)) {
     		Log::error("No subscription found with " . $code);
-    		$this->layout = 'cdo-detail';
+    		$this->viewBuilder()->layout('cdo-detail');
     		$this->set('message', "Er is geen schrijving met code '" . $code . "' gevonden.");
     		$this->render('error');
     	} else {
@@ -77,7 +77,7 @@ class SubscriptionController extends AppController
     		
     		if ($subscription == false) {
     			Log::error("Save returend false for subscription code " . $code);
-    			$this->layout = 'cdo-detail';
+    			$this->viewBuilder()->layout('cdo-detail');
     			$this->set('message', "Er is een fout gebeurd tijdens het valideren van uw inschrijving. Gelieve later opnieuw te proberen.");
     			$this->render('error');
     		}

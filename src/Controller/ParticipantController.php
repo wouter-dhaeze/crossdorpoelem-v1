@@ -19,6 +19,7 @@ class ParticipantController extends AppController
 	{
 		parent::initialize();
 		
+		$this->loadModel('Subscription');
 		$this->loadModel('Participant');
 	}
 	
@@ -40,6 +41,14 @@ class ParticipantController extends AppController
 						->find()
 						->where(['number <>' => "N/A"])
 						->order(['number' => 'ASC']);
+			
+			/*$query = $this->Subscription->find()->contain([
+					'Participant' => function ($q) {
+						return $q
+						->where(['Participant.number <>' => "N/A"])
+						->order(['Participant.number' => 'ASC']);
+					}
+			]);*/
 			
 			$participantTotal = $query->count();
 			$participants = $query->toArray();
