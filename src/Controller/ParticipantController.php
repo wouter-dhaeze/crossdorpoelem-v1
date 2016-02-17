@@ -39,16 +39,15 @@ class ParticipantController extends AppController
 		try {
 			$query = $this->Participant
 						->find()
+						->select($this->Participant)
+						->select(['s.wave'])
 						->where(['number <>' => "N/A"])
-						->order(['number' => 'ASC']);
-			
-			/*$query = $this->Subscription->find()->contain([
-					'Participant' => function ($q) {
-						return $q
-						->where(['Participant.number <>' => "N/A"])
-						->order(['Participant.number' => 'ASC']);
-					}
-			]);*/
+						->order(['number' => 'ASC'])
+						->innerJoin(
+			    ['s' => 'subscription'],
+			    [
+			    's.id = Participant.subscription_id'
+			    ]);
 			
 			$participantTotal = $query->count();
 			$participants = $query->toArray();

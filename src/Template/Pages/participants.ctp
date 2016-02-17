@@ -28,11 +28,13 @@ $this->assign('ogmetadata', 'fb_participants');
 		<table border="1">
 			<tr>
 				<th>Borstnummer</th>
+				<th>Wave</th>
 				<th>Naam</th>
 				<th>Geboortedatum</th>
 			</tr>
 			<tr ng-repeat="p in result.participants">
 				<td>{{p.number}}</td>
+				<td>{{p.s.wave}}</td>
 				<td>{{p.fname + ' ' + p.lname}}</td>
 				<td>{{p.dob | date:'dd/MM/yyyy'}}</td>
 			</tr>

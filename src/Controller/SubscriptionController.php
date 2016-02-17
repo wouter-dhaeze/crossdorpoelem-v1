@@ -268,10 +268,14 @@ class SubscriptionController extends AppController
     public function edit($id) {
     	try {
 	    	$subscription = $this->Subscription->get($id);
+	    	$participant1 = null;
+	    	$participant2 = null;
 	    	
 	    	$subscription = $this->getSubscriptionByCode($subscription->code, true);
 	    	$participant1 = $subscription->participant[0];
-	    	$participant2 = $subscription->participant[1];
+	    	if ($subscription->wave == 'YOUTH') {
+	    		$participant2 = $subscription->participant[1];
+	    	}
 	    	if (empty($subscription)) {
 	    		$this->log('No subscription found with id' . $id, 'error');
 	    		throw new InternalErrorException('Geen beschrijving gevonden met id ' . $this->request->data['id']);
