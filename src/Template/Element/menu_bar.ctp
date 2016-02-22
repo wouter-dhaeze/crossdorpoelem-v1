@@ -8,9 +8,10 @@
 	<div class="top-bar-left">
 		<ul class="dropdown menu" data-dropdown-menu>
 			<li class="menu-text"><a href="/">Crossdorp Oelem</a></li>
+			<li><a href="/subscription">Inschrijven</a></li>
+			<li><a href="/pages/participants">Deelnemers</a></li>
 			<li><a href="/pages/info">Praktisch</a></li>
 			<li><a href="/pages/media">Media</a></li>
-			<li><a href="/pages/subscription">Inschrijven</a></li>
 		</ul>
 	</div>
 	<div class="top-bar-right" ng-controller="menuCtrl">

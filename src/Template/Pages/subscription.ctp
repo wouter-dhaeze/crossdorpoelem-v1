@@ -1,16 +1,16 @@
 <?php 
 
-use Cake\I18n\Time;
-Time::setToStringFormat('dd/MM/yyyy');
-
-$this->layout = 'cdo-detail';
-$this->assign('title', 'Inschrijving');
+$this->layout = false;
 
 ?>
 
-<div>
-	<div class="row">
-		<p class="lead">De publieke inschrijvingen zijn nog niet geopend.</p>
-		<p>Hou onze website goed in de gaten. We openen de publieke inschrijvingen in het weekend van 20 februari.</p>
-	</div>
-</div>
+<html xmlns="http://www.w3.org/1999/xhtml">    
+  <head>      
+    <title>Crossdorp Oelem</title>      
+    <meta http-equiv="refresh" content="0;URL='/subscription'" />    
+  </head>    
+  <body> 
+    <p>This page has moved to a <a href="/subscription">
+      https://www.crossdorpoelem.be/subscription</a>.</p> 
+  </body>  
+</html>  

@@ -23,6 +23,10 @@ class EmailUtils
     	EmailUtils::sendMail('subscription_number', 'Crossdorp Oelem - Inschrijving voltooid', $subscription);
     }
     
+    public static function sendReminderMail($subscription) {
+    	EmailUtils::sendMail('subscription_reminder', 'Crossdorp Oelem - Inschrijving herinnering', $subscription);
+    }
+    
     public static function sendSponsorInvite($sponsor) {
     	$wwwRoot = Configure::read('App.fullBaseUrl');
     	

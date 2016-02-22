@@ -325,25 +325,51 @@ class SubscriptionController extends AppController
     	}
     }
     
-    public function sendValidationMail($code) {
+    /**
+     * API call subscribe (HTTP DELETE)
+     *
+     * Currenlty only implemented to send update payment
+     */
+    public function remove($id) {
+    	Log::info("Deleting " . $id);
+    	
+    	$message = "";
+    	$subscription = $this->Subscription->get($id, [
+    			'contain' => ['Participant']
+    			]);
+    	
+    	if (!empty($subscription)) {
+    		$code = $subscription->code;
+    		$result = $this->Subscription->delete($subscription);
+    		$message = 'Inschrijving met code ' . $code . ' is verwijderd.';
+    	} else {
+    		$message = 'Geen inschrijving met code ' . $code . ' gevonden.';
+    	}
+    	
+    	$this->response->type('json');
+    	$this->response->body($this->json_encode($message));
+    	return $this->response;
+    }
+    
+    private function sendValidationMail($code) {
     	$subscription =  $this->getSubscriptionByCode($code, true);
     	
     	EmailUtils::sendValidationMail($subscription);
     }
     
-    public function sendPaymentMail($code) {
+    private function sendPaymentMail($code) {
     	$subscription =  $this->getSubscriptionByCode($code, true);
     	 
     	EmailUtils::sendPaymentMail($subscription);
     }
     
-    public function sendSponsorMail($code) {
+    private function sendSponsorMail($code) {
     	$subscription =  $this->getSubscriptionByCode($code, true);
     
     	EmailUtils::sendSponsorMail($subscription);
     }
     
-    public function sendSubscriptionSuccessMail($code) {
+    private function sendSubscriptionSuccessMail($code) {
     	$subscription =  $this->getSubscriptionByCode($code, true);
     	
     	EmailUtils::sendSubscriptionSuccessMail($subscription);

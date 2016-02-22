@@ -24,6 +24,7 @@
 		
 		$scope.errorMessage = null;
 		$scope.saveErrorMessage = null;
+		$scope.infoMessage = null;
 		
 		$scope.subscriptionSuccess = false;
 		
@@ -45,6 +46,8 @@
 		
 		$scope.search = function(queryParams) {
 			$('#modalSearching').foundation('open');
+			
+			$scope.infoMessage = null;
 			
 			//var res = $http.get('../api/subscription.json?wave=' + $scope.filter.wave + '&validated=' + $scope.filter.validated + '&payed=' + $scope.filter.payed + '&sponsor=' + $scope.filter.sponsor);
 			var res = $http.get('../api/subscription.json?' + queryParams);
@@ -69,6 +72,7 @@
 			$('#modalError').foundation('close');
 			$('#modalSearching').foundation('open');
 			
+			$scope.infoMessage = null;
 			$scope.errorMessage = null;
 			$scope.saveErrorMessage = null;
 			
@@ -94,17 +98,22 @@
 			});
 		};
 		
-		$scope.sendValidationMail = function() {
-			var res = $http.post('/api/email.json?id=' + $scope.subscription.id + '&email=revalidation');
+		$scope.sendMail = function(code, type) {
+			$('#modalSendingMail').foundation('open');
+			$scope.infoMessage = null;
+			
+			var res = $http.post('/api/email.json?code=' + code + '&type=reminder');
 			res.success(function(data, status, headers, config) {
 				
-				alert("email niet gezonden. Moet nog geimplementeerd");
-
+				$scope.infoMessage = data;
+				$('#modalSendingMail').foundation('close');
+				
 			});
 			res.error(function(data, status, headers, config) {
 				$scope.errorMessage = data.message;
 				
 				$log.debug(data);
+				$('#modalSendingMail').foundation('close');
 			});
 		};
 		
@@ -120,6 +129,8 @@
 		};
 		
 		$scope.initiatepayed = function() {
+			$scope.infoMessage = null;
+			$scope.errorMessage = null;
 			$('#modalPayed').foundation('open');
 		};
 		
@@ -127,6 +138,8 @@
 			try {
 				$('#modalPayed').foundation('close');
 				$('#modalSaving').foundation('open');
+				
+				$scope.infoMessage = null;
 				$scope.errorMessage = null;
 				
 				$scope.subscription.participant1.number = $scope.new_number1;
@@ -166,6 +179,40 @@
 				$scope.subscription.payed = false;
 				$scope.errorMessage = e.message;
 			}
+		};
+		
+		$scope.initiatedelete = function() {
+			$scope.infoMessage = null;
+			$scope.errorMessage = null;
+			$('#modalDelete').foundation('open');
+		};
+		
+		$scope.deleted = function(id) {
+			$scope.infoMessage = null;
+			$scope.errorMessage = null;
+			$('#modalDelete').foundation('close');
+			$('#modalDeleting').foundation('open');
+			
+			try {
+				var res = $http.delete('../api/subscription/' + $scope.subscription.id + '.json');
+				
+				res.success(function(data, status, headers, config) {
+					$scope.errorMessage = null;
+					$scope.infoMessage = data;
+					
+					$('#modalDeleting').foundation('close');
+					$scope.closeDetails();
+				});
+				res.error(function(data, status, headers, config) {
+					$('#modalDeleting').foundation('close');
+					
+					$scope.errorMessage = data.message;
+				});	
+			} catch (e) {
+				$scope.errorMessage = e.message;
+				$('#modalDeleting').foundation('close');
+			}
+
 		};
 		
 		$scope.closeDetails = function() {

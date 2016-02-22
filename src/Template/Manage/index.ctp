@@ -4,6 +4,7 @@
 <div ng-controller="manageCtrl" ng-init="searchByFilter()">
 	<div class="row" ng-show="showTable">
 		<div class="alert alert-danger" ng-show="errorMessage">{{errorMessage}}</div>
+		<div class="alert alert-info" ng-show="infoMessage">{{infoMessage}}</div>
 		<div class="large-12 column">
 			<div class="row">
 				<div class="small-3 column">
@@ -69,6 +70,7 @@
 		<div class="large-12 column" >
 			<div ng-show="subscription.id != ''">
 				<div class="alert alert-danger" ng-show="errorMessage">{{errorMessage}}</div>
+				<div class="alert alert-info" ng-show="infoMessage">{{infoMessage}}</div>
 				<div ng-show="!subscription.payed">
 					<label for="new_number1">Borstnummer deelnemer 1</label>
 					<input id="new_number1" type="text" ng-model="new_number1"/>
@@ -80,7 +82,8 @@
 				</div>
 				<div>
 					<div>
-						<button class="button" role="button" ng-click="sendValidationMail()" ng-disabled="true">Validatie-mail sturen</button>
+						<button class="button" role="button" ng-click="sendMail(subscription.code, 'reminder')" ng-disabled="subscription.payed">Herinnering sturen</button>
+						<button class="button alert" role="button" ng-click="initiatedelete(subscription.code)" ng-disabled="subscription.payed">Inschrijving verwijderen</button>
 						<a ng-click="closeDetails()">Sluit detail</a>
 					</div>
 					<table style="float: left;">
@@ -204,12 +207,27 @@
   		<button class="button large" data-close role="button" ng-click="payed()">Inschrijver heeft betaald!</button>
   		<button class="alert button large" data-close role="button">Annuleer</button>
 	</div>
+	<div id="modalDelete" class="reveal" data-reveal aria-labelledby="modalDeleteTitle" aria-hidden="true" role="dialog">
+  		<h3 id="modalDeleteTitle">Inschrijving met code {{subscription.code}} verwijderen?</h3>
+  		<p class="lead">Je staat op het punt de inschrijving met code {{subscription.code}} te verwijderen.</p>
+  		<h2>Deze actie kan niet worden ongedaan gemaakt!</h2>
+  		<button class="button large" data-close role="button" ng-click="deleted(subscription.id)">Inschrijving definitief verwijderen</button>
+  		<button class="alert button large" data-close role="button">Annuleer</button>
+	</div>
 	<div id="modalSaving" class="reveal" data-reveal aria-labelledby="modalSavingTitle" aria-hidden="true" role="dialog">
   		<h2 id="modalSavingTitle">Inschrijving opslaan</h2>
   		<p class="lead">Even geduld...</p>
 	</div>
+	<div id="modalDeleting" class="reveal" data-reveal aria-labelledby="modalDeletingTitle" aria-hidden="true" role="dialog">
+  		<h2 id="modalDeletingTitle">Inschrijving verwijderen</h2>
+  		<p class="lead">Even geduld...</p>
+	</div>
 	<div id="modalSearching" class="reveal" data-reveal aria-labelledby="modalSearchingTitle" aria-hidden="true" role="dialog">
   		<h3 id="modalSearchingTitle">Inschrijvingen opzoeken</h3>
+  		<p class="lead">Even geduld...</p>
+	</div>
+	<div id="modalSendingMail" class="reveal" data-reveal aria-labelledby="modalSendingMailTitle" aria-hidden="true" role="dialog">
+  		<h3 id="modalSendingMailTitle">E-mail versturen</h3>
   		<p class="lead">Even geduld...</p>
 	</div>
 	<div id="modalError" class="reveal" data-reveal aria-labelledby="modalErrorTitle" aria-hidden="true" role="dialog">

@@ -47,7 +47,7 @@ $this->layout = false;
 		</div>
 		<div class="buttons">
 			<a href="#pnlInfo" class="button large" role="button" data-uk-smooth-scroll>Meer info</a>
-			<!-- <a href="#pnlSubscribe" class="button large" role="button" data-uk-smooth-scroll>Inschrijven</a>-->
+			<a href="/subscription" class="button large" role="button">Inschrijven</a>
 		</div>
 	</div>
 	
@@ -64,6 +64,7 @@ $this->layout = false;
 				    onze Oedelemse dorpskern. Ons parcours baant zich een weg door de welgekende Oedelemse gebouwen, maar je zal ook op plaatsen komen 
 				    waar je hoogst waarschijnlijk nog nooit bent binnen geweest. Beloofd!</p>
 				</article>
+				<a href="/subscription" class="button large" role="button">Da's twa voe meun!</a>
 			</div>
 			<div class="small-12 medium-offset-1 medium-7 column">
 				<div class="text-center title">
@@ -77,7 +78,7 @@ $this->layout = false;
 				</div>
 				<div class="info-container">
 					<div class="info-thumb"><img src="../img/bird58.png"></div>
-					<div class="info-content"><p class="lead">Voor <b>(jong-)volwassenen</b> ligt een parcours van <b>6 km </b>te wachten.</p></div>
+					<div class="info-content"><p class="lead">Voor <b>(jong-)volwassenen</b> (14 jaar en ouder) ligt een parcours van <b>6 km </b>te wachten.</p></div>
 					<div style="clear: both;"></div>
 				</div>
 				<div class="info-container">
@@ -87,7 +88,7 @@ $this->layout = false;
 				</div>
 				<div class="info-container">
 					<div class="info-thumb"><img src="../img/alarm54.png"></div>
-					<div class="info-content"><p class="lead">De <b>jeugd</b> run start <b>om 15u</b>, de <b>volwassenen om 16u</b>.</p></div>
+					<div class="info-content"><p class="lead">De <b>Duo Run</b> run start <b>om 15u</b>, de <b>Big Run om 16u</b>.</p></div>
 					<div style="clear: both;"></div>
 				</div>
 				<div class="info-container">
