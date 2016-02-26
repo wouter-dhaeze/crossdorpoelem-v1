@@ -1,6 +1,6 @@
 <meta property="og:url" content="https://www.crossdorpoelem.be/subscription" />
 <meta property="og:type" content="article" />
-<meta property="og:title" content="Crossdorp Oelem - Inschrijving geopend voor publiek" />
+<meta property="og:title" content="Crossdorp Oelem - Schrijf je nu in voor de eerste Oedelemse urban trail!" />
 <meta property="og:image" content="http://www.crossdorpoelem.be/img/fb-banner.jpg" />
 <meta property="og:image:secure_url" content="https://www.crossdorpoelem.be/img/fb-banner.jpg" />
 <meta property="og:image:type" content="image/jpeg" />

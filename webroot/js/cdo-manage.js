@@ -159,7 +159,7 @@
 				res.error(function(data, status, headers, config) {
 					$scope.new_number1 = null;
 					$scope.new_number2 = null;
-					//$scope.subscription.payed = false;
+					$scope.subscription.payed = false;
 					
 					//alert("failure message: " + status);
 					//alert( "failure message: " + JSON.stringify({data: data}));

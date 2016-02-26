@@ -54,6 +54,16 @@ class NumberController extends AppController
 			
 			$result = $max[0]->number + $plus;
 			
+			if ($result > 500) {
+				$query = $this->Participant
+							->find()
+							->where(['number <>' => "N/A", 'number <' => "351"])
+							->order(['number' => 'DESC'])
+							->limit(1);
+				$max = $query->toArray();
+				$result = $max[0]->number + $plus;
+			}
+			
 			$result = str_pad($result, 3, "0", STR_PAD_LEFT);
 		} catch (PDOException $e) {
 			$this->log('PDOException occurred: ' . $e->getMessage() . '\n' . $e->getTraceAsString() , 'error');

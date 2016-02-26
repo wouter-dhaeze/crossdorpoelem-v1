@@ -41,6 +41,7 @@ class ModelUtils
     }
     
     public static function parseDate($date, $fromFormat, $toFormat) {
+    	$formatted = Time::createFromFormat($fromFormat, $date);
     	return $formatted->format($toFormat);
     }
     

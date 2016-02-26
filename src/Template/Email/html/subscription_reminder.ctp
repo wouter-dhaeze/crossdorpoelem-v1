@@ -13,16 +13,16 @@
 <br/>
 <div>
 	Op <?= $subscription->created->i18nFormat('dd/MM/yyyy');?> schreef u zich in voor Crossdorp Oelem, maar tot op heden hebben we <b>nog geen betaling ontvangen</b>.<br>
-	Daarom sturen we u deze <b>herinnering</b>. Gelieve zo spoedig mogelijk te betalen om uw inschrijving te verzekeren. De gegevens vindt u verder in deze e-mail.
+	<br/>
+	Mogen wij u vragen om <b>binnen de 3 dagen uw storting te volbrengen</b>? Gezien de vlotlopende inschrijvingen en het beperkt aantal beschikbare plaatsen, zien we ons genoodzaakt
+	uw inschrijving te schrappen indien we uw betaling niet binnen de 5 dagen ontvangen hebben. Alvast bedankt om dit spoedig in orde te brengen. De betalingsgegevens vindt u verder in de e-mail.
 </div>
 <br/>
 <div>
 	Mocht u reeds betaald hebben, en u heeft een week na datum nog geen bevestiging ontvangen, gelieve ons dan op de hoogte te brengen op e-mailadres <a href="mailto:inschrijving@crossdorpoelem.be">inschrijving@crossdorpoelem.be</a>.<br/>
-	Vermeld hierbij uw code, en de datum wanneer u uw storting heeft verricht. We laten u zo spoedig mogelijk iets weten.
+	Vermeld hierbij uw code, en de datum wanneer u uw betaling heeft verricht. We laten u zo spoedig mogelijk iets weten.
 </div>
 <div>
-	<h2>Stap 3!</h2>
-	<p>Mogen wij u vragen het bedrag van <b><?= Configure::read('CDO.cost')?> euro</b> te storten. (Duo's hoeven slechts eenmaal te betalen.)</p>
 	<h3>LET OP! Vergeet uw inschrijvingscode niet in de vrije mededeling te zetten. Zo kunnen we uw inschrijving aan uw storting koppelen.</h3>
 	<h4>Bedrag: <?= Configure::read('CDO.cost')?> euro<br/>
 	Rekening: <?= Configure::read('CDO.bank_account')?><br/>

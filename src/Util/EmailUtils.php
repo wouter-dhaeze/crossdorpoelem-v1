@@ -3,6 +3,7 @@ namespace App\Util;
 
 use Cake\Core\Configure;
 use Cake\Mailer\Email;
+use Cake\Log\Log;
 
 class EmailUtils
 {
@@ -58,6 +59,8 @@ class EmailUtils
     }
     
     private static function sendMail($template, $subject, $subscription) {
+    	Log::info("Sending '" . $template . "' to " . $subscription->participant[0]->email);
+
     	$wwwRoot = Configure::read('App.fullBaseUrl');
     	
     	$viewVars = ['subscription' => $subscription,

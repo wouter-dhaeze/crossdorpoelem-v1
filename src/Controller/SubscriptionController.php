@@ -340,6 +340,7 @@ class SubscriptionController extends AppController
     	
     	if (!empty($subscription)) {
     		$code = $subscription->code;
+    		Log::debug('Deleting subscription: ' . json_encode($subscription));
     		$result = $this->Subscription->delete($subscription);
     		$message = 'Inschrijving met code ' . $code . ' is verwijderd.';
     	} else {
@@ -477,6 +478,10 @@ class SubscriptionController extends AppController
     		if ($participantq->count() > 0) {
     			Log::warning('Number already exists: ' . $participant->number, 'warn');
     			throw new InternalErrorException("Er bestaat al een inschrijving met dit borstnummer.");
+    		}
+    		if ($participant->number > 500 || $participant->number < 233) {
+    			Log::warning('Wrong number: ' . $participant->number, 'warn');
+    			throw new InternalErrorException("Het toegewezen nummer mag niet hoger zijn 500 of lager dan 233.");
     		}
     	}
     }

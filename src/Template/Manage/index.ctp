@@ -233,6 +233,6 @@
 	<div id="modalError" class="reveal" data-reveal aria-labelledby="modalErrorTitle" aria-hidden="true" role="dialog">
   		<h3 id="modalErrorTitle">Fout gebeurd</h3>
   		<div class="alert alert-danger">{{saveErrorMessage}}</div>
-  		<button class="button large" data-close role="button" ng-click="lookup(lookupcode)">Sluit</button>
+  		<button class="button large" data-close role="button" ng-click="openDetails(subscription.code);">Sluit</button>
 	</div>
 </div>

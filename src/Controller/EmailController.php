@@ -59,7 +59,7 @@ class EmailController extends AppController
 		
 		if ($type == 'reminder') {
 			EmailUtils::sendReminderMail($subscription);
-			Log::info('Reminder sent to ' . json_encode($subscription));
+			Log::debug('Reminder sent to ' . json_encode($subscription));
 		} else {
 			Log::error("Wrong email type" . $type);
 			throw new InternalErrorException('Verkeerd e-mailtype opgegeven.');
