@@ -15,7 +15,7 @@
 	Op <?= $subscription->created->i18nFormat('dd/MM/yyyy');?> schreef u zich in voor Crossdorp Oelem, maar tot op heden hebben we <b>nog geen betaling ontvangen</b>.<br>
 	<br/>
 	Mogen wij u vragen om <b>binnen de 3 dagen uw storting te volbrengen</b>? Gezien de vlotlopende inschrijvingen en het beperkt aantal beschikbare plaatsen, zien we ons genoodzaakt
-	uw inschrijving te schrappen indien we uw betaling niet binnen de 5 dagen ontvangen hebben. Alvast bedankt om dit spoedig in orde te brengen. De betalingsgegevens vindt u verder in de e-mail.
+	uw inschrijving te schrappen indien we uw betaling niet binnen de 3 dagen ontvangen hebben. Alvast bedankt om dit spoedig in orde te brengen. De betalingsgegevens vindt u verder in de e-mail.
 </div>
 <br/>
 <div>
