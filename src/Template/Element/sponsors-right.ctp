@@ -121,4 +121,14 @@
 			<img class="img-responsive" src="/sponsors/mens.jpg" />
 		</div>
   	</div>
+  	<div class="row">
+  		<div class="small-12 medium-6 column">
+	  		<a href="http://www.schepens-partners.be/" target="_blank">
+				<img class="img-responsive" src="/sponsors/harlekijn.jpg" />
+			</a>
+		</div>
+		<div class="small-12 medium-6 column">
+			
+		</div>
+  	</div>
 </div>

@@ -27,6 +27,10 @@
 		
 		$scope.subscriptionSuccess = false;
 		
+		/*$scope.initSubscription = function() {
+			$('#modalSoldOut').foundation('open');
+		};*/
+		
 		$scope.waveSelected = function() {
 			$log.debug('wave selected');
 			$scope.waveOptions[0].notAnOption = true;
@@ -224,8 +228,8 @@
 		});
 	
 	var waveOptions = [
-	                   {id: 'CHOOSE', label: '--- Kies je wave ---', notAnOption: false}, 
-	                   {id: 'ADULT', label: 'Big run (6 km)', notAnOption: false},
+	                   {id: 'CHOOSE', label: '--- Kies je wave ---', notAnOption: true}, 
+	                   {id: 'ADULT', label: 'Big run (6 km)', notAnOption: true},
 	                   {id: 'YOUTH', label: 'Duo run (2,5 km)', notAnOption: false},
 	                   ];
 	
@@ -266,7 +270,8 @@
 	var emptySubscription = {
 		id: '',
 		created: '',
-		wave: 'CHOOSE',
+		//wave: 'CHOOSE',
+		wave: 'YOUTH',
 		code: '',
 		payed: false,
 		validated: false,

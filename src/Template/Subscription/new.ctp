@@ -7,6 +7,9 @@ $this->assign('ogmetadata', 'fb_subscription');
 ?>
 
 <div ng-controller="subscriptionCtrl">
+	<div class="row">
+		<div class="alert alert-danger">De Big Run (voor volwassenen) is volledig uitverkocht. U kunt enkel nog inschrijven voor de Duo Run (van 10 tot 14 jaar).</div>
+	</div>
 	<div id="pnlInfo" class="row animate-show" ng-show="showInfo">
 		<h2>Instructies</h2>
 		<p class="lead">Om in te schrijven voor Crossdorp Oelem volgt u onderstaande instructies.</p>

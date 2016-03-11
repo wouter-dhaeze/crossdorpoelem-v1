@@ -210,9 +210,14 @@ class SubscriptionController extends AppController
     	$participant2 = null;
     	
     	try {
-    		//Log::debug("Subscription: " . implode($this->request->data));   		
+    		//Log::debug("Subscription: " . implode($this->request->data));  		
     		
     		$subscription = $this->Subscription->patchEntity($this->Subscription->newEntity(), $this->request->data, ['validate' => false]);
+    		
+    		if ($subscription->wave == 'ADULT') {
+    			$this->log('Adult subscriptions closed.' , 'error');
+    			throw new InternalErrorException('De wedstrijd voor volwassenen is volzet.');
+    		}
 
     		$participant1 = $this->Participant->patchEntity($this->Participant->newEntity(), $this->request->data['participant1'], ['validate' => false]);
     		$participant1->dob = ModelUtils::parseDate($this->request->data['participant1']['dob'], 'd/m/Y', 'Y-m-d');

@@ -51,6 +51,27 @@ $this->layout = false;
 		</div>
 	</div>
 	
+	<section id="pnlNews">
+		<div class="row">
+			<div id="urban-short" class="small-12 column">
+				<div class="text-center title">
+				    <h2>Attentie - Attention - Atenci&oacute;n</h2>
+				    <div class="line"></div>
+				</div>
+				<article class="uk-article">
+				    <div class="alert alert-danger">Big Run voor volwassenen volzet!</div>
+				    <p>Met enige trots omwille van de massale belangstelling en vlotte inschrijvingen, maar ook met spijt in onze hartjes voor diegene die er niet bij zullen zijn,
+				     moeten we u mede delen
+				    dat alle plaatsen voor de Big Run (6 km) bezet zijn. Om veiligheidsredenen kunnen we slechts een beperkt aantal deelnemers toelaten.</p>
+				    <p>Supporteren kan natuurlijk altijd. Dus indien u te laat was om u in te schrijven, nodigen we u graag uit om de sfeer te komen opsnuiven.</p>
+				</article>
+				<article class="uk-article">
+				    <div class="alert alert-info">Duo Run nog lang NIET VOLZET</div>
+				    <p>Voorlopig zijn we nog op zoek naar sportieve jeugd. Heeft u eens sportieve zoon en/of dochter, aarzel niet en schrijf in. Door hun sportieve inspanning zullen ze nadien minder zin hebben om naar de kermis te gaan ;)</p>
+				</article>
+			</div>
+		</div>
+	</section>
 	<section id="pnlInfo" >
 		<div class="row">
 			<div id="urban-short" class="small-12 medium-4 column">
@@ -227,7 +248,7 @@ $this->layout = false;
 						<img class="img-responsive" src="sponsors/mens.jpg" />
 					</div>
 					<div class="small-6 medium-3 column">
-						
+						<img class="img-responsive" src="sponsors/harlekijn.jpg" />
 					</div>
 					<div class="small-6 medium-3 column">
 						
