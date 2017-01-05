@@ -74,6 +74,15 @@ Router::scope('/', function ($routes) {
 });
 
 Router::connect(
+		'/media',
+		['controller' => 'Media', 'action' => 'view']);
+
+Router::connect(
+		'/album/:id/photo',
+		['controller' => 'Photo', 'action' => 'view'],
+		['id' => '\d+', 'pass' => ['id']]);
+
+Router::connect(
 	'/subscription/*', 
 	['controller' => 'Subscription', 'action' => 'view']);
 

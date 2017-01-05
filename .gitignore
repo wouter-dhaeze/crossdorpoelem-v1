@@ -10,3 +10,14 @@
 /node_modules
 /gulpfile.js
 /package.json
+/.DS_Store
+/bower_components
+/node_modules
+/npm-debug.log
+/css
+/js/
+/RemoteSystemsTempFiles/
+/scss/
+/Servers/
+.bowerrc
+.metadata/

@@ -8,16 +8,7 @@
 	<div class="top-bar-left">
 		<ul class="dropdown menu" data-dropdown-menu>
 			<li class="menu-text"><a href="/">Crossdorp Oelem</a></li>
-			<li><a href="/subscription">Inschrijven</a></li>
-			<li><a href="/pages/participants">Deelnemers</a></li>
-			<li><a href="/pages/info">Praktisch</a></li>
 			<li><a href="/pages/media">Media</a></li>
-		</ul>
-	</div>
-	<div class="top-bar-right" ng-controller="menuCtrl">
-		<ul class="menu">
-			<li><input id="mycode" type="search" ng-model="code" placeholder="Uw code" maxlength="6" size="6"></li>
-			<li><button type="button" class="button" ng-disabled="!(code.length == 6) || loading" ng-click="lookup()">Mijn inschrijving</button></li>
 		</ul>
 	</div>
 </div>

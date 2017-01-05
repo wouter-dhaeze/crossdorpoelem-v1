@@ -17,10 +17,11 @@
 
 <title>Crossdorp Oelem - <?= h($this->fetch('title')) ?></title>
 
-<link href="../css/bootstrap.min.css" rel="stylesheet" />
-<link href="../css/uikit.min.css" rel="stylesheet" />
+<link href="../css/uikit.min.css" rel="stylesheet" type="text/css" />
 <link href="../css/app.css" rel="stylesheet" type="text/css" />
 <link href="../css/crossdorpoelem.css" rel="stylesheet" type="text/css" />
+
+<?= $this->fetch('css') ?>
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -30,23 +31,12 @@
 	    <![endif]-->
 
 </head>
-<body ng-app="cdo.app">
-	<?= $this->element('menu_bar'); ?>
-	<div id="header-detail">
-		<div class="row">
-			<!-- <img src="../img/crossdorp_logo_02_med.png"></img>-->
-			<img src="../img/crossdorp_logo-02_low.png"></img>
-		</div>
-		<div class="row">
-			<div class="small-10 small-offset-1 medium-8 medium-offset-2 large-6 large-offset-3 column title"><?= h($this->fetch('title')) ?></div>
-		</div>
-	</div>
+<body>
+	<?= $this->element('detail_header'); ?>
 	
 	<div class="page-wrapper">
 		<div class="expanded row">
-			<div class="small-1 medium-2 large-3 column"><?= $this->element('sponsors-left'); ?></div>
 			<div class="small-10 medium-8 large-6 column"><?= $this->fetch('content') ?></div>
-			<div class="small-1 medium-2 large-3 column"><?= $this->element('sponsors-right'); ?></div>
 		</div>
 	</div>
 	
@@ -61,8 +51,8 @@
 	<script src="/js/foundation/foundation.min.js"></script>
 	<script src="/js/app.js"></script>
 	<script src="/js/cdo-menu-bar.js"></script>
-	<script src="/js/cdo-subscription.js"></script>
-	<script src="/js/cdo-participant.js"></script>
+	
+	<?= $this->fetch('script') ?>
 </body>
 
 </html>
