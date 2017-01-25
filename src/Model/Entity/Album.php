@@ -8,6 +8,8 @@ use Cake\ORM\Entity;
  *
  * @property int $id
  * @property \Cake\I18n\Time $created
+ * @property string $name
+ * @property string $path
  */
 class Album extends Entity
 {
