@@ -8,7 +8,7 @@ $this->assign('title', 'Media');
 $this->start('css');
 ?>
 
-	<link href="../vendor/blueimp-gallery/css/blueimp-gallery.min.css" rel="stylesheet" type="text/css"/>
+	<link href="/vendor/blueimp-gallery/css/blueimp-gallery.min.css" rel="stylesheet" type="text/css"/>
 
 <?php 
 $this->end();
@@ -30,8 +30,8 @@ $this->end();
 	</div>
 	<div id="links">
 		<?php foreach ($album->photos as $photo) { ?>
-			<a href="../album/1/photo?file=<?= $photo ?>">
-		        <img src="../album/1/photo?file=<?= $photo ?>&thumb=true">
+			<a href="../../album/1/photo?file=<?= $photo ?>">
+		        <img src="../../album/1/photo?file=<?= $photo ?>&thumb=true">
 		    </a>
 		<?php } ?>
 	    <!-- <a href="../images/haas-blij.jpg" title="Banana">
@@ -50,7 +50,7 @@ $this->end();
 $this->start('script');
 ?>
 
-	<script src="../vendor/blueimp-gallery/js/blueimp-gallery.min.js"></script>
+	<script src="/vendor/blueimp-gallery/js/blueimp-gallery.min.js"></script>
 
 	<script>
 		document.getElementById('links').onclick = function (event) {

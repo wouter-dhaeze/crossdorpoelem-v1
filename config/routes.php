@@ -75,7 +75,7 @@ Router::scope('/', function ($routes) {
 
 Router::connect(
 		'/media',
-		['controller' => 'Media', 'action' => 'view']);
+		['controller' => 'Media', 'action' => 'index']);
 
 Router::connect(
 		'/album/:id/photo',
