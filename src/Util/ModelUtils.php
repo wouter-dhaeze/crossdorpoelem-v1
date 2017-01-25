@@ -60,8 +60,6 @@ class ModelUtils
     	return $year;
     }
     
-    public static
-    
     public static function getStaticAlbum() {
     	LOG::info('Getting static album');
     	$album = new Album();

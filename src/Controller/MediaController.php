@@ -17,8 +17,17 @@ class MediaController extends AppController
 	{
 		parent::initialize();
 		//$this->loadComponent('RequestHandler');
+		
+		$this->loadModel('Album');
 	}
     
+	public function index() {
+		$albums = $this->Album->find('all')->all();
+		
+		$this->set('albums', $albums);
+		$this->set('_serialize', ['albums']);
+	}
+	
 	/**
 	 * View method
 	 *
@@ -32,7 +41,9 @@ class MediaController extends AppController
 			$albumId = $id;
 		}
 		
-		$album = ModelUtils::getStaticAlbum();
+		$album = $this->Album->get($id, [
+				'contain' => []
+		]);
 		ModelUtils::loadAlbumFromDisk($album);
 		
 		$this->set('album', $album);
