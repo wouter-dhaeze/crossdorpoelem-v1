@@ -15,8 +15,15 @@ $this->assign('title', 'Media');
 		<?php } else {
 			foreach ($albums as $album): ?>
             	<?= h($album->name) ?><br/>
-            	<?= h($album->path) ?>
+            	<?= h($album->path) ?><br/>
+            	<?= h($album->photo) ?><br/>
             	<?= $this->Html->link(__('View'), ['action' => 'view', $album->id]) ?>
+            	
+            	<?= $this->Html->image("../../album/1/photo?file=" . $album->photo, [
+				    "alt" => $album->name,
+				    'url' => ['action' => 'view', $album->id]
+				]); ?>
+            	
         	<?php endforeach; } ?>
 	</div>
 </div>
