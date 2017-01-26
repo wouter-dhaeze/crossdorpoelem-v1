@@ -8,7 +8,7 @@
 	<div class="top-bar-left">
 		<ul class="dropdown menu" data-dropdown-menu>
 			<li class="menu-text"><a href="/">Crossdorp Oelem</a></li>
-			<li><a href="/pages/media">Media</a></li>
+			<li><a href="/media">Media</a></li>
 		</ul>
 	</div>
 </div>
