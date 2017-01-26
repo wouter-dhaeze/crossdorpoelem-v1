@@ -21,7 +21,6 @@ $this->layout = false;
 <title>Crossdorp Oelem</title>
 
 <link href="css/foundation.css" rel="stylesheet" />
-<link href="css/bootstrap.min.css" rel="stylesheet" />
 <link href="css/uikit.min.css" rel="stylesheet" />
 <link href="css/app.css" rel="stylesheet" type="text/css" />
 <link href="css/crossdorpoelem.css" rel="stylesheet" type="text/css" />
@@ -37,7 +36,7 @@ $this->layout = false;
 <body ng-app="cdo.app">
 	
 	<?= $this->element('menu_bar'); ?>
-	<div id="header">
+	<div id="header-main">
 		<div class="row">
 			<!-- <img src="../img/crossdorp_logo_02_med.png"></img>-->
 			<img src="../img/crossdorp_logo-02_low.png"></img>
@@ -82,7 +81,6 @@ $this->layout = false;
 	<script src="js/angularjs/mask.min.js"></script>
 	<script src="js/uikit/uikit.min.js"></script>
 	<script src="js/foundation/foundation.min.js"></script>
-	<script src="js/bootstrap/bootstrap.min.js"></script>
 	<script src="js/app.js"></script>
 	<script src="js/cdo-youtube.js"></script>
 

@@ -1,4 +1,5 @@
 /vendor/*
+/webroot/css/*
 /config/app.php
 /tmp/*
 /logs/*
