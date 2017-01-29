@@ -3,12 +3,13 @@
 use Cake\I18n\Time;
 Time::setToStringFormat('dd/MM/yyyy');
 
+$this->layout = 'cdo-detail';
 $this->assign('title', 'Media');
 
 ?>
 
 <div>
-	media<br/>
+	media test<br/>
 	<div>
 		<?php if ($albums->isEmpty()) {?>
     		Er werden geen albums gevonden.<br/>

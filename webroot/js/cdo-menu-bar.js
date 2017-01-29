@@ -14,5 +14,13 @@
 			};
 		
 	});
+	
+	angular.element(document).ready(function () {
+		$('.menu a').each(function(index) {
+			if(this.href.trim() == window.location)
+                $(this).parent("li").addClass("menu-text selected");
+            });
+	});
 
 })();
+

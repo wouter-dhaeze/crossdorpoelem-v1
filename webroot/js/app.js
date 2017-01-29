@@ -8,4 +8,5 @@ $(document).foundation();
 	
 	//var cdoApp = angular.module('cdoApp', ['cdo.menu', 'cdo.subscription']);
 	var cdoApp = angular.module('cdo.app', ['cdo.menu', 'cdo.subscription', 'cdo.participant', 'cdo.manage']);
+	
 })();

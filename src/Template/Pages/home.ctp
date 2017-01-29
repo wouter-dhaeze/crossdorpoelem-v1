@@ -82,6 +82,7 @@ $this->layout = false;
 	<script src="js/uikit/uikit.min.js"></script>
 	<script src="js/foundation/foundation.min.js"></script>
 	<script src="js/app.js"></script>
+	<script src="js/cdo-menu-bar.js"></script>
 	<script src="js/cdo-youtube.js"></script>
 
 
