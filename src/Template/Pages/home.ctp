@@ -53,7 +53,7 @@ $this->layout = false;
 	</div>
 	
 	<section id="pnlMovie">
-		<div class="row">
+		<div class="hide row">
 			<div class="small-12 column">
 				<div class="text-center title">
 				    <h2>Crossdorp Oelem - The movie</h2>
