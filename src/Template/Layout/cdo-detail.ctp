@@ -35,9 +35,7 @@
 	<?= $this->element('detail_header'); ?>
 	
 	<div class="page-wrapper">
-		<div class="expanded row">
-			<div class="small-10 medium-8 large-6 column"><?= $this->fetch('content') ?></div>
-		</div>
+		<?= $this->fetch('content') ?>
 	</div>
 	
 	
