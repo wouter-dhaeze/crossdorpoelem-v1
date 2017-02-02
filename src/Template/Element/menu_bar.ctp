@@ -22,7 +22,7 @@
 					<?= $this->element('menu_link'); ?>
 				</ul>
 			</div>
-			<div class="top-bar-right">
+			<div class="hide top-bar-right">
 				<ul class="menu">
 					<li><button type="button" class="button">Admin</button></li>
 				</ul>

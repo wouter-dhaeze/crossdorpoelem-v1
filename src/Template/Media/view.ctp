@@ -13,12 +13,11 @@ $this->start('css');
 <?php 
 $this->end();
 ?>
-
-<div>
-	name: <?= $album->name ?><br/>
-	path: <?= $album->path ?>
+<div class="row">
+	<h1>Title</h1>
+	<p>description</p>
 </div>
-<div>
+<div class="row">
 	<div id="blueimp-gallery" class="blueimp-gallery">
 	    <div class="slides"></div>
 	    <h3 class="title"></h3>
@@ -34,15 +33,6 @@ $this->end();
 		        <img src="../../album/1/photo?file=<?= $photo ?>&thumb=true">
 		    </a>
 		<?php } ?>
-	    <!-- <a href="../images/haas-blij.jpg" title="Banana">
-	        <img src="../images/haas-blij.jpg" alt="Banana">
-	    </a>
-	    <a href="../images/kerk-oedelem.jpg" title="Apple">
-	        <img src="../images/kerk-oedelem.jpg" alt="Apple">
-	    </a>
-	    <a href="../images/old-athletes.jpg" title="Orange">
-	        <img src="../images/old-athletes.jpg" alt="Orange">
-	    </a>-->
 	</div>
 </div>
 

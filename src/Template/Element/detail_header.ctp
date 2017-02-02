@@ -1,7 +1,7 @@
 <div id="header-detail">
 	<div class="row">
 		<div class="hide-for-small-only medium-3 columns">
-			<img id="logo" src="../img/crossdorp_logo-02_low.png"></img>
+			<img id="logo" src="/img/crossdorp_logo-02_low.png"></img>
 		</div>
 		<div class="medium-9 columns">
 			<div class="hide-for-small-only row">
@@ -11,7 +11,7 @@
 						<div class="top-bar-right">
 					    	<ul class="menu">
 					    		<li><input type="search" placeholder="Code"></li>
-					    		<li><button type="button" class="button">Zoek</button></li>
+					    		<li><button type="button" class="button disabled">Zoek</button></li>
 					  		</ul>
 						</div>
 					</div>
