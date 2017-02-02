@@ -14,8 +14,8 @@ $this->start('css');
 $this->end();
 ?>
 <div class="row">
-	<h1>Title</h1>
-	<p>description</p>
+	<h1><?= h($album->name) ?></h1>
+	<p><?= h($album->description) ?></p>
 </div>
 <div class="row">
 	<div id="blueimp-gallery" class="blueimp-gallery">
