@@ -20,6 +20,22 @@ $this->assign('ogmetadata', 'fb_subscription');
 		<p><b><i>Let op: U bent pas officieel ingeschreven nadat we uw betaling per bankverrichting ontvangen hebben! Wanneer u wacht om te betalen tot de dag zelf bestaat de kans dat de wedstrijd reeds volzet is.</i></b></p>
 		<button class="button" role="button" ng-click="showInfo = false">Ik begrijp de instructies en de inschrijving te starten.</button>
 	</div>
+	<div ng-hide="showInfo" class="row animate-show">
+		<h2>Inschrijving</h2>
+		<div ng-show="step == 1">
+			<p class="lead">Kies een optie:</p>
+			<button class="button" role="button" ng-click="start(true)">Ik neem zelf deel.</button> of 
+			<button class="button" role="button" ng-click="start(false)">Ik schrijf in voor iemand anders.</button>
+		</div>
+		<div ng-show="step == 2">
+			<p class="lead">Uw inschijving:</p>
+		</div>
+	</div>
+	<div id="modalAddMember" class="reveal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+  		<h2 id="modalTitle">Vul uw gegevens in</h2>
+  		<p class="lead">Even geduld... Uw gegevens worden opgeslaan.</p>
+	</div>
+		
 </div>
 
 <?php 
