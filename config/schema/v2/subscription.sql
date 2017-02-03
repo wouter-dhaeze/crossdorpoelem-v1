@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `member` (
   `participant` TINYINT(1) NOT NULL DEFAULT 0,
   `validated` TINYINT(1) NOT NULL DEFAULT 0,
   `consent` TINYINT(1) NOT NULL DEFAULT 0,
-  `private` TINYINT(1) NOT NULL DEFAULT 0,
+  `public_profile` TINYINT(1) NOT NULL DEFAULT 0,
   `sponsor` TINYINT(1) NOT NULL DEFAULT 0,
   `number` varchar(4) DEFAULT '0000',
   `subscription_id` INT NOT NULL,
