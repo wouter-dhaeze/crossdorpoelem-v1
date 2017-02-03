@@ -15,6 +15,7 @@ CREATE TABLE IF NOT EXISTS `member` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `fname` VARCHAR(255) NOT NULL,
   `lname` VARCHAR(255) NOT NULL,
+  `gender` varchar(1) NOT NULL,
   `dob` DATETIME NOT NULL,
   `email` VARCHAR(255) NOT NULL,
   `pcode` VARCHAR(8) NOT NULL,
