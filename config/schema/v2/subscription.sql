@@ -20,6 +20,7 @@ CREATE TABLE IF NOT EXISTS `member` (
   `pcode` VARCHAR(8) NOT NULL,
   `code` VARCHAR(8) NULL,
   `subscriber` TINYINT(1) NOT NULL DEFAULT 0,
+  `participant` TINYINT(1) NOT NULL DEFAULT 0,
   `validated` TINYINT(1) NOT NULL DEFAULT 0,
   `consent` TINYINT(1) NOT NULL DEFAULT 0,
   `private` TINYINT(1) NOT NULL DEFAULT 0,
