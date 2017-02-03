@@ -23,7 +23,7 @@ $this->assign('title', 'Media');
 					<h2>
 				    	<?= h($album->name) ?>
 				  	</h2>
-				  	<?= $this->Html->image("../../album/1/photo?file=" . $album->photo, [
+				  	<?= $this->Html->image("../../album/" . $album->id . "/photo?file=" . $album->photo, [
 					    "alt" => $album->name,
 					    'url' => ['action' => 'view', $album->id]
 					]); ?>

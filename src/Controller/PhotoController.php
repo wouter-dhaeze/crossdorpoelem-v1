@@ -15,7 +15,7 @@ class PhotoController extends AppController
 	public function initialize()
 	{
 		parent::initialize();
-		//$this->loadComponent('RequestHandler');
+		$this->loadModel('Album');
 	}
     
 	/**
@@ -28,7 +28,10 @@ class PhotoController extends AppController
 		$fileName = $this->getRequestParameterAsString('file');
 		$isThumbnail = $this->getRequestParameterAsBoolean('thumb');
 		
-		$album = ModelUtils::getStaticAlbum();
+		$album = $this->Album->get($id, [
+				'contain' => []
+		]);
+		ModelUtils::loadAlbumFromDisk($album);
 		
 		$body = $this->getPhotoOrThumbnail($album, $fileName, $isThumbnail);
 			

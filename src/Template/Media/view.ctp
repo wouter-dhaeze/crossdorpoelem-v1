@@ -29,8 +29,8 @@ $this->end();
 	</div>
 	<div id="links">
 		<?php foreach ($album->photos as $photo) { ?>
-			<a href="../../album/1/photo?file=<?= $photo ?>">
-		        <img src="../../album/1/photo?file=<?= $photo ?>&thumb=true">
+			<a href="../../album/<?=$album->id?>/photo?file=<?= $photo ?>">
+		        <img src="../../album/<?=$album->id?>/photo?file=<?= $photo ?>&thumb=true">
 		    </a>
 		<?php } ?>
 	</div>
