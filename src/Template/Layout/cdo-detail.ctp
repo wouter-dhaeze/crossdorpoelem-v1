@@ -31,7 +31,7 @@
 	    <![endif]-->
 
 </head>
-<body>
+<body ng-app="cdo.app">
 	<?= $this->element('detail_header'); ?>
 	
 	<div class="page-wrapper">
