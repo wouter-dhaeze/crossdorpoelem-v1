@@ -93,9 +93,6 @@ Router::connect(
 Router::extensions(['json']);
 Router::scope('/api', function ($routes) {
 	$routes->extensions(['json']);
-	$routes->resources('Interest', [
-		'actions' => ['index' => 'all', 'create' => 'create']
-	]);
 	$routes->resources('Subscription', [
 		'actions' => ['create' => 'create', 'index' => 'get', 'delete' => 'remove'] 
 	]);
