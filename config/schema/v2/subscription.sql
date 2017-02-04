@@ -27,6 +27,7 @@ CREATE TABLE IF NOT EXISTS `member` (
   `public_profile` TINYINT(1) NOT NULL DEFAULT 0,
   `sponsor` TINYINT(1) NOT NULL DEFAULT 0,
   `number` varchar(4) DEFAULT '0000',
+  `wave` varchar(45) NOT NULL DEFAULT '5KM',
   `subscription_id` INT NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC),
