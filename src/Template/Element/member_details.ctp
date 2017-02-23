@@ -84,7 +84,7 @@
 		<div class="callout alert small" role="alert" ng-show="<?= $formName?>.pcode<?= $ngMemberIndex?>.$dirty && <?= $formName?>.pcode<?= $ngMemberIndex?>.$error.pcode">Ongeldige postcode</div>
 	</div>
 </div>
-<div class="row" ng-hide="<?= $ngHideCode ?> == 'true'">
+<div class="row" ng-hide="<?= $ngHideCode ?>">
 	<div ng-hide="<?= $ngmodelWave ?> == 'PARTY'">
 		<div class="large-2 columns">
 			<label for="code<?= $ngMemberIndex?>" class="right inline">Code</label>
