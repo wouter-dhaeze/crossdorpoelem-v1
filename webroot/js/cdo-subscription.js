@@ -2,22 +2,138 @@
 	var modSubscription = angular.module('cdo.subscription', ['ui.mask']);
 	
 	modSubscription.controller('subscriptionCtrl', function($scope, $log, $http) {
-		//$scope.showInfo = true;
-		$scope.showInfo = false;
-
+		$scope.showInfo = true;
+		//$scope.showInfo = false;
+		
 		$scope.subscription = emptySubscription;
-		$scope.member = emptyMember;
-		//$scope.subscription = dummySubscription;	
+		$scope.currentMember;
+		$scope.currentMemberIndex = -1;
+		
+		$scope.cost = 0;
 		
 		$scope.step = 1;
 		
-		$scope.start = function(participant) {
-			$scope.member.subscriber = true;
-			$scope.member.participant = participant;
-			$scope.step = 2;
+		$scope.waveOptions = waveOptions;
+		
+		$scope.start = function() {
+			$("html, body").animate({ scrollTop: 0 }, "slow", function() {
+				$('#modalStartSubscription').foundation('open');
+			});
+		};
+		
+		$scope.createSubscriber = function(isParticipant) {
+			$scope.step++;
 			
-			$('#modalAddMember').foundation('open');
+			$('#modalStartSubscription').foundation('close');
+			
+			$scope.newMember(true, isParticipant);
+		};
+		
+		$scope.newMember = function(isSubscriber, isParticipant) {
+			$scope.currentMember = createNewMember();
+			//$scope.currentMember = dummyMember;
+			$scope.currentMember.subscriber = isSubscriber;
+			$scope.currentMember.participant = isParticipant;
+			
+			$scope.currentMemberIndex = -1;
+			
+			$('#modalEditMember').foundation('open');
 		}
+		
+		$scope.addEditMember = function() {
+			$scope.showInfo = false;
+			
+			$scope.subscription.members.push($.extend(true, {}, $scope.currentMember));
+			
+			$scope.currentMember = null;
+			$scope.currentMember = -1;
+			
+			calculateCost();
+			
+			$('#modalEditMember').foundation('close');
+		};
+		
+		$scope.updateEditMember = function() {
+			$scope.subscription.members[$scope.currentMemberIndex] = $.extend(true, {}, $scope.currentMember);
+			
+			$scope.currentMember = null;
+			$scope.currentMember = -1;
+			
+			calculateCost();
+			
+			$('#modalEditMember').foundation('close');
+		};
+		
+		$scope.cancelEditMember = function() {
+			$scope.currentMember = null;
+			$scope.currentMember = -1;
+			
+			$('#modalEditMember').foundation('close');
+		};
+		
+		$scope.editMember = function(index) {
+			$scope.currentMember = $.extend(true, {}, $scope.subscription.members[index]);
+			$scope.currentMemberIndex = index;
+			
+			$('#modalEditMember').foundation('open');
+		};
+		
+		$scope.initRemoveMember = function(index) {
+			$scope.currentMemberIndex = index;
+			
+			$('#modalRemoveMember').foundation('open');
+		};
+		
+		$scope.cancelRemoveMember = function() {
+			$scope.currentMemberIndex = -1;
+			
+			$('#modalRemoveMember').foundation('close');
+		};
+		
+		$scope.removeMember = function(index) {
+			$scope.subscription.members.splice($scope.currentMemberIndex, 1);
+			calculateCost();
+			
+			$scope.currentMemberIndex = -1;
+			
+			$('#modalRemoveMember').foundation('close');
+		};
+		
+		$scope.initFinalize = function(index) {
+			$('#modalFinalize').foundation('open');
+		};
+		
+		$scope.cancelFinalize = function(index) {
+			$('#modalFinalize').foundation('close');
+		};
+		
+		$scope.submitSubscription = function() {
+			$('#modalFinalize').foundation('close');
+			
+			//TODO set sponsorcode to empty if partyrun
+			
+			alert('submit');
+		}
+		
+		function createNewMember() {
+			return $.extend(true, {}, emptyMember);
+		}
+		
+		function calculateCost() {
+			$scope.cost = 0;
+			$.each($scope.subscription.members, function( index, m ) {
+				if (m.participant) {
+					var c = getAmountFromWaveOptions(m.wave);
+					$scope.cost += c;
+				}
+			});
+		}
+		
+		function getAmountFromWaveOptions(option) {
+			var o = waveOptions.filter(function(wo) { return wo.id === option; });
+			return o[0].cost;
+		}
+		
 	});
 	
 	modSubscription.directive('dob', function() {
@@ -45,6 +161,12 @@
 		  };
 		});
 	
+	var waveOptions = [
+               {id: '5KM', label: 'Crossdorp 5 KM', notAnOption: false, cost: 6},
+               {id: '10KM', label: 'Crossdorp 10 KM', notAnOption: false, cost: 10},
+               {id: 'PARTY', label: 'Crossdorp Party Run', notAnOption: false, cost: 15}
+           ];
+	
 	var emptyMember = {
 		id: '',
 		fname: '',
@@ -60,7 +182,8 @@
 		consent: false,
 		public_profile: false,
 		sponsor: false,
-		number: ''	
+		number: '',
+		wave: ''
 	};
 	
 	var emptySubscription = {
@@ -69,18 +192,26 @@
 		price: 0,
 		payed: false,
 		validated: false,
-		participants: []
+		members: []
 	};
 	
 	var dummyMember = {
 		id: '',
+		fname: 'Wouter',
+		lname: 'Dhaeze',
 		gender: 'M',
-		fname: 'wouter',
-		lname: 'dhaeze',
+		dob: '09/03/1982',
 		email: 'wouter.dhaeze@gmail.com',
-		dob: "09/03/2005",
-		number: 'N/A',
-		start_order: 1	
+		pcode: '8730',
+		code: '',
+		subscriber: true,
+		participant: true,
+		validated: false,
+		consent: false,
+		public_profile: false,
+		sponsor: false,
+		number: '',
+		wave: '5KM'
 	};
 	
 	var dummySubscription = {
