@@ -2,16 +2,14 @@
 	var modSubscription = angular.module('cdo.subscription', ['ui.mask']);
 	
 	modSubscription.controller('subscriptionCtrl', function($scope, $log, $http) {
-		$scope.showInfo = true;
-		//$scope.showInfo = false;
-		
 		$scope.subscription = emptySubscription;
 		$scope.currentMember;
 		$scope.currentMemberIndex = -1;
 		
 		$scope.cost = 0;
 		
-		$scope.step = 1;
+		//$scope.step = 1;
+		$scope.step = 2;
 		
 		$scope.waveOptions = waveOptions;
 		
@@ -22,16 +20,14 @@
 		};
 		
 		$scope.createSubscriber = function(isParticipant) {
-			$scope.step++;
-			
 			$('#modalStartSubscription').foundation('close');
 			
-			$scope.newMember(true, isParticipant);
+			$scope.newMember(true, isParticipant);						
 		};
 		
 		$scope.newMember = function(isSubscriber, isParticipant) {
 			$scope.currentMember = createNewMember();
-			//$scope.currentMember = dummyMember;
+			$scope.currentMember = dummyMember;
 			$scope.currentMember.subscriber = isSubscriber;
 			$scope.currentMember.participant = isParticipant;
 			
@@ -51,6 +47,8 @@
 			calculateCost();
 			
 			$('#modalEditMember').foundation('close');
+			
+			$scope.step = 2;
 		};
 		
 		$scope.updateEditMember = function() {
@@ -111,8 +109,13 @@
 			$('#modalFinalize').foundation('close');
 			
 			//TODO set sponsorcode to empty if partyrun
-			
-			alert('submit');
+			var res = $http.post('../api/subscription.json', $scope.subscription);
+			res.success(function(data, status, headers, config) {
+				submitSuccess(null);
+			});
+			res.error(function(data, status, headers, config) {
+				submitFail(null);
+			});
 		}
 		
 		function createNewMember() {
@@ -132,6 +135,14 @@
 		function getAmountFromWaveOptions(option) {
 			var o = waveOptions.filter(function(wo) { return wo.id === option; });
 			return o[0].cost;
+		}
+		
+		function submitSuccess(result) {
+			$scope.step = 3;
+		}
+		
+		function submitFail(result) {
+			$('#modalErrorSubscription').foundation('open');
 		}
 		
 	});

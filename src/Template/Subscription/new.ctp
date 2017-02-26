@@ -7,22 +7,22 @@ $this->assign('ogmetadata', 'fb_subscription');
 ?>
 
 <div ng-controller="subscriptionCtrl">
-	<div id="pnlInfo" class="row animate-show" ng-show="showInfo">
+	<div id="pnlInfo" class="row animate-show" ng-show="step == 1">
 		<h2>Instructies</h2>
 		<p class="lead">Om in te schrijven voor Crossdorp Oelem volgt u onderstaande instructies.</p>
 		<p>Gelieve deze aandachtig te lezen. De inschrijving gebeurt in 4 stappen:</p>
 		<ol>
 			<li><b><i>Vul uw gegevens in</i></b><br/>Vul het inschrijvingsformulier in. U schrijft uzelf en eventueel meerder kompanen in, ofwel vult u het inschrijvingsformulier voor een ander in. Let wel: <b>De inschrijver betaald!</b>(Het komt tevoorschijn wanneer u op onderstaande knop klikt.)</li>
-			<li><b><i>Valideer uw inschrijving</i></b><br/>Wanneer we uw gegevens uit stap 1 ontvangen hebben, zal u een eerste e-mail ontvangen. Volg de  instructies in de e-mail om uw inschrijving te valideren. Het is dus van uiterst belang dat u een e-mailadres gebruit waar u toegang toe heeft. Inschrijvingen die niet binnen 7 dagen werden gevalideerd, worden verwijderd uit ons bestand.</li>
+			<li><b><i>Valideer uw inschrijving</i></b><br/>Wanneer we uw gegevens uit stap 1 ontvangen hebben, zal u een eerste e-mail ontvangen. Volg de  instructies in de e-mail om uw inschrijving te valideren. Het is dus van uiterst belang dat u een e-mailadres gebruikt waar u toegang toe heeft. Inschrijvingen die niet binnen 7 dagen werden gevalideerd, worden verwijderd uit ons bestand.</li>
 			<li><b><i>Uw inschrijving betalen</i></b><br/>Wanneer uw inschrijving correct gevalideerd werd, zal u een tweede e-mail ontvangen met daarin de betaalgegevens. Volg opnieuw de instructies in de e-mail. (Sponsors krijgen ook deze mail maar hoeven niet te betalen.)</li>
 			<li><b><i>Uw inschrijving is voltooid</i></b><br/>Wanneer we uw betaling ontvangen hebben sturen we u een derde e-mail (dit kan evenwel enkele dagen duren). Daarin vindt u de bevestiging van uw betaling. Uw ingeschreven deelnemers krijgen per e-mail hun borstnummer toegestuurd.</li>
 		</ol>
 		<p><b><i>Let op: U bent pas officieel ingeschreven nadat we uw betaling per bankverrichting ontvangen hebben! Wanneer u wacht om te betalen tot de dag zelf bestaat de kans dat de wedstrijd reeds volzet is.</i></b></p>
 		<button class="button" role="button" ng-click="start()">Ik begrijp de instructies en de inschrijving te starten.</button>
 	</div>
-	<div ng-hide="showInfo" class="row animate-show">
+	<div ng-show="step == 2" class="row animate-show">
 		<h2>
-			<span class="float-left">Inschrijving</span>&nbsp;
+			<span class="float-left">Inschrijving</span>
 		</h2>
 		<div class="clearfix">
 			<div class="float-left">
@@ -80,6 +80,16 @@ $this->assign('ogmetadata', 'fb_subscription');
 			</div>
 		</div>		
 	</div>
+	<div class="row" ng-show="step == 3">
+		<div class="small-8 small-centered column">
+			<h3>Inschrijving ontvangen</h3>
+			<p>Er wordt momenteel een validatie-email naar blabla@blabla.com gestuurd. Gelieve de instructies in de email goed op te volgen om uw inschrijving af te handelen.</p>
+			<p>u maakte gebruik van geldige sponsor codes. Het restbedrag bedraagt 9999 euro. Gelieve uw inschrijving ook te valideren.</p>
+			<div class="callout secondary warning">
+				Let op: indien u uw inschrijving niet binnen de 7 dagen valideerd, wordt deze geschrapt uit onze lijst.
+			</div>
+		</div>
+	</div>
 	<div id="modalStartSubscription" class="reveal" data-reveal aria-hidden="true" role="dialog">
 		<div ng-show="step == 1">
 			<p class="lead">Kies een optie</p>
@@ -88,7 +98,7 @@ $this->assign('ogmetadata', 'fb_subscription');
 		</div>
 	</div>
 	<div id="modalEditMember" class="full reveal" data-reveal>
-		<div ng-show="step == 2">
+		<div>
 			<h2 id="modalTitle">Vul uw gegevens in</h2>
 			<form name="memberForm" novalidate>
 				<div class="row">
@@ -138,11 +148,27 @@ $this->assign('ogmetadata', 'fb_subscription');
 	</div>
 	<div id="modalFinalize" class="reveal" data-reveal>
 		<h1>Bevestig uw inschrijving.</h1>
-		<p class="lead">Onderstaande personen worden ingeschreven:</p>
+		<p class="lead">Weet u zeker dat alle gegevens correct zijn?</p>
 		<div>
-			<button class="button success" role="button" ng-click="submitSubscription()">Bevestigen</button>
-			<a ng-click="cancelFinalize()">Gegevens aanpassen</a>
+			<button class="button success" role="button" ng-click="submitSubscription()">Ja, bevestig mijn inschrijving</button>
+			<a ng-click="cancelFinalize()">Nee, gegevens aanpassen</a>
 		</div>  
+	</div>
+	<div id="modalErrorSubscription" class="reveal" data-reveal>
+		<div>
+			<h2>Systeemfout opgetreden</h2>
+			<p></p>
+		</div>
+		<div>
+			<h2>Fout opgetreden</h2>
+			<p>Uw inschrijving bevat ongeldige gegevens:</p>
+			<ul>
+				<li>Geboortedatum</li>
+			</ul>
+		</div>
+		<button class="close-button" data-close aria-label="Close reveal" type="button">
+			<span aria-hidden="true">&times;</span>
+		</button>
 	</div>
 </div>
 
