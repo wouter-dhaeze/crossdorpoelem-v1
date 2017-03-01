@@ -2,15 +2,15 @@
 	var modSubscription = angular.module('cdo.subscription', ['ui.mask']);
 	
 	modSubscription.controller('subscriptionCtrl', function($scope, $log, $http) {
-		$scope.subscription = emptySubscription;
-		//$scope.subscription = angular.copy(dummySubscription);
+		//$scope.subscription = emptySubscription;
+		$scope.subscription = angular.copy(dummySubscription);
 		$scope.currentMember;
 		$scope.currentMemberIndex = -1;
 		
 		$scope.cost = 0;
 		
-		$scope.step = 1;
-		//$scope.step = 2;
+		//$scope.step = 1;
+		$scope.step = 2;
 		
 		$scope.waveOptions = waveOptions;
 		
@@ -116,7 +116,6 @@
 			$('#modalFinalize').foundation('close');
 			$('#modalSaving').foundation('open');
 			
-			//TODO set sponsorcode to empty if partyrun
 			$http.post('../api/subscription.json', $scope.subscription).then(function(data) {
 				$('#modalSaving').foundation('close');
 				
@@ -126,6 +125,15 @@
 				$('#modalSaving').foundation('close');
 				
 				submitFail(data);
+			});
+		};
+		
+		$scope.loadSubscription = function(code) {
+			$http.get('../api/subscription.json?code=' + code).then(function(data) {
+				populateSubscription(data);
+			}, 
+			function(data) {
+				alert(angular.toJson(data, true));
 			});
 		}
 		

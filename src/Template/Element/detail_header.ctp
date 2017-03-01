@@ -9,10 +9,14 @@
 				<div class=" medium-3 columns">
 					<div>
 						<div class="top-bar-right">
+							<form action="/subscription" method="GET">
 					    	<ul class="menu">
-					    		<li><input type="search" placeholder="Code"></li>
-					    		<li><button type="button" class="button disabled">Zoek</button></li>
+					    		
+					    		<li><input type="search" placeholder="Code" name="code"></li>
+					    		<li><button type="submit" class="button">Zoek</button></li>
+					    		
 					  		</ul>
+					  		</form>
 						</div>
 					</div>
 				</div>

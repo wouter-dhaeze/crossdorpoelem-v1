@@ -31,7 +31,7 @@ class SubscriptionController extends AppController
 		$this->loadModel('Sponsor');
 		$this->loadModel('Member');
 		
-		$this->Auth->allow(['create', 'validate']);
+		$this->Auth->allow(['create', 'validate', 'get']);
 		//$this->Auth->allow(['create', 'edit', 'validate', 'update']);
 		
 		Time::setJsonEncodeFormat('dd/MM/yyyy');
@@ -47,7 +47,16 @@ class SubscriptionController extends AppController
     public function view($id = null)
     {
     	$view = 'view';
+    	
     	if (is_null($id)) {
+    		$code = $this->request->query('code');
+    		
+    		if (!empty($code)) {
+    			return $this->redirect(['action' => 'view', $code]);
+    		}
+    	}
+    	
+    	if (is_null($id) || empty($id)) {
     		$view = 'new';
     	} else {
     		$subscription = $this->getSubscriptionByCode($id, false);
@@ -71,25 +80,27 @@ class SubscriptionController extends AppController
     		$this->set('message', "Er is geen schrijving met code '" . $code . "' gevonden.");
     		$this->render('error');
     	} else {
-    		$subscription->validated = true;
-    		
-    		if ($subscription->price == 0) {
-    			$subscription->payed = true;
-    		}
-    		
-    		$subscription = $this->Subscription->save($subscription);
-    		
-    		if ($subscription == false) {
-    			Log::error("Save returend false for subscription code " . $code);
-    			$this->viewBuilder()->layout('cdo-detail');
-    			$this->set('message', "Er is een fout gebeurd tijdens het valideren van uw inschrijving. Gelieve later opnieuw te proberen.");
-    			$this->render('error');
-    		}
-    		
-    		$this->sendPaymentMail($code);}
-    		
-    		Log::debug("Subscription code '" . $code . "' validated");
-    		
+    		if (!$subscription->validated) {
+	    		$subscription->validated = true;
+	    		
+	    		if ($subscription->price == 0) {
+	    			$subscription->payed = true;
+	    		}
+	    		
+	    		$subscription = $this->Subscription->save($subscription);
+	    		
+	    		if ($subscription == false) {
+	    			Log::error("Save returend false for subscription code " . $code);
+	    			$this->viewBuilder()->layout('cdo-detail');
+	    			$this->set('message', "Er is een fout gebeurd tijdens het valideren van uw inschrijving. Gelieve later opnieuw te proberen.");
+	    			$this->render('error');
+	    		}
+	    		
+	    		$this->sendPaymentMail($code);
+	    		
+	    		Log::debug("Subscription code '" . $code . "' validated");
+	    	}
+	    	
     		return $this->redirect(['action' => 'view', $code]);
     	}
     }
@@ -119,7 +130,7 @@ class SubscriptionController extends AppController
 	    		}
 	    		
 	    		$subscription = $this->Subscription->get($subscription->id, [
-		    			'contain' => ['Participant']
+		    			'contain' => ['Member']
 		    			]);
 	    		
 	    		$this->response->type('json');
