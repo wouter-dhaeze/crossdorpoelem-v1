@@ -43,4 +43,22 @@ return [
             //'init' => ['SET GLOBAL innodb_stats_on_metadata = 0'],
         ],
     ],
+		
+	'EmailTransport' => [
+			'default' => [
+					'className' => 'Smtp',
+					//'className' => 'Mail',
+					// The following keys are used in SMTP transports
+					//'host' => 'ssl://send.one.com',
+					'host' => 'ssl://smtp.gmail.com',
+					'port' => 465,
+					'timeout' => 30,
+					//'username' => 'inschrijving@crossdorpoelem.be',
+					//'password' => 'L8P3PmKd',
+					'username' => 'vzwfeles@gmail.com',
+					'password' => 'lYThBfZ8',
+					'client' => null,
+					'tls' => false,
+			],
+	],
 ];

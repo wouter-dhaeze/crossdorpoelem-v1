@@ -244,7 +244,7 @@ class SubscriptionController extends AppController
 	    			]);
 	    		
 	    		$code = $subscription->code;
-	    		//$this->sendValidationMail($code);
+	    		$this->sendValidationMail($code);
 	    	} else {
 	    		$this->log('Save returned false' , 'error');
 	    		throw new InternalErrorException('De inschrijving kon niet worden bewaard. Zijn alle velden correct ingevuld?');
@@ -542,7 +542,7 @@ class SubscriptionController extends AppController
 	    $subscription = $subscriptionq->first();
 	    
 	    return $this->Subscription->get($subscription->id, [
-	    		'contain' => ['Participant']
+	    		'contain' => ['Member']
 	    		]);
     }
     

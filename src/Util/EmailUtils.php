@@ -69,7 +69,7 @@ class EmailUtils
     	$email = new Email('default');
     	$email->template($template, 'cdo')
 		    	->emailFormat('html')
-		    	->to($subscription->participant[0]->email)
+		    	->to($subscription->member[0]->email)
 		    	->subject($subject)
 		    	->viewVars($viewVars);
     	$email->send();
