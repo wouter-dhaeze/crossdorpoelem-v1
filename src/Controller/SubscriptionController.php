@@ -72,6 +72,11 @@ class SubscriptionController extends AppController
     		$this->render('error');
     	} else {
     		$subscription->validated = true;
+    		
+    		if ($subscription->price == 0) {
+    			$subscription->payed = true;
+    		}
+    		
     		$subscription = $this->Subscription->save($subscription);
     		
     		if ($subscription == false) {
@@ -81,11 +86,7 @@ class SubscriptionController extends AppController
     			$this->render('error');
     		}
     		
-    		if (ModelUtils::isSponsorCode($code)) {
-    			$this->sendSponsorMail($code);
-    		} else {
-    			$this->sendPaymentMail($code);
-    		}
+    		$this->sendPaymentMail($code);}
     		
     		Log::debug("Subscription code '" . $code . "' validated");
     		

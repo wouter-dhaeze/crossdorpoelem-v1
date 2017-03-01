@@ -102,7 +102,7 @@ Router::scope('/api', function ($routes) {
 	$routes->resources('Number', [
 		'actions' => ['index' => 'get']
 	]);
-	$routes->resources('Participant', [
+	$routes->resources('Member', [
 		'actions' => ['index' => 'get']
 	]);
 });

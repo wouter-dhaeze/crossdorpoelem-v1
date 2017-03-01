@@ -16,10 +16,6 @@ class EmailUtils
     	EmailUtils::sendMail('subscription_payment', 'Crossdorp Oelem - Inschrijving gevalideerd', $subscription);
     }
     
-    public static function sendSponsorMail($subscription) {
-    	EmailUtils::sendMail('subscription_sponsor', 'Crossdorp Oelem - Inschrijving gevalideerd', $subscription);
-    }
-    
     public static function sendSubscriptionSuccessMail($subscription) {
     	EmailUtils::sendMail('subscription_number', 'Crossdorp Oelem - Inschrijving voltooid', $subscription);
     }
