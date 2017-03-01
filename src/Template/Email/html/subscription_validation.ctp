@@ -1,8 +1,5 @@
 <?php
-	$addressing = $subscription->participant[0]->fname;
-	if ($subscription->wave == 'YOUTH') {
-		$addressing .= ' en ' . $subscription->participant[1]->fname;
-	}
+	$addressing = $subscription->mamber[0]->fname;
 	
 	$validationUrl = $baseUrl . '/validatesubscription/' . $subscription->code;
 ?>
@@ -14,13 +11,21 @@
 	<p>Stap 1 is met succes voltooid! Hoogtijd om uw inschrijving te valideren.</p>
 	<p>Hieronder vindt u uw inschrijvingscode terug:</p>
 	<h1><?= $subscription->code ?></h1>
-	<p>Deze code is belangrijk omdat u die zal moeten meegeven in uw overschrijving (niet voor sponsors). Ook kunt u later deze code gebruiken om de status van uw inschrijving te bekijken.
+	<?php if ($subscription->price > 0) {?>
+	<p>Deze code is belangrijk omdat u die zal moeten meegeven in uw overschrijving. Ook kunt u later deze code gebruiken om de status van uw inschrijving te bekijken.
 	</p>
+	<?php } else { ?>
+		<p>Doordat u gebruik maakte van de sponsorkorting hoeft u geen overschrijving te verrichten. U kunt bovenstaande code gebruiken om de status van uw inschrijving te bekijken.</p>
+	<?php }?>
 </div>
 <br/>
 <div>
 	<h2>Op naar stap 2!</h2>
-	<p>Voor u de betaalgegevens ontvangt, vragen wij u uw inschrijving te valideren. Dit doet u door op onderstaande link te klikken. U ontvangt spoedig een tweede e-mail met de betaalgegevens.</p>
+	<p>Gelieve op onderstaande link te klikken om uw inschrijving te valideren.
+		<?php if ($subscription->price > 0) {?>
+			<span>U ontvangt een tweede e-mail na de validatie van uw inschrijving.</span>
+		<?php }?>
+	</p>
 	<h3><a href="<?= $validationUrl?>">Valideer mijn inschrijving</a></h3>
 	<br/>
 	<p>Mocht deze link niet werken, kopieer dan <?= $validationUrl?> naar de adresbalk van uw browser.</p>

@@ -54,7 +54,7 @@
 	</div>
 	<div class="large-10 columns">
 		<input type="text" id="dob<?= $ngMemberIndex?>" name="dob<?= $ngMemberIndex?>" 
-			placeholder="dd/MM/yyyy" ui-mask="99/99/9999" ui-mask-placeholder ui-mask-placeholder-char="_" model-view-value="true"
+			placeholder="dd/mm/yyyy" ui-mask="99/99/9999" ui-mask-placeholder ui-mask-placeholder-char="_" model-view-value="true"
 			ng-model="<?= $ngmodelDob ?>" ng-readonly="<?= $ngReadonly ?>" required></input>
 
 		<!-- <div class="callout alert small" role="alert" ng-show="<?= $formName?>.dob<?= $ngMemberIndex?>.$dirty && <?= $formName?>.dob<?= $ngMemberIndex?>.$error.dob">Ongeldige geboortedatum</div> -->

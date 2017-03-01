@@ -243,7 +243,7 @@ class SubscriptionController extends AppController
 	    			'contain' => ['Member']
 	    			]);
 	    		
-	    		//$code = $subscription->code;
+	    		$code = $subscription->code;
 	    		//$this->sendValidationMail($code);
 	    	} else {
 	    		$this->log('Save returned false' , 'error');
