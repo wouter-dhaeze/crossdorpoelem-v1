@@ -8,10 +8,11 @@ use Cake\ORM\Entity;
  *
  * @property int $id
  * @property \Cake\I18n\Time $created
- * @property string $code
- * @property string $wave
+ * @property int $price
+ * @property bool $validated
  * @property bool $payed
- * @property \App\Model\Entity\Participant[] $participant
+ * @property string $code
+ * @property \App\Model\Entity\Member[] $member
  */
 class Subscription extends Entity
 {

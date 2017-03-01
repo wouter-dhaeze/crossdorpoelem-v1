@@ -12,17 +12,23 @@ $this->assign('ogmetadata', 'fb_subscription');
 		<p class="lead">Om in te schrijven voor Crossdorp Oelem volgt u onderstaande instructies.</p>
 		<p>Gelieve deze aandachtig te lezen. De inschrijving gebeurt in 4 stappen:</p>
 		<ol>
-			<li><b><i>Vul uw gegevens in</i></b><br/>Vul het inschrijvingsformulier in. U schrijft uzelf en eventueel meerder kompanen in, ofwel vult u het inschrijvingsformulier voor een ander in. Let wel: <b>De inschrijver betaald!</b>(Het komt tevoorschijn wanneer u op onderstaande knop klikt.)</li>
-			<li><b><i>Valideer uw inschrijving</i></b><br/>Wanneer we uw gegevens uit stap 1 ontvangen hebben, zal u een eerste e-mail ontvangen. Volg de  instructies in de e-mail om uw inschrijving te valideren. Het is dus van uiterst belang dat u een e-mailadres gebruikt waar u toegang toe heeft. Inschrijvingen die niet binnen 7 dagen werden gevalideerd, worden verwijderd uit ons bestand.</li>
-			<li><b><i>Uw inschrijving betalen</i></b><br/>Wanneer uw inschrijving correct gevalideerd werd, zal u een tweede e-mail ontvangen met daarin de betaalgegevens. Volg opnieuw de instructies in de e-mail. (Sponsors krijgen ook deze mail maar hoeven niet te betalen.)</li>
-			<li><b><i>Uw inschrijving is voltooid</i></b><br/>Wanneer we uw betaling ontvangen hebben sturen we u een derde e-mail (dit kan evenwel enkele dagen duren). Daarin vindt u de bevestiging van uw betaling. Uw ingeschreven deelnemers krijgen per e-mail hun borstnummer toegestuurd.</li>
+			<li><b><i>Vul uw gegevens in</i></b><br/>Vul het inschrijvingsformulier in. U schrijft ofwel uzelf (en eventueel meerder kompanen in) in, ofwel vult u het inschrijvingsformulier voor een ander in.
+				<div class="callout warning">Let op: de inschrijver schrijft het volledige bedrag over, ook indien die meerdere deelnemers inschrijft!</div>
+			</li>
+			<li><b><i>Valideer uw inschrijving</i></b><br/>Wanneer we uw gegevens uit stap 1 ontvangen hebben, zal u een eerste e-mail ontvangen. Volg de  instructies in de e-mail om uw inschrijving te valideren. Het is dus van uiterst belang dat u een e-mailadres gebruikt waar u toegang toe heeft.
+				<div class="callout warning">Inschrijvingen die niet binnen 7 dagen werden gevalideerd, worden verwijderd uit ons bestand.</div>
+			</li>
+			<li><b><i>Uw inschrijving betalen</i></b><br/>Wanneer uw inschrijving correct gevalideerd werd, zal u een tweede e-mail ontvangen met daarin de betaalgegevens. Volg opnieuw de instructies in de e-mail.
+				<div class="callout primary">Indien u van sponsor-codes gebruik maakt, hoeft u enkel het restbedrag over te schrijven.</div>
+			</li>
+			<li><b><i>Uw inschrijving is voltooid</i></b><br/>Wanneer we uw betaling ontvangen hebben sturen we u een derde e-mail (dit kan evenwel enkele dagen duren). Daarin vindt u de bevestiging van uw betaling. Uw ingeschreven deelnemers krijgen hun borstnummer per e-mail toegestuurd.</li>
 		</ol>
-		<p><b><i>Let op: U bent pas officieel ingeschreven nadat we uw betaling per bankverrichting ontvangen hebben! Wanneer u wacht om te betalen tot de dag zelf bestaat de kans dat de wedstrijd reeds volzet is.</i></b></p>
-		<button class="button" role="button" ng-click="start()">Ik begrijp de instructies en de inschrijving te starten.</button>
+		<div class="callout alert">Let op: U bent pas officieel ingeschreven nadat we uw betaling per bankverrichting ontvangen hebben! Wanneer u wacht om te betalen tot de dag zelf bestaat de kans dat de wedstrijd reeds volzet is.</div>
+		<button class="button large" role="button" ng-click="start()">Ik begrijp de instructies, start de inschijving!</button>
 	</div>
 	<div ng-show="step == 2" class="row animate-show">
 		<h2>
-			<span class="float-left">Inschrijving</span>
+			<span>Inschrijving</span>
 		</h2>
 		<div class="clearfix">
 			<div class="float-left">
@@ -83,10 +89,10 @@ $this->assign('ogmetadata', 'fb_subscription');
 	<div class="row" ng-show="step == 3">
 		<div class="small-8 small-centered column">
 			<h3>Inschrijving ontvangen</h3>
-			<p>Er wordt momenteel een validatie-email naar blabla@blabla.com gestuurd. Gelieve de instructies in de email goed op te volgen om uw inschrijving af te handelen.</p>
-			<p>u maakte gebruik van geldige sponsor codes. Het restbedrag bedraagt 9999 euro. Gelieve uw inschrijving ook te valideren.</p>
+			<p>Er wordt momenteel een validatie-email naar <b>{{subscriberMail}}</b> gestuurd. Gelieve de instructies in de e-mail goed  te volgen om uw inschrijving verder af te handelen.</p>
+			<p ng-show="isSponsored">U maakte gebruik van &#233;&#233;n of meerdere <b>geldige sponsor-codes</b>. Het restbedrag bedraagt <b>{{subscription.price}} euro</b>. Ook u, lieve sponsor, verzoeken we vriendelijk uw inschrijving te valideren via de mail die u ontvangt op <b>{{subscriberMail}}</b>.</p>
 			<div class="callout secondary warning">
-				Let op: indien u uw inschrijving niet binnen de 7 dagen valideerd, wordt deze geschrapt uit onze lijst.
+				Let op: indien u uw inschrijving niet binnen de 7 dagen valideert, wordt deze geschrapt uit onze lijst.
 			</div>
 		</div>
 	</div>
@@ -155,20 +161,24 @@ $this->assign('ogmetadata', 'fb_subscription');
 		</div>  
 	</div>
 	<div id="modalErrorSubscription" class="reveal" data-reveal>
-		<div>
+		<div ng-show="isSystemError" class="callout alert">
 			<h2>Systeemfout opgetreden</h2>
-			<p></p>
+			<p>{{errorMessages[0]}}</p>
 		</div>
-		<div>
+		<div ng-show="!isSystemError" class="callout warning">
 			<h2>Fout opgetreden</h2>
 			<p>Uw inschrijving bevat ongeldige gegevens:</p>
-			<ul>
-				<li>Geboortedatum</li>
+			<ul ng-repeat="m in errorMessages">
+				<li>{{m}}</li>
 			</ul>
 		</div>
 		<button class="close-button" data-close aria-label="Close reveal" type="button">
 			<span aria-hidden="true">&times;</span>
 		</button>
+	</div>
+	<div id="modalSaving" class="reveal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+  		<h2 id="modalTitle">Inschrijving versturen naar Zork</h2>
+  		<p class="lead">Even geduld... Uw gegevens worden gecontroleerd.</p>
 	</div>
 </div>
 

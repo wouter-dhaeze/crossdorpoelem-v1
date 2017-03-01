@@ -3,15 +3,22 @@
 	
 	modSubscription.controller('subscriptionCtrl', function($scope, $log, $http) {
 		$scope.subscription = emptySubscription;
+		//$scope.subscription = angular.copy(dummySubscription);
 		$scope.currentMember;
 		$scope.currentMemberIndex = -1;
 		
 		$scope.cost = 0;
 		
-		//$scope.step = 1;
-		$scope.step = 2;
+		$scope.step = 1;
+		//$scope.step = 2;
 		
 		$scope.waveOptions = waveOptions;
+		
+		$scope.responseCode = "";
+		$scope.errorMessages = null;
+		$scope.isSystemError = false;
+		$scope.isSponsored = false;
+		$scope.subscriberMail = '';
 		
 		$scope.start = function() {
 			$("html, body").animate({ scrollTop: 0 }, "slow", function() {
@@ -27,7 +34,7 @@
 		
 		$scope.newMember = function(isSubscriber, isParticipant) {
 			$scope.currentMember = createNewMember();
-			$scope.currentMember = dummyMember;
+			//$scope.currentMember = dummyMember;
 			$scope.currentMember.subscriber = isSubscriber;
 			$scope.currentMember.participant = isParticipant;
 			
@@ -107,14 +114,18 @@
 		
 		$scope.submitSubscription = function() {
 			$('#modalFinalize').foundation('close');
+			$('#modalSaving').foundation('open');
 			
 			//TODO set sponsorcode to empty if partyrun
-			var res = $http.post('../api/subscription.json', $scope.subscription);
-			res.success(function(data, status, headers, config) {
-				submitSuccess(null);
-			});
-			res.error(function(data, status, headers, config) {
-				submitFail(null);
+			$http.post('../api/subscription.json', $scope.subscription).then(function(data) {
+				$('#modalSaving').foundation('close');
+				
+				submitSuccess(data);
+			}, 
+			function(data) {
+				$('#modalSaving').foundation('close');
+				
+				submitFail(data);
 			});
 		}
 		
@@ -139,10 +150,62 @@
 		
 		function submitSuccess(result) {
 			$scope.step = 3;
+			
+			populateSubscription(result);
+			
+			$scope.isSponsored = false;
+			$scope.subscriberMail = '';
+			$scope.subscription.members.forEach(function(m) {
+				$scope.isSponsored = $scope.isSponsored || m.sponsor;
+				if (m.subscriber) {
+					$scope.subscriberMail = m.email;
+				}
+			});
+			
+			$scope.responseCode = parseInt(result.data.code);
+			$scope.errorMessages = null;
 		}
 		
 		function submitFail(result) {
+			$scope.responseCode = parseInt(result.data.code);
+			$scope.errorMessages = result.data.message.split(";");
+			$scope.isSystemError = $scope.responseCode >= 500;
+			
 			$('#modalErrorSubscription').foundation('open');
+		}
+		
+		function populateSubscription(result) {
+			$scope.subscription = angular.copy(dummySubscription);
+			$scope.subscription.id = result.data.id;
+			$scope.subscription.created = result.data.created;
+			$scope.subscription.price = result.data.price;
+			$scope.subscription.payed = result.data.payed;
+			$scope.subscription.validated = result.data.validated;
+			$scope.subscription.members = [];
+			
+			result.data.member.forEach(function (m, index) {
+				var member = createNewMember();
+				
+				member.id = m.id;
+				member.created = m.created;
+				member.fname = m.fname;
+				member.lname = m.lname;
+				member.gender = m.gender;
+				member.dob = m.dob;
+				member.email = m.email;
+				member.pcode = m.pcode;
+				member.code = m.code;
+				member.subscriber = m.subscriber;
+				member.participant = m.participant;
+				member.validated = m.validated;
+				member.consent = m.consent;
+				member.public_profile = m.public_profile;
+				member.sponsor = m.sponsor;
+				member.number = m.number;
+				member.wave = m.wave;
+					
+				$scope.subscription.members.push(member);
+			});	
 		}
 		
 	});
@@ -180,6 +243,7 @@
 	
 	var emptyMember = {
 		id: '',
+		created: '',
 		fname: '',
 		lname: '',
 		gender: '',
@@ -208,6 +272,7 @@
 	
 	var dummyMember = {
 		id: '',
+		created: '',
 		fname: 'Wouter',
 		lname: 'Dhaeze',
 		gender: 'M',
@@ -228,15 +293,47 @@
 	var dummySubscription = {
 		id: '',
 		created: '',
-		//wave: waveOptions[0].id,
-		//wave: waveOptions[1].id,
-		//wave: waveOptions[2].id,
-		wave: 'YOUTH',
-		code: '',
+		price: 16,
 		payed: false,
 		validated: false,
-		consent: false
-		//participant2: emptyParticipant1
+		members: [
+			{id: '',
+				created: '',
+			fname: 'Wouter',
+			lname: 'Dhaeze',
+			gender: 'M',
+			dob: '09/03/1982',
+			email: 'wouter.dhaeze@gmail.com',
+			pcode: '8730',
+			code: '0ULM12',
+			subscriber: true,
+			participant: true,
+			validated: false,
+			consent: false,
+			public_profile: false,
+			sponsor: false,
+			number: '',
+			wave: '5KM'},
+			{
+				id: '',
+				created: '',
+				fname: 'Stella',
+				lname: 'Dhaeze',
+				gender: 'F',
+				dob: '26/02/2016',
+				email: 'Stella.dhaeze@gmail.com',
+				pcode: '8730',
+				code: 'BJ1WHK',
+				subscriber: false,
+				participant: true,
+				validated: false,
+				consent: false,
+				public_profile: false,
+				sponsor: false,
+				number: '',
+				wave: '10KM'
+			}
+		          ]
 	};
 	
 	

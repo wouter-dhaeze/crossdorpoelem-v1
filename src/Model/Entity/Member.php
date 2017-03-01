@@ -4,20 +4,29 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * Participant Entity.
+ * Member Entity.
  *
  * @property int $id
- * @property string $gender
+ * @property \Cake\I18n\Time $created
  * @property string $fname
  * @property string $lname
- * @property string $email
+ * @property string $gender
  * @property \Cake\I18n\Time $dob
+ * @property string $email
+ * @property string $pcode
+ * @property string $code
+ * @property bool $subscriber
+ * @property bool $participant
+ * @property bool $validated
+ * @property bool $consent
+ * @property bool $public_profile
+ * @property bool $sponsor
  * @property string $number
- * @property int $start_order
+ * @property string $wave
  * @property int $subscription_id
  * @property \App\Model\Entity\Subscription $subscription
  */
-class Participant extends Entity
+class Member extends Entity
 {
 
     /**

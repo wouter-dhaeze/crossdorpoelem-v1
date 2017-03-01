@@ -1,14 +1,14 @@
 <?php
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\SubscriptionTable;
+use App\Model\Table\MemberTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\SubscriptionTable Test Case
+ * App\Model\Table\MemberTable Test Case
  */
-class SubscriptionTableTest extends TestCase
+class MemberTableTest extends TestCase
 {
 
     /**
@@ -17,8 +17,8 @@ class SubscriptionTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'app.subscription',
-        'app.member'
+        'app.member',
+        'app.subscription'
     ];
 
     /**
@@ -29,8 +29,8 @@ class SubscriptionTableTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $config = TableRegistry::exists('Subscription') ? [] : ['className' => 'App\Model\Table\SubscriptionTable'];
-        $this->Subscription = TableRegistry::get('Subscription', $config);
+        $config = TableRegistry::exists('Member') ? [] : ['className' => 'App\Model\Table\MemberTable'];
+        $this->Member = TableRegistry::get('Member', $config);
     }
 
     /**
@@ -40,7 +40,7 @@ class SubscriptionTableTest extends TestCase
      */
     public function tearDown()
     {
-        unset($this->Subscription);
+        unset($this->Member);
 
         parent::tearDown();
     }
@@ -61,6 +61,16 @@ class SubscriptionTableTest extends TestCase
      * @return void
      */
     public function testValidationDefault()
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
+     * Test buildRules method
+     *
+     * @return void
+     */
+    public function testBuildRules()
     {
         $this->markTestIncomplete('Not implemented yet.');
     }

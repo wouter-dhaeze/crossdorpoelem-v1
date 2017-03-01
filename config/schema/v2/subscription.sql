@@ -12,7 +12,8 @@ ENGINE = InnoDB;
 
 
 CREATE TABLE IF NOT EXISTS `member` (
-  `id` INT NOT NULL AUTO_INCREMENT,
+  `id` INT NOT NULL AUTO_INCREMENT, 
+  `created` DATETIME NOT NULL,
   `fname` VARCHAR(255) NOT NULL,
   `lname` VARCHAR(255) NOT NULL,
   `gender` varchar(1) NOT NULL,

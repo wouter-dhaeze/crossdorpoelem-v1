@@ -90,7 +90,7 @@
 			<label for="code<?= $ngMemberIndex?>" class="right inline">Code</label>
 		</div>
 		<div class="large-10 columns">
-			<input type="text" id="code<?= $ngMemberIndex?>" name="<?= $idPrefix?>code"
+			<input type="text" id="code<?= $ngMemberIndex?>" name="code<?= $ngMemberIndex?>"
 				placeholder="Sponsorcode"
 				ng-model="<?= $ngmodelCode ?>" ng-readonly="<?= $ngReadonly ?>"></input>
 			<small ng-hide="<?= $ngReadonly ?>">Indien u een sponsor bent, vul dan hier uw code in. (Enkel geldig voor 5 en 10 km.)</small>

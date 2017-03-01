@@ -19,11 +19,10 @@ class ModelUtils
     	$subquery = TableRegistry::get('Subscription')->findByCode($randomString);
 		$subcount = $subquery->count();
 		
-		$spoquery1 = TableRegistry::get('Sponsor')->findByCode1($randomString);
-		$spoquery2 = TableRegistry::get('Sponsor')->findByCode2($randomString);
-		$spocount = $spoquery1->count() + $spoquery2->count();
+		$memquery = TableRegistry::get('Member')->findByCode($randomString);
+		$memcount = $memquery->count();
 		
-		if ($subcount != 0 || ModelUtils::isSponsorCode($randomString)) {
+		if ($subcount != 0 || $memcount != 0 || ModelUtils::isSponsorCode($randomString)) {
 			return generateSubscriptionCode();
 		}
 			
