@@ -33,7 +33,7 @@ $this->assign('ogmetadata', 'fb_subscription');
 		<div class="clearfix">
 			<div class="float-left">
 				<h3>Aantal deelnemers: {{subscription.members.length}}</h3>
-				<h3>Totaal kost: &euro;{{cost}}</h3>
+				<h3>Totaal kost: &euro;{{subscription.price}}</h3>
 			</div>
 			<div class="float-left"  style="padding-left: .5em">
 				<button class="button success large" role="button" 
@@ -83,6 +83,16 @@ $this->assign('ogmetadata', 'fb_subscription');
 						<button class="button" role="button" ng-click="editMember($index)">Wijzigen</button>
 						<button ng-show="$index > 0" class="button alert" role="button" ng-click="initRemoveMember($index)">Verwijderen</button>
 					</div>				
+			</div>
+		</div>
+		<div>
+			<div>
+				<button class="button" role="button" ng-click="newMember(false, true)">Deelnemer toevoegen</button>
+			</div>
+			<div>
+				<button class="button success large" role="button" 
+					ng-show="subscription.members.length > 0 && (subscription.members[0].participant || subscription.members.length > 1)"
+					ng-click="initFinalize()">Inschrijven!</button>
 			</div>
 		</div>		
 	</div>

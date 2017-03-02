@@ -464,10 +464,10 @@ class SubscriptionController extends AppController
     		array_push($errorMessages, "Deelnemer " . ($index + 1) . ": Geboortedatum is verplicht.");
     	}
     	
-    	if(strtotime($member['dob']) > time()) {
+    	/*if(strtotime($member['dob']) > time()) {
     		Log::warning('DOB is in the future' , 'warn');
     		array_push($errorMessages, "Deelnemer " . ($index + 1) . ": Geboortedatum mag niet in de toekomst liggen.");
-    	}
+    	}*/
     	
     	if (empty($member['pcode'])) {
     		Log::warning('Postal code is empty' , 'warn');
