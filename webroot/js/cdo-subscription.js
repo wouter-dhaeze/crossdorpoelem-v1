@@ -2,15 +2,15 @@
 	var modSubscription = angular.module('cdo.subscription', ['ui.mask']);
 	
 	modSubscription.controller('subscriptionCtrl', function($scope, $log, $http) {
-		//$scope.subscription = emptySubscription;
-		$scope.subscription = angular.copy(dummySubscription);
+		//$scope.subscription = angular.copy(emptySubscription);
+		//$scope.step = 1;
+		$scope.subscription = angular.copy(dummySubscription2);
+		$scope.step = 2;
+		
 		$scope.currentMember;
 		$scope.currentMemberIndex = -1;
 		
-		$scope.cost = 0;
 		
-		//$scope.step = 1;
-		$scope.step = 2;
 		
 		$scope.waveOptions = waveOptions;
 		
@@ -37,6 +37,9 @@
 			//$scope.currentMember = dummyMember;
 			$scope.currentMember.subscriber = isSubscriber;
 			$scope.currentMember.participant = isParticipant;
+			if (!isParticipant) {
+				$scope.currentMember.wave = "N/A";
+			}
 			
 			$scope.currentMemberIndex = -1;
 			
@@ -120,6 +123,8 @@
 				$('#modalSaving').foundation('close');
 				
 				submitSuccess(data);
+				
+				$("html, body").animate({ scrollTop: 0 }, "slow");
 			}, 
 			function(data) {
 				$('#modalSaving').foundation('close');
@@ -137,16 +142,28 @@
 			});
 		}
 		
+		$scope.countParticipants = function() {
+			var c = 0;
+			
+			$.each($scope.subscription.members, function( index, m ) {
+				if (m.participant) {
+					c++;
+				}
+			});
+			
+			return c;
+		}
+		
 		function createNewMember() {
 			return $.extend(true, {}, emptyMember);
 		}
 		
 		function calculateCost() {
-			$scope.cost = 0;
+			$scope.subscription.price = 0;
 			$.each($scope.subscription.members, function( index, m ) {
 				if (m.participant) {
 					var c = getAmountFromWaveOptions(m.wave);
-					$scope.cost += c;
+					$scope.subscription.price += c;
 				}
 			});
 		}
@@ -310,10 +327,10 @@
 			fname: 'Wouter',
 			lname: 'Dhaeze',
 			gender: 'M',
-			dob: '09/03/1982',
+			dob: '12/12/1212',
 			email: 'wouter.dhaeze@gmail.com',
 			pcode: '8730',
-			code: '0ULM12',
+			code: '',
 			subscriber: true,
 			participant: true,
 			validated: false,
@@ -328,10 +345,10 @@
 				fname: 'Stella',
 				lname: 'Dhaeze',
 				gender: 'F',
-				dob: '26/02/2016',
+				dob: '26/02/1900',
 				email: 'Stella.dhaeze@gmail.com',
 				pcode: '8730',
-				code: 'BJ1WHK',
+				code: '',
 				subscriber: false,
 				participant: true,
 				validated: false,
@@ -344,6 +361,32 @@
 		          ]
 	};
 	
-	
+	var dummySubscription2 = {
+			id: '',
+			created: '',
+			price: 0,
+			payed: false,
+			validated: false,
+			members: [
+				{id: '',
+					created: '',
+				fname: 'Wouter',
+				lname: 'Dhaeze',
+				gender: 'M',
+				dob: '12/12/1212',
+				email: 'wouter.dhaeze@gmail.com',
+				pcode: '8730',
+				code: '',
+				subscriber: true,
+				participant: false,
+				validated: false,
+				consent: false,
+				public_profile: false,
+				sponsor: false,
+				number: '',
+				wave: 'N/A'},
+				
+			          ]
+		};
 	
 })();

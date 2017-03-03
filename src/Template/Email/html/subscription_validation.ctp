@@ -9,7 +9,7 @@
 <div>
 	<h4>We hebben uw inschrijvingsgegevens goed ontvangen!</h4>
 	<h4>Stap 1 is met succes voltooid!</h4>
-	<p>Hieronder vindt u uw inschrijvingscode terug:</p>
+	<p>Hieronder vindt u uw <b>inschrijvingscode</b> terug:</p>
 	<h1><?= $subscription->code ?></h1>
 	<?php if ($subscription->price > 0) {?>
 	<p>Deze code is belangrijk omdat u die zal moeten meegeven in uw overschrijving. Ook kunt u later deze code gebruiken om de status van uw inschrijving te bekijken.

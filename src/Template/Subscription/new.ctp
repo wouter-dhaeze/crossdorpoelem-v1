@@ -32,7 +32,7 @@ $this->assign('ogmetadata', 'fb_subscription');
 		</h2>
 		<div class="clearfix">
 			<div class="float-left">
-				<h3>Aantal deelnemers: {{subscription.members.length}}</h3>
+				<h3>Aantal deelnemers: {{countParticipants()}}</h3>
 				<h3>Totaal kost: &euro;{{subscription.price}}</h3>
 			</div>
 			<div class="float-left"  style="padding-left: .5em">
@@ -99,7 +99,10 @@ $this->assign('ogmetadata', 'fb_subscription');
 	<div class="row" ng-show="step == 3">
 		<div class="small-8 small-centered column">
 			<h3>Inschrijving ontvangen</h3>
-			<p>Er wordt momenteel een e-mail naar <b>{{subscriberMail}}</b> gestuurd. Gelieve de instructies in de e-mail goed  te volgen om uw inschrijving verder af te handelen.</p>
+			<p>Er wordt momenteel een e-mail naar <b>{{subscriberMail}}</b> gestuurd. 
+			Deze mail bevat een link waarmee u uw <b>inschrijving</b> valideert, alsook uw <b>inschrijvingscode</b> die u kunt gebruiken om de status van uw inschrijving te bekijken.
+			Gelieve de instructies in de e-mail goed te volgen om uw inschrijving verder af te handelen.</p>
+			<p class="callout">Voor alle duidelijkheid: naast de <b>inschrijvingscode</b> krijgt elke deelnemer (na betaling door de inschrijver) ook een <b>deelnemerscode</b> toegekend. Deze code kan door de deelnemer gebruikt worden om de gegevens van de deelnemer te bekijken (bvb het toegekende borstnummer).</p>
 			<p ng-show="isSponsored">U maakte gebruik van &#233;&#233;n of meerdere <b>geldige sponsorcodes</b>. Het restbedrag bedraagt <b>{{subscription.price}} euro</b>. Ook u, lieve sponsor, verzoeken we vriendelijk uw inschrijving te valideren via de mail die u ontvangt op <b>{{subscriberMail}}</b>.</p>
 			<div class="callout secondary warning">
 				Let op: inschrijvingen die niet binnen 7 dagen worden gevalideerd, worden verwijderd.
@@ -115,8 +118,15 @@ $this->assign('ogmetadata', 'fb_subscription');
 	</div>
 	<div id="modalEditMember" class="full reveal" data-reveal>
 		<div>
-			<h2 id="modalTitle">Vul uw gegevens in</h2>
+			<div class="row">
+				<h2 id="modalTitle">Vul uw gegevens in</h2>
+			</div>
 			<form name="memberForm" novalidate>
+				<div class="row">
+					<div class="callout primary">
+						U koos ervoor om niet zelf deel te nemen maar de inschrijving voor iemand anders te registreren. Vul eerst zelf uw gegevens in, klik op de "Toevoegen" knop, en voeg daarna een of meerdere deelnemers aan de inschrijving toe.
+					</div>
+				</div>
 				<div class="row">
 					<?= $this->element('member_details', 
 						["formName" => 'memberForm',

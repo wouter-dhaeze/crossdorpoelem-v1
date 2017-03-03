@@ -61,6 +61,10 @@ class SubscriptionController extends AppController
     	} else {
     		$subscription = $this->getSubscriptionByCode($id, false);
     		
+    		/*if (empty($subscription) && $this->memberExistsByCode($id)) {
+    			return $this->redirect(['controller' => 'Member', 'action' => 'view', $id]);
+    		}*/
+    		
     		$this->set('subscription', $subscription);
         	$this->set('_serialize', ['subscription']);
     	}
@@ -505,7 +509,7 @@ class SubscriptionController extends AppController
     		array_push($errorMessages, "Deelnemer " . ($index + 1) . ": Wave is verplicht.");
     	}
     	
-    	$waves = array("5KM", "10KM", "PARTY");
+    	$waves = array("5KM", "10KM", "PARTY", "N/A");
     	if (!in_array($member['wave'], $waves)) {
     		Log::warning('Wave is invalid' , 'warn');
     		array_push($errorMessages, "Deelnemer " . ($index + 1) . ": Ongeldige wave.");
@@ -556,6 +560,13 @@ class SubscriptionController extends AppController
 	    return $this->Subscription->get($subscription->id, [
 	    		'contain' => ['Member']
 	    		]);
+    }
+    
+    private function memberExistsByCode($code) {
+    	$memberq = $this->Member->findByCode($code);
+    	$count = $memberq->count();
+    	
+    	return $count > 0;
     }
     
     private function saveSubscription($sdata) {

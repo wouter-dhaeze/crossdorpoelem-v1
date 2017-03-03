@@ -6,13 +6,15 @@ Time::setToStringFormat('dd/MM/yyyy');
 ?>
 
 <?php if (empty($subscription)) : ?>
+<div class="row">
     <div class="callout alert">Er werd geen inschrijving met deze code gevonden.</div>
+</div>
 <?php endif; ?>
 
 <?php if (!empty($subscription)) : ?>
 <div ng-controller="subscriptionCtrl"  ng-init="loadSubscription('<?= $subscription->code ?>')">
 	<div class="row">
-		<h1>Mijn inschrijving</h1>
+		<h1>Mijn inschrijving - code: <?= $subscription->code ?></h1>
 		<div class="callout warning" ng-show="!subscription.validated">Uw inschrijving werd nog niet gevalideerd. Klik op de link in de mail die u ontving om de validatie af te ronden.</div>
 		<div class="callout success" ng-show="subscription.validated">Uw inschrijving is correct gevalideerd.</div>
 		<div class="callout alert" ng-show="!subscription.payed">We hebben uw storting nog niet ontvangen. Indien u reeds heeft betaald zal u binnenkort een bevestigingsmail ontvangen.
@@ -41,18 +43,18 @@ Time::setToStringFormat('dd/MM/yyyy');
 						"ngmodelDob" => "member.dob",
 						"ngmodelEmail" => "member.email",
 						"ngmodelPcode" => "member.pcode",
-						"ngHideCode" => false,
+						"ngHideCode" => true,
 						"ngmodelCode" => "member.code",
-						"ngHideNumber" => false,
+						"ngHideNumber" => "!member.participant",
 						"ngmodelNumber" => "member.number",
 						"ngmodelWave" => "member.wave",
-						"ngHideParticipant" => false,
+						"ngHideParticipant" => true,
 						"ngmodelParticipant" => "member.participant",
-						"ngHideValidated" => false,
+						"ngHideValidated" => true,
 						"ngmodelValidated" => "member.validated",
-						"ngHideConsent" => false,
+						"ngHideConsent" => true,
 						"ngmodelConsent" => "member.consent",
-						"ngHidePublicProfile" => false,
+						"ngHidePublicProfile" => true,
 						"ngmodelPublicProfile" => "member.public_profile"]); ?>	
 					</form>
 					</div>				

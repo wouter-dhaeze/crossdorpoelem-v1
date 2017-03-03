@@ -1,11 +1,12 @@
 <input type="hidden" name="id" ng-model="<?= $ngmodelId ?>" />
-<div class="row" ng-hide="<?= $ngReadonly ?>">
+<div ng-hide="<?= $ngReadonly ?>">
 	<div class="callout small primary">
 		<p>Velden met een * zijn verplicht.</p>
 		<p>Vul de gegevens correct in. Dit is van belang voor uw verzekering.</p>
 	</div>
 </div>
-<div class="row">
+
+<div class="row" ng-show="<?= $ngmodelParticipant ?>">
 	<div class="large-2 columns">
 		<label for="wave<?= $ngMemberIndex?>" class="right inline">Wave <span ng-hide="<?= $ngReadonly ?>">*</span></label>
 	</div>
@@ -85,7 +86,7 @@
 	</div>
 </div>
 <div class="row" ng-hide="<?= $ngHideCode ?>">
-	<div ng-hide="<?= $ngmodelWave ?> == 'PARTY'">
+	<div ng-hide="<?= $ngmodelWave ?> == 'PARTY' || <?= $ngmodelWave ?> == 'N/A'">
 		<div class="large-2 columns">
 			<label for="code<?= $ngMemberIndex?>" class="right inline">Code</label>
 		</div>
