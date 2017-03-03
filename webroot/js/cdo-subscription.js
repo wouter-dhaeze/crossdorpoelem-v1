@@ -2,10 +2,10 @@
 	var modSubscription = angular.module('cdo.subscription', ['ui.mask']);
 	
 	modSubscription.controller('subscriptionCtrl', function($scope, $log, $http) {
-		//$scope.subscription = angular.copy(emptySubscription);
-		//$scope.step = 1;
-		$scope.subscription = angular.copy(dummySubscription2);
-		$scope.step = 2;
+		$scope.subscription = angular.copy(emptySubscription);
+		$scope.step = 1;
+		//$scope.subscription = angular.copy(dummySubscription2);
+		//$scope.step = 2;
 		
 		$scope.currentMember;
 		$scope.currentMemberIndex = -1;
