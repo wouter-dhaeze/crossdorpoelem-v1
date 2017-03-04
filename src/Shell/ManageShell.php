@@ -17,9 +17,9 @@ class ManageShell extends Shell
 		parent::initialize();
 		$this->loadModel('User');
 		$this->loadModel('Subscription');
-		$this->loadModel('Participant');
 		$this->loadModel('Sponsor');
 		$this->loadModel('Interest');
+		$this->loadModel('Mailing');
 	}
 	
 	/**
@@ -100,18 +100,24 @@ class ManageShell extends Shell
 	 */
 	public function sendSponsorInvite() {
 		foreach ($this->Sponsor->find() as $sponsor) {
-			//$this->out('Send email disabled');
-			$this->out('Sending invite to ' . $sponsor->email);
-			EmailUtils::sendSponsorInvite($sponsor);
+			$this->out('Send email disabled');
+			//$this->out('Sending invite to ' . $sponsor->email);
+			//EmailUtils::sendSponsorInvite($sponsor);
 		}
 	}
 	
+	/**
+	 * bin\cake manage send_public_invite
+	 */
 	public function sendPublicInvite() {
-		$interests = $this->Interest;
-		$query = $interests->find('all');
-		foreach ($query as $interest) {
-			$this->out('Sending invite to ' . $interest->email);
-			EmailUtils::sendPublicInvite($interest);
+		foreach ($this->Mailing->find() as $m) {
+			if (!$m->sent) {
+				$this->out('Sending invite to ' . $m->email);
+				EmailUtils::sendPublicInvite($m->email);
+				
+				$m->sent = true;
+				$this->Mailing->save($m);
+			}
 		}
 	}
 	

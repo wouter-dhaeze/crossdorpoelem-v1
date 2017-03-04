@@ -39,16 +39,15 @@ class EmailUtils
     	$email->send();
     }
     
-    public static function sendPublicInvite($interest) {
+    public static function sendPublicInvite($emailAddress) {
     	$wwwRoot = Configure::read('App.fullBaseUrl');
     	 
-    	$viewVars = ['interest' => $interest,
-    	'baseUrl' => $wwwRoot];
+    	$viewVars = ['baseUrl' => $wwwRoot];
     
     	$email = new Email('default');
     	$email->template('public_invite', 'cdo')
     	->emailFormat('html')
-    	->to($interest->email)
+    	->to($emailAddress)
     	->subject('Crossdorp Oelem - Inschrijvingen geopend')
     	->viewVars($viewVars);
     	$email->send();
