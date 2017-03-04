@@ -53,6 +53,18 @@ class ManageShell extends Shell
 	}
 	
 	/**
+	 * bin\cake manage generate_codes
+	 */
+	public function generateSponsorCodes() {
+		foreach ($this->Sponsor->find() as $s) {
+			$s->code1 = $this->generateCode();
+			$s->code2 = $this->generateCode();
+			$this->out($s->code1);
+			$this->Sponsor->save($s);
+		}
+	}
+	
+	/**
 	 * bin\cake manage generate_code
 	 */
 	public function generateCode()
@@ -60,6 +72,8 @@ class ManageShell extends Shell
 		$this->out('Generating code...');
 		$code = ModelUtils::generateSubscriptionCode();
 		$this->out($code);
+		
+		return $code;
 	}
 	
 	/**
@@ -81,13 +95,14 @@ class ManageShell extends Shell
 		$this->out('File ' . $file->name() . ' written');
 	}
 	
+	/**
+	 * bin\cake manage send_sponsor_invite
+	 */
 	public function sendSponsorInvite() {
-		$sponsors = $this->Sponsor;
-		$query = $sponsors->find('all');
-		foreach ($query as $sponsor) {
-			$this->out('Send email disabled');
-			//$this->out('Sending invite to ' . $sponsor->email);
-			//EmailUtils::sendSponsorInvite($sponsor);
+		foreach ($this->Sponsor->find() as $sponsor) {
+			//$this->out('Send email disabled');
+			$this->out('Sending invite to ' . $sponsor->email);
+			EmailUtils::sendSponsorInvite($sponsor);
 		}
 	}
 	

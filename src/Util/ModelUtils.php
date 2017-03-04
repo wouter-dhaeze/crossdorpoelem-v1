@@ -14,7 +14,7 @@ class ModelUtils
 
 	public static function generateSubscriptionCode() {
 		$length = 6;
-    	$randomString = substr(str_shuffle("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, $length);
+    	$randomString = substr(str_shuffle("123456789ABCDEFGHIJKLMNPQRSTUVWXYZ"), 0, $length);
     	
     	$subquery = TableRegistry::get('Subscription')->findByCode($randomString);
 		$subcount = $subquery->count();
