@@ -114,10 +114,17 @@ class SubscriptionController extends AppController
      */
     public function all()
     {
-    	$subscriptions = $this->Subscriptions;
-    	$query = $subscriptions->find();
-    	$this->response->body(json_encode($query->all()));
-    	return $this->response;
+    	try {
+	    	$subscriptions = $this->Subscription->find('all', ['contain' => ['Member']]);
+	    	
+	    	$this->response->type('json');
+	    	$this->response->body($this->json_encode($subscriptions));
+	    	return $this->response;
+    	} catch (PDOException $e) {
+    		$this->log('PDOException occurred: ' . $e->getMessage() . '\n' . $e->getTraceAsString() , 'error');
+    		throw new InternalErrorException('Er is een fout op de database gebeurd.');
+    		//send email
+    	}
     }
     
     public function get() {
@@ -140,73 +147,6 @@ class SubscriptionController extends AppController
 	    		$this->response->type('json');
 	    		$this->response->body($this->json_encode($subscription));
 	    		return $this->response;
-    		} else {
-    			$filter = [];
-    			
-    			$term = $this->request->query('term');
-    			$wave = $this->request->query('wave');
-    			$validated = $this->request->query('validated');
-    			$payed = $this->request->query('payed');
-    			$sponsor = $this->request->query('sponsor');
-    			
-    			$subscriptiona = $this->Subscription->find('all');
-    			
-    			$subscriptionq = null;
-    			if (!empty($term)) {
-    				//$filter['code'] = $term;
-    				$filter['OR'] = [['code' => $term], ['email'=>$term]];
-    				
-    				$subscriptionq = $this->Subscription
-    								->find('all', ['contain' => ['Participant']]);
-    				
-    				$subscriptionq->innerJoinWith('Participant', function($q) use ($term) {
-						return $q->where(['OR' => [['code' => $term], ['number' => $term], ['email' => $term], ['fname LIKE' => '%' . $term . '%'], ['lname LIKE' => '%' . $term . '%']]]);
-    				});
-    			} else {
-	    			if (!empty($wave) && $wave != 'undefined') {
-	    				$filter['wave'] = $wave;
-	    			}
-	    			if (!empty($validated) && $validated != 'undefined') {
-	    				$filter['validated'] = $validated == 'TRUE' ? true : false;
-	    			}
-	    			if (!empty($payed) && $payed != 'undefined') {
-	    				$filter['payed'] = $payed == 'TRUE' ? true : false;
-	    			}
-	    			if (!empty($sponsor) && $sponsor != 'undefined') {
-	    				
-	    			}
-	    			
-	    			$subscriptionq = $this->Subscription
-							    			->find('all', ['contain' => ['Participant']])
-							    			->where($filter);
-    			}
-    			
-    			$subscriptions = $subscriptionq->toArray(); 
-    			$subscriptionTotal = $subscriptiona->count();
-    			$subscriptionCount = $subscriptionq->count();
-    			
-    			$list = [];
-    			if (empty($term) && !empty($sponsor) && $sponsor != 'undefined') {
-    				$subscriptionCount = 0;
-    				$sponsor = $sponsor == 'TRUE' ? true : false;
-	    			foreach ($subscriptions as $s) {
-	    				if (ModelUtils::isSponsorCode($s->code) && $sponsor) {
-	    					array_push($list, $s);
-	    					$subscriptionCount++;
-	    				} else if (!ModelUtils::isSponsorCode($s->code) && !$sponsor) {
-	    					array_push($list, $s);
-	    					$subscriptionCount++;
-	    				}
-	    			}
-	    		} else {
-	    			$list = $subscriptions;
-	    		}
-
-    			$result = ["count" => $subscriptionCount, "total" => $subscriptionTotal, "subscriptions" => $list];
-    			
-    			$this->response->type('json');
-    			$this->response->body(json_encode($result));
-    			return $this->response;
     		}
     	} catch (PDOException $e) {
     		$this->log('PDOException occurred: ' . $e->getMessage() . '\n' . $e->getTraceAsString() , 'error');

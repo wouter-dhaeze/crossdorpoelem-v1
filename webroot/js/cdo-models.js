@@ -1,5 +1,14 @@
 var models = new function() {
 	
+	var emptySubscription = {
+			id: '',
+			created: '',
+			price: 0,
+			payed: false,
+			validated: false,
+			members: []
+		};
+	
 	var emptyMember = {
 			id: '',
 			created: '',
@@ -20,11 +29,37 @@ var models = new function() {
 			wave: ''
 		};
 	
+	function createNewSubscription() {
+		return angular.copy(emptySubscription);
+	}
+	
 	function createNewMember() {
 		return angular.copy(emptyMember);
 	}
 	
-	this.populateMember = function(m) {
+
+	function populateSubscription(s) {
+		var subscription = createNewSubscription();
+		
+		subscription.id = s.id;
+		subscription.created = s.created;
+		subscription.code = s.code;
+		subscription.price = s.price;
+		subscription.payed = s.payed;
+		subscription.validated = s.validated;
+		subscription.members = [];
+		
+		if (s.member) {
+			s.member.forEach(function(m) {
+				var member = populateMember(m);
+				subscription.members.push(member);
+			});
+		}
+		
+		return subscription;
+	}
+	
+	function populateMember(m) {
 		var member = createNewMember();
 		
 		member.id = m.id;
@@ -46,6 +81,27 @@ var models = new function() {
 		member.wave = m.wave;
 		
 		return member;
+	}
+ 	
+	
+	
+	this.populateSubscriptions = function(sarray) {
+		var subscriptions = [];
+		
+		sarray.forEach(function(s) {
+			var subscription = populateSubscription(s);
+			subscriptions.push(subscription);
+		});
+		
+		return subscriptions;
+	}
+	
+	this.populateSubscription = function(s) {
+		populateSubscription(s);
+	}
+	
+	this.populateMember = function(m) {
+		populateMember(m);
 	}
 	
 };

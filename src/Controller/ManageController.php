@@ -17,6 +17,9 @@ class ManageController extends AppController
 	{
 		parent::initialize();
 		
+		$this->loadComponent('RequestHandler');		
+		$this->loadModel('Subscription');
+		
 		$this->Auth->deny(['index']);
 	}
 	
@@ -35,6 +38,10 @@ class ManageController extends AppController
     public function index()
     {
     	$this->viewBuilder()->layout('cdo-manage');
+    }
+    
+    public function getSubscription() {
+    	
     }
 
 }

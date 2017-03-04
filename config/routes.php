@@ -94,16 +94,20 @@ Router::extensions(['json']);
 Router::scope('/api', function ($routes) {
 	$routes->extensions(['json']);
 	$routes->resources('Subscription', [
-		'actions' => ['create' => 'create', 'index' => 'get', 'delete' => 'remove'] 
-	]);
-	$routes->resources('Email', [
-		'actions' => ['create' => 'create']
+		'actions' => ['create' => 'create', 'index' => 'get'] 
 	]);
 	$routes->resources('Number', [
 		'actions' => ['index' => 'get']
 	]);
 	$routes->resources('Member', [
 		'actions' => ['index' => 'get']
+	]);
+});
+
+Router::scope('/api/manage', function ($routes) {
+	$routes->extensions(['json']);
+	$routes->resources('Subscription', [
+		'actions' => ['index' => 'all'] 
 	]);
 });
 

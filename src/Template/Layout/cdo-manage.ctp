@@ -11,8 +11,6 @@
 
 <title>Crossdorp Oelem - Beheer</title>
 
-<link href="../css/bootstrap.min.css" rel="stylesheet" />
-<link href="../css/uikit.min.css" rel="stylesheet" />
 <link href="../css/app.css" rel="stylesheet" type="text/css" />
 <link href="../css/crossdorpoelem.css" rel="stylesheet" type="text/css" />
 
@@ -25,19 +23,20 @@
 
 </head>
 <body ng-app="cdo.app">
-	<?= $this->fetch('content') ?></div>
+	<?= $this->fetch('content') ?>
 
 	
 	
 	<?= $this->element('footer', ["class" => ""]); ?>
 	
-	<script src="../js/jquery/jquery-2.1.4.min.js"></script>
-	<script src="../js/angularjs/angular.min.js"></script>
-	<script src="../js/angularjs/mask.min.js"></script>
-	<script src="../js/uikit/uikit.min.js"></script>
-	<script src="../js/foundation/foundation.min.js"></script>
-	<script src="../js/app.js"></script>
-	<script src="../js/cdo-manage.js"></script>
+	<script src="/js/jquery/jquery-2.1.4.min.js"></script>
+	<script src="/js/jquery/jquery-ui.min.js"></script>
+	<script src="/js/angularjs/angular.min.js"></script>
+	<script src="/js/angularjs/mask.min.js"></script>
+	<script src="/js/foundation/foundation.min.js"></script>
+	<script src="/js/app.js"></script>
+	
+	<?= $this->fetch('script') ?>
 </body>
 
 </html>
