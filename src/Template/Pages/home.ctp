@@ -52,59 +52,73 @@ $this->layout = false;
 		</div>
 	</div>
 	
-	<section id="pnlSubscription">
-		<div class="row">
-			<div class="small-12 column">
+	<div class="row">
+		<div class="small-12 medium-9 column">
+			<section id="pnlSubscription">
 				<div class="row">
-					<div class="text-center title">
-					    <h2>Drie formules</h2>
-						<div class="line"></div>
-					</div>
-					<div class="callout">
-						<h5>In tegenstelling tot vorig jaar, waar we een korte jeugrun van 2KM en een volwassen run van 5KM organiseerden,
-						hebben we voor dit jaar 3 formules uitgewerkt. Het parcours baant zich nog steeds een weg door diverse gebouwen binnen de Oelemse dorpskern, 
-						maar dit jaar kunt u kiezen tussen een parcours van 5KM of 10KM. </h5>
+					<div class="small-12 column">
+						<div class="row">
+							<div class="text-center title">
+							    <h2>Drie formules</h2>
+								<div class="line"></div>
+							</div>
+							<div class="callout">
+								<h5>In tegenstelling tot vorig jaar, waar we een korte jeugrun van 2KM en een volwassen run van 5KM organiseerden,
+								hebben we voor dit jaar 3 formules uitgewerkt. Het parcours baant zich nog steeds een weg door diverse gebouwen binnen de Oelemse dorpskern, 
+								maar dit jaar kunt u kiezen tussen een parcours van 5KM of 10KM. </h5>
+							</div>
+						</div>
+						<div class="row">
+							<div class="small-12 medium-4 column">
+								<h3>5KM voor de leute</h3>
+								<p>
+									Bent u een recreatieve loper en heeft u zin in een leuk parcours, dan is "Crossdorp 5KM" iets voor jou. U loopt door gebouwen waar u anders nooit komt, 
+									en u geniet nadien van de Oelemse gezelligheid. 
+									Het parcours is wat aangepast ten opzichte van vorig jaar, maar zeker niet minder verrassend.
+									Deelname kost u amper 6 eurootjes.
+								<p>
+								<div>
+									<a href="/subscription" class="button large">Ik schrijf in!</a>
+								</div>
+							</div>
+							<div class="small-12 medium-4 column">
+								<h3>10KM voor de d'echte</h3>
+								<p>
+									Voor 5KM staat u niet op, maar een origineel parcours onder het lentezonnetje ziet u wel zitten? Op ons parcours bezoekt u dezelfde gebouwen,
+									maar u geeft een extra zetje door de landelijke rand van Oelem. Voor 10 euro trakteert u zichzelf op een namiddag plezier.
+								<p>
+								<div>
+									<a href="/subscription" class="button large">Ik schrijf in!</a>
+								</div>
+							</div>
+							<div class="small-12 medium-4 column">
+								<h3>PartyRun voor de ravers</h3>
+								<p>
+									Om dat we zelf graag het aangename aan het nog leukere koppelen, organiseren we dit jaar ook een PartyRun. 
+									U haspelt het parcours van 5 KM af maar onderweg houdt u halt aan een aantal mini-fuifkes! Daar verhogen we 
+									de hartslag op de beat en genieten van wat hydratatie. Na 15 minuten raven vat u het vervolg van het parcours aan, op zoek naar de volgende mini-fuif. 
+									Voor slechts 15 euro heeft u een namiddag gesport, gefuift en van vette ambiance genoten.
+								<p>
+								<div>
+									<a href="/subscription" class="button large">Ik schrijf in!</a>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
-				<div class="row">
-					<div class="small-12 medium-4 column">
-						<h3>5KM voor de leute</h3>
-						<p>
-							Bent u een recreatieve loper en heeft u zin in een leuk parcours, dan is "Crossdorp 5KM" iets voor jou. U loopt door gebouwen waar u anders nooit komt, 
-							en u geniet nadien van de Oelemse gezelligheid. 
-							Het parcours is wat aangepast ten opzichte van vorig jaar, maar zeker niet minder verrassend.
-							Deelname kost u amper 6 eurootjes.
-						<p>
-						<div>
-							<a href="/subscription" class="button large">Ik schrijf in!</a>
-						</div>
-					</div>
-					<div class="small-12 medium-4 column">
-						<h3>10KM voor de d'echte</h3>
-						<p>
-							Voor 5KM staat u niet op, maar een origineel parcours onder het lentezonnetje ziet u wel zitten? Op ons parcours bezoekt u dezelfde gebouwen,
-							maar u geeft een extra zetje door de landelijke rand van Oelem. Voor 10 euro trakteert u zichzelf op een namiddag plezier.
-						<p>
-						<div>
-							<a href="/subscription" class="button large">Ik schrijf in!</a>
-						</div>
-					</div>
-					<div class="small-12 medium-4 column">
-						<h3>PartyRun voor de ravers</h3>
-						<p>
-							Om dat we zelf graag het aangename aan het nog leukere koppelen, organiseren we dit jaar ook een PartyRun. 
-							U haspelt het parcours van 5 KM af maar onderweg houdt u halt aan een aantal mini-fuifkes! Daar verhogen we 
-							de hartslag op de beat en genieten van wat hydratatie. Na 15 minuten raven vat u het vervolg van het parcours aan, op zoek naar de volgende mini-fuif. 
-							Voor slechts 15 euro heeft u een namiddag gesport, gefuift en van vette ambiance genoten.
-						<p>
-						<div>
-							<a href="/subscription" class="button large">Ik schrijf in!</a>
-						</div>
-					</div>
-				</div>
+			</section>
+		</div>
+		<div class="small-12 medium-3 column">
+			<div class="callout secondary">
+				<h4>Info</h4>
+				<ul>
+					<li>Crossdorp gaat door op <b>zaterdag 15 april</b>.</li>
+					<li>Het startshot wordt gegeven <b>om 15u</b>.</li>
+					<li>Start en aankomst zijn in <b>sporthal Den Akker te Oedelem</b>.</li>
+				</ul>
 			</div>
 		</div>
-	</section>
+	</div>
 	
 	<section id="pnlSponsors" >
 		<div class="row">
