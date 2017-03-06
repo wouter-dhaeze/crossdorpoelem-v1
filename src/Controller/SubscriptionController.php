@@ -110,12 +110,16 @@ class SubscriptionController extends AppController
     }
     
     /**
-     * API call get all
+     * API call get Subscriptions by query
      */
-    public function all()
+    public function request()
     {
     	try {
-	    	$subscriptions = $this->Subscription->find('all', ['contain' => ['Member']]);
+    		$whereClause = $this->calculateWhereClause($this->request);
+    		
+	    	$subscriptions = $this->Subscription
+	    							->find('all', ['contain' => ['Member']])
+	    							->where($whereClause);
 	    	
 	    	$this->response->type('json');
 	    	$this->response->body($this->json_encode($subscriptions));
@@ -178,7 +182,7 @@ class SubscriptionController extends AppController
     				$subscription['members'][$index]['sponsor'] = true;
     				
     				if ($m['wave'] == '5KM') {
-    					$subscription['price'] -= 6;
+    					$subscription['price'] -= 8;
     				} else if ($m['wave'] == '10KM') {
     					$subscription['price'] -= 10;
     				}
@@ -219,22 +223,16 @@ class SubscriptionController extends AppController
     /**
      * API call subscribe (HTTP PUT)
      * 
-     * Currenlty only implemented to send update payment
      */
-    public function edit($id) {
+    public function edit() {
     	try {
-	    	$subscription = $this->Subscription->get($id);
-	    	$participant1 = null;
-	    	$participant2 = null;
+    		$code = $this->request->data['code'];
+    		
+    		$subscription = $this->getSubscriptionByCode($code, true);
 	    	
-	    	$subscription = $this->getSubscriptionByCode($subscription->code, true);
-	    	$participant1 = $subscription->participant[0];
-	    	if ($subscription->wave == 'YOUTH') {
-	    		$participant2 = $subscription->participant[1];
-	    	}
 	    	if (empty($subscription)) {
-	    		$this->log('No subscription found with id' . $id, 'error');
-	    		throw new InternalErrorException('Geen beschrijving gevonden met id ' . $this->request->data['id']);
+	    		$this->log('No subscription found with code' . $code, 'error');
+	    		throw new InternalErrorException('Geen beschrijving gevonden met code ' . $code);
 	    	}
 	    	
 	    	if ($subscription->payed) {
@@ -284,7 +282,6 @@ class SubscriptionController extends AppController
     /**
      * API call subscribe (HTTP DELETE)
      *
-     * Currenlty only implemented to send update payment
      */
     public function remove($id) {
     	Log::info("Deleting " . $id);
@@ -571,17 +568,16 @@ class SubscriptionController extends AppController
     	return $subscription;
     }
     
-    /*
-     * public function create2()
-    {
-    	//$code = 'W9VLU6';
-    	$code = 'MRTGKC';
-    	$this->sendValidationMail($code);
-    	$this->sendPaymentMail($code);
-    	$this->sendSubscriptionSuccessMail($code);
+    private function calculateWhereClause($request) {
+    	$whereClause = array();
     	
-    	throw new InternalErrorException('Mail gestuurd');
+    	$code = $request->query('code');
+    	if (!empty($code)) {
+	    	$code = $request->query('code');  	
+	    	$whereClause['code'] = $code;
+    	}
+    	
+    	return $whereClause;
     }
-     */
     
 }

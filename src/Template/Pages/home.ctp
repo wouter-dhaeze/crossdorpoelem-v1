@@ -75,7 +75,7 @@ $this->layout = false;
 									Bent u een recreatieve loper en heeft u zin in een leuk parcours, dan is "Crossdorp 5KM" iets voor jou. U loopt door gebouwen waar u anders nooit komt, 
 									en u geniet nadien van de Oelemse gezelligheid. 
 									Het parcours is wat aangepast ten opzichte van vorig jaar, maar zeker niet minder verrassend.
-									Deelname kost u amper 6 eurootjes.
+									Deelname kost u amper 8 eurootjes.
 								<p>
 								<div>
 									<a href="/subscription" class="button large">Ik schrijf in!</a>
