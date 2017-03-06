@@ -97,7 +97,7 @@ $this->layout = false;
 									Om dat we zelf graag het aangename aan het nog leukere koppelen, organiseren we dit jaar ook een PartyRun. 
 									U haspelt het parcours van 5 KM af maar onderweg houdt u halt aan een aantal mini-fuifkes! Daar verhogen we 
 									de hartslag op de beat en genieten van wat hydratatie. Na 15 minuten raven vat u het vervolg van het parcours aan, op zoek naar de volgende mini-fuif. 
-									Voor slechts 15 euro heeft u een namiddag gesport, gefuift en van vette ambiance genoten.
+									Voor slechts 15 euro heeft u een namiddag gesport, gefuifd en van vette ambiance genoten.
 								<p>
 								<div>
 									<a href="/subscription" class="button large">Ik schrijf in!</a>
