@@ -224,47 +224,37 @@ class SubscriptionController extends AppController
      * API call subscribe (HTTP PUT)
      * 
      */
-    public function edit() {
+    public function action() {
     	try {
-    		$code = $this->request->data['code'];
+    		$action = $this->request->query('action');
     		
-    		$subscription = $this->getSubscriptionByCode($code, true);
-	    	
-	    	if (empty($subscription)) {
-	    		$this->log('No subscription found with code' . $code, 'error');
-	    		throw new InternalErrorException('Geen beschrijving gevonden met code ' . $code);
-	    	}
-	    	
-	    	if ($subscription->payed) {
-	    		$this->log('Subscription with id' . $id . ' already payed.', 'error');
-	    		throw new InternalErrorException('De inschrijving met id ' . $id . ' heeft reeds betaald.');
-	    	}
-	    	
-	    	if ($this->request->data['payed']) {
-	    		$participant1->number = $this->request->data['participant1']['number'];
-	    		if ($subscription->wave == 'YOUTH') {
-	    			$participant2->number = $this->request->data['participant2']['number'];
-	    		}
-	    		
-	    		$subscription->validated = true;
-	    		$subscription->payed = true;
-	    		
-	    		$this->validateSubscription($subscription, $participant1, $participant2);
-	    		
-	    		$subscription = $this->updateSubscription($subscription, $participant1, $participant2);
-	    		if (!$subscription == false) {
-	    			$subscription = $this->Subscription->get($subscription->id, [
-	    					'contain' => ['Participant']
-	    					]);
-	    			 
-	    			$code = $subscription->code;
-	    			//send mail
-	    			$this->sendSubscriptionSuccessMail($code);
-		    	} else {
-	    				$this->log('Save returned false' , 'error');
-	    				throw new InternalErrorException('De betaling kon niet worden geregistreerd. Check database.');
-	    		}
-	    	}
+    		$subscription = $this->request->data;
+    		$code = $subscription['code'];
+    		
+    		if ($action == 'payed') {
+    			$subscription = $this->getSubscriptionByCode($code, false);
+    			
+    			if ($subscription->payed) {
+    				$this->log('Subscription with id' . $code . ' already payed.', 'error');
+    				throw new InternalErrorException('De inschrijving met id ' . $code . ' is al betaald.');
+    			}
+    			
+    			$subscription->payed = true;
+    			
+    			$subscription = $this->Subscription->save($subscription);
+    			
+    			if (!$subscription == false) {
+    				$this->sendSubscriptionSuccessMail($subscription);
+    				
+    				$subscription = $this->Subscription->get($subscription->id, [
+    						'contain' => ['Member']
+    				]);
+    			} else {
+    				$this->log('Save returned false' , 'error');
+    				throw new InternalErrorException('De inschrijving kon niet worden bewaard. Zijn alle velden correct ingevuld?');
+    			}
+    			
+    		}
 	    	
 	    	$this->response->type('json');
 	    	$this->response->body($this->json_encode($subscription));
@@ -323,9 +313,7 @@ class SubscriptionController extends AppController
     	EmailUtils::sendSponsorMail($subscription);
     }
     
-    private function sendSubscriptionSuccessMail($code) {
-    	$subscription =  $this->getSubscriptionByCode($code, true);
-    	
+    private function sendSubscriptionSuccessMail($subscription) {
     	EmailUtils::sendSubscriptionSuccessMail($subscription);
     }
     

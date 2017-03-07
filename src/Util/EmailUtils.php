@@ -17,7 +17,7 @@ class EmailUtils
     }
     
     public static function sendSubscriptionSuccessMail($subscription) {
-    	EmailUtils::sendMail('subscription_number', 'Crossdorp Oelem - Inschrijving voltooid', $subscription);
+    	EmailUtils::sendMail('subscription_payed', 'Crossdorp Oelem - Betaling ontvangen', $subscription);
     }
     
     public static function sendReminderMail($subscription) {
@@ -54,7 +54,7 @@ class EmailUtils
     }
     
     private static function sendMail($template, $subject, $subscription) {
-    	Log::info("Sending '" . $template . "' to " . $subscription->participant[0]->email);
+    	Log::info("Sending '" . $template . "' to " . $subscription->member[0]->email);
 
     	$wwwRoot = Configure::read('App.fullBaseUrl');
     	

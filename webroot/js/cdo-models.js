@@ -29,6 +29,25 @@ var models = new function() {
 			wave: ''
 		};
 	
+	this.populateSubscriptions = function(sarray) {
+		var subscriptions = [];
+		
+		sarray.forEach(function(s) {
+			var subscription = populateSubscription(s);
+			subscriptions.push(subscription);
+		});
+		
+		return subscriptions;
+	}
+	
+	this.populateSubscription = function(s) {
+		return populateSubscription(s);
+	}
+	
+	this.populateMember = function(m) {
+		return populateMember(m);
+	}
+	
 	function createNewSubscription() {
 		return angular.copy(emptySubscription);
 	}
@@ -81,27 +100,6 @@ var models = new function() {
 		member.wave = m.wave;
 		
 		return member;
-	}
- 	
-	
-	
-	this.populateSubscriptions = function(sarray) {
-		var subscriptions = [];
-		
-		sarray.forEach(function(s) {
-			var subscription = populateSubscription(s);
-			subscriptions.push(subscription);
-		});
-		
-		return subscriptions;
-	}
-	
-	this.populateSubscription = function(s) {
-		populateSubscription(s);
-	}
-	
-	this.populateMember = function(m) {
-		populateMember(m);
 	}
 	
 };
