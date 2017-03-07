@@ -121,8 +121,10 @@ class SubscriptionController extends AppController
 	    							->find('all', ['contain' => ['Member']])
 	    							->where($whereClause);
 	    	
+	    	$result = $this->calculateRequestResult($subscriptions);
+	    	
 	    	$this->response->type('json');
-	    	$this->response->body($this->json_encode($subscriptions));
+	    	$this->response->body($this->json_encode($result));
 	    	return $this->response;
     	} catch (PDOException $e) {
     		$this->log('PDOException occurred: ' . $e->getMessage() . '\n' . $e->getTraceAsString() , 'error');
@@ -566,6 +568,24 @@ class SubscriptionController extends AppController
     	}
     	
     	return $whereClause;
+    }
+    
+    private function calculateRequestResult($subscriptions) {
+	    $totalSubscriptions = 0;
+	    $totalMembers = 0;
+	    $totalValidatedSubscriptions = 0;
+	    $totalPayedSubscriptions = 0;
+	    $totalValidatedMembers = 0;
+	    $total5KM = 0;
+	    $total10KM = 0;
+	    $totalPARTY = 0;
+	    
+	    foreach ($subscriptions as $subscription) {
+	    	$totalSubscriptions++;
+	    }
+	    
+	    return ["subscriptions" => $subscriptions, 
+	    		"totalSubscriptions" => $totalSubscriptions];
     }
     
 }

@@ -5,18 +5,26 @@
 		$scope.subscriptions = [];
 		$scope.subscription = null;
 		
+		$scope.totalSubscriptions = 0;
+		
 		$scope.showOverview = true;
 		$scope.showDetail = false;
 		
 		$scope.waveOptions = waveOptions;
 		
+		$scope.jsonResult = null;
+		
 		$scope.loadSubscriptions = function() {
 			$('#modalWait').foundation('open');
 			
 			$http.get('../api/manage/subscription.json').then(function(response) {
-				$scope.subscriptions = models.populateSubscriptions(response.data);
+				$scope.subscriptions = models.populateSubscriptions(response.data.subscriptions);
+				
+				$scope.totalSubscriptions = response.data.totalSubscriptions;
 				
 				$('#modalWait').foundation('close');
+				//alert(angular.toJson(response, true));
+				$scope.jsonResult = angular.toJson(response, true);
 			}, 
 			function(result) {
 				alert(angular.toJson(result, true));
@@ -29,7 +37,7 @@
 			$('#modalWait').foundation('open');
 			
 			$http.get('../api/manage/subscription.json?code=' + code).then(function(response) {
-				$scope.subscription = models.populateSubscription(response.data[0]);
+				$scope.subscription = models.populateSubscription(response.data.subscriptions[0]);
 				
 				$scope.showOverview = false;
 				$scope.showDetail = true;

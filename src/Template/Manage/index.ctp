@@ -2,6 +2,11 @@
 <div ng-controller="manageSubscriptionCtrl" ng-init="loadSubscriptions()">
 	<div  class="row" ng-show="showOverview">
 		<h1>Inschrijvingen</h1>
+		<div class="row">
+			<div class="small-12 medium-6 large-3 column">
+				<b>Totaal aantal inschrijvingen: {{totalSubscriptions}}</b>
+			</div>
+		</div>
 		<table border="1">
 			<tr>
 				<th></th>
