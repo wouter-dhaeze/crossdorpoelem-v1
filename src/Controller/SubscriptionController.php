@@ -572,20 +572,65 @@ class SubscriptionController extends AppController
     
     private function calculateRequestResult($subscriptions) {
 	    $totalSubscriptions = 0;
-	    $totalMembers = 0;
 	    $totalValidatedSubscriptions = 0;
 	    $totalPayedSubscriptions = 0;
+	    $totalRevenue = 0;
+	    $totalMembers = 0;
 	    $totalValidatedMembers = 0;
+	    $payed5KM = 0;
+	    $payed10KM = 0;
+	    $payedPARTY = 0;
 	    $total5KM = 0;
 	    $total10KM = 0;
 	    $totalPARTY = 0;
 	    
 	    foreach ($subscriptions as $subscription) {
 	    	$totalSubscriptions++;
+	    	if ($subscription->validated) {
+	    		$totalValidatedSubscriptions++;
+	    	}
+	    	if ($subscription->payed) {
+	    		$totalPayedSubscriptions++;
+	    		$totalRevenue += $subscription->price;
+	    	}
+	    	foreach($subscription->member as $member) {
+	    		$totalMembers++;
+	    		if ($member->validated) {
+	    			$totalValidatedMembers++;
+	    		}
+	    		if ($member->wave == '5KM') {
+	    			if ($subscription->payed) {
+	    				$payed5KM++;
+	    			}
+	    			$total5KM++;
+	    		} else if ($member->wave == '10KM') {
+	    			if ($subscription->payed) {
+	    				$payed10KM++;
+	    			}
+	    			$total10KM++;
+	    		} else if ($member->wave == 'PARTY') {
+	    			if ($subscription->payed) {
+	    				$payedPARTY++;
+	    			}
+	    			$totalPARTY++;
+	    		}
+	    	}
 	    }
 	    
 	    return ["subscriptions" => $subscriptions, 
-	    		"totalSubscriptions" => $totalSubscriptions];
+	    		"totalSubscriptions" => $totalSubscriptions,
+	    		"totalValidatedSubscriptions" => $totalValidatedSubscriptions,
+	    		"totalPayedSubscriptions" => $totalPayedSubscriptions,
+	    		"totalRevenue" => $totalRevenue,
+	    		"totalMembers" => $totalMembers,
+	    		"totalValidatedMembers" => $totalValidatedMembers,
+	    		"payed5KM" => $payed5KM,
+	    		"payed10KM" => $payed10KM,
+	    		"payedPARTY" => $payedPARTY,
+	    		"total5KM" => $total5KM,
+	    		"total10KM" => $total10KM,
+	    		"totalPARTY" => $totalPARTY
+	    ];
     }
     
 }

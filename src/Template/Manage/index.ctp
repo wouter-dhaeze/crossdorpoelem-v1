@@ -3,8 +3,40 @@
 	<div  class="row" ng-show="showOverview">
 		<h1>Inschrijvingen</h1>
 		<div class="row">
-			<div class="small-12 medium-6 large-3 column">
+			<div class="small-12 medium-6 large-4 column">
 				<b>Totaal aantal inschrijvingen: {{totalSubscriptions}}</b>
+			</div>
+			<div class="small-12 medium-6 large-4 column">
+				<b>Totaal gevalideerde inschrijvingen: {{totalValidatedSubscriptions}}</b>
+			</div>
+			<div class="small-12 medium-6 large-4 column">
+				<b>Totaal betaalde inschrijvingen: {{totalPayedSubscriptions}}</b>
+			</div>
+		</div>
+		<div class="row">
+			<div class="small-12 medium-6 large-4 column">
+				<b>Totaal aantal deelnemers: {{totalMembers}}</b>
+			</div>
+			<div class="small-12 medium-6 large-4 column">
+				<b>Totaal gevalideerde deelnemers: {{totalValidatedMembers}}</b>
+			</div>
+			<div class="small-12 medium-6 large-4 column">
+			</div>
+		</div>
+		<div class="row">
+			<div class="small-12 medium-6 large-4 column">
+				<b>Totaal 5KM: {{payed5KM}}/{{total5KM}}</b>
+			</div>
+			<div class="small-12 medium-6 large-4 column">
+				<b>Totaal 10KM: {{payed10KM}}/{{total10KM}}</b>
+			</div>
+			<div class="small-12 medium-6 large-4 column">
+				<b>Totaal PARTY: {{payedPARTY}}/{{totalPARTY}}</b>
+			</div>
+		</div>
+		<div class="row">
+			<div class="small-12 column">
+				<h3>Totaal inkomsten: {{totalRevenue}}</h3>
 			</div>
 		</div>
 		<table border="1">
