@@ -66,6 +66,7 @@ $this->layout = false;
 								<h5>In tegenstelling tot vorig jaar, waar we een korte jeugrun van 2KM en een volwassen run van 5KM organiseerden,
 								hebben we voor dit jaar 3 formules uitgewerkt. Het parcours baant zich nog steeds een weg door diverse gebouwen binnen de Oelemse dorpskern, 
 								maar dit jaar kunt u kiezen tussen een parcours van 5KM of 10KM. </h5>
+								<p>De wedstrijd start om <b>15u</b> aan <b>sportcomplex Den Akker</b>, waar ook de aankomst ligt. Het tijdstip van aankomst wordt bepaald door welke afstand en hoe snel je loopt.</p>
 							</div>
 						</div>
 						<div class="row">
@@ -109,14 +110,40 @@ $this->layout = false;
 			</section>
 		</div>
 		<div class="small-12 medium-3 column">
-			<div class="callout secondary">
-				<h4>Info</h4>
-				<ul>
-					<li>Crossdorp gaat door op <b>zaterdag 15 april</b>.</li>
-					<li>Het startshot wordt gegeven <b>om 15u</b>.</li>
-					<li>Start en aankomst zijn in <b>sporthal Den Akker te Oedelem</b>.</li>
-				</ul>
-			</div>
+			<section>
+				
+				<div class="callout secondary">
+					<div>
+						<h3>Ook interessant</h3>
+					</div>
+					<div>
+						<h4>Natuurloop</h4>
+						<p>
+							Natuurloop Beernem gaat door op zaterdag 1 april. Voor meer details klik <a href="http://natuurloopbeernem.blogspot.be/" target="_blank">hier</a>.
+						</p>
+					</div>
+					<div>
+						<h4>RugyFit</h4>
+						<p>
+							RugbyFit is gebaseerd op 5 facetten: uithouding, kracht, snelheid, lenigheid en euh... Meer info zie 
+							<a href="http://www.rugbyfit.be/" target="_blank">hier</a>.	
+						</p>
+					</div>
+					<div>
+						<h4>Ter Muiden</h4>
+						<p>
+							VZW Ter Muiden nodigt iedereen op zaterdag 15 april uit om de CrossDorp deelnemers aan te moedigen vanop hun terras.
+							<br/><a href="http://www.termuiden.be/">http://www.termuiden.be/</a>
+						</p>
+					</div>
+					<div>
+						<h4>Guest act</h4>
+						<p>
+							Een van onze sponsors wenst na de wedstrijd een "Special Guest Act" op te voeren. KVB zal - en we citeren - "zijn broek afsteken". Dat wordt lachen!
+						</p>
+					</div>
+				</div>
+			</section>
 		</div>
 	</div>
 	
