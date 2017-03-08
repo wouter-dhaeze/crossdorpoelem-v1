@@ -236,7 +236,7 @@ $this->layout = false;
 						</a>
 					</div>
 					<div class="small-6 medium-3 column">
-						<img class="img-responsive" src="sponsors/delanghe.jpg" />
+						<img class="img-responsive" src="sponsors/kleinebeer.png" />
 					</div>
 			  	</div>
 			  	<div class="row">
