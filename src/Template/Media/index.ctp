@@ -8,6 +8,7 @@ $this->assign('title', 'Media');
 
 ?>
 
+<div>
 <div class="row">
 	<h1>Foto's</h1>
 	<?php if ($albums->isEmpty()) {?>
@@ -35,4 +36,31 @@ $this->assign('title', 'Media');
 	</div>
 </div>
 
+<div class="row">
+	<div class="small-12 column">
+		<div class="text-center title">
+		    <h2>Crossdorp Oelem - The movie</h2>
+		    <div class="line"></div>
+		</div>
+		<article>
+		    <p>
+				Na het succes van vorig jaar, kon een tweede editie niet uitblijven. 
+				Bekijk het filmpje van vorig jaar en begin maar al goeste te krijgen om je in te schrijven.<br/>
+				Stijns hoofd deed dienst als statief, zijn twee vriendjes als figuranten, waarvoor dank. Enjoy!
+		    </p>
+		</article>
+		<div class="flex-video widescreen">
+			<div id="player"></div>
+		</div>
+	</div>
+</div>
+</div>
+<?php 
+$this->start('script');
+?>
 
+	<script src="/js/cdo-youtube.js"></script>
+
+<?php 
+$this->end();
+?>
