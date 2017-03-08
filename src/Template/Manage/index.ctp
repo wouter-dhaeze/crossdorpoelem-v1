@@ -39,6 +39,13 @@
 				<h3>Totaal inkomsten: {{totalRevenue}}</h3>
 			</div>
 		</div>
+		<div class="row">
+			<div class="small-12 column">
+				<h3>Code zoeken</h3>
+				<input type="text" placeholder="Code" ng-model="searchCode" maxlength="10" />
+				<button class="button" role="button" ng-click="searchByCode(searchCode)">Zoeken op code</button>
+			</div>
+		</div>
 		<table border="1">
 			<tr>
 				<th></th>

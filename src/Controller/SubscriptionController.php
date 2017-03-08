@@ -564,7 +564,7 @@ class SubscriptionController extends AppController
     	$code = $request->query('code');
     	if (!empty($code)) {
 	    	$code = $request->query('code');  	
-	    	$whereClause['code'] = $code;
+	    	$whereClause['code LIKE'] = '%' . $code . '%';
     	}
     	
     	return $whereClause;

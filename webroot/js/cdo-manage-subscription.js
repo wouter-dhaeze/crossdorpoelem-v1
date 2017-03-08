@@ -40,7 +40,19 @@
 		};
 		
 		$scope.searchByCode = function(code) {
+			$('#modalWait').foundation('open');
 			
+			$http.get('../api/manage/subscription.json?code=' + code).then(function(response) {
+				parseResult(response);
+				
+				$('#modalWait').foundation('close');
+				//alert(angular.toJson(response, true));
+			}, 
+			function(response) {
+				alert(angular.toJson(response, true));
+				
+				$('#modalWait').foundation('close');
+			});
 		}
 		
 		$scope.openDetails = function(code) {
