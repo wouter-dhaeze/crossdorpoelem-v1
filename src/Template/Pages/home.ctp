@@ -160,6 +160,7 @@ $this->layout = false;
 						<h5>Ook dit jaar doen we ons best om u een leuk en verrassend parcours voor te schotelen. We zijn ervan overtuigd dat zelfs de hard-core Oelemnaar
 						plaatsen zal ontdekken die hij of zij nog niet kende. Bij deze kunt u uw supporters strategisch positioneren om u powerbars dan wel een aantal
 						wespen toe te werpen. Have fun!</h5>
+						<p>Voor alle duidelijkheid: de rode lijn is de 5 KM en wordt door iedereen gelopen. De groene lijn is de extra lus die door de mensen van de 10 KM wordt gelopen.</p>
 					</div>
 					<iframe src="https://www.google.be/maps/d/u/0/embed?mid=1Iqu10Ni8uaQmqt6z8diaDq5rHZM" width="100%" height="500em"></iframe>
 				</div>
