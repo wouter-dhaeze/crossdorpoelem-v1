@@ -66,7 +66,7 @@ $this->layout = false;
 								<h5>In tegenstelling tot vorig jaar, waar we een korte jeugrun van 2KM en een volwassen run van 5KM organiseerden,
 								hebben we voor dit jaar 3 formules uitgewerkt. Het parcours baant zich nog steeds een weg door diverse gebouwen binnen de Oelemse dorpskern, 
 								maar dit jaar kunt u kiezen tussen een parcours van 5KM of 10KM. </h5>
-								<p>De wedstrijd start om <b>15u</b> aan <b>sportcomplex Den Akker</b>, waar ook de aankomst ligt. Het tijdstip van aankomst wordt bepaald door welke afstand en hoe snel je loopt.</p>
+								<p>Welke formule u ook kiest, start en aankomst liggen in <b>sportcomplex Den Akker</b>. De wedstrijd start om <b>15u</b> aan. Het tijdstip van aankomst wordt bepaald door welke afstand en hoe snel je loopt.</p>
 							</div>
 						</div>
 						<div class="row">
@@ -95,7 +95,7 @@ $this->layout = false;
 							<div class="small-12 medium-4 column">
 								<h3>PartyRun voor de ravers</h3>
 								<p>
-									Om dat we zelf graag het aangename aan het nog leukere koppelen, organiseren we dit jaar ook een PartyRun. 
+									Omdat we zelf graag het aangename aan het nog leukere koppelen, organiseren we dit jaar ook een PartyRun. 
 									U haspelt het parcours van 5 KM af maar onderweg houdt u halt aan een aantal mini-fuifkes! Daar verhogen we 
 									de hartslag op de beat en genieten van wat hydratatie. Na 15 minuten raven vat u het vervolg van het parcours aan, op zoek naar de volgende mini-fuif. 
 									Voor slechts 15 euro heeft u een namiddag gesport, gefuifd en van vette ambiance genoten.
