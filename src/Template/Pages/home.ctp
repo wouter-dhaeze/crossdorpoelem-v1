@@ -147,6 +147,28 @@ $this->layout = false;
 		</div>
 	</div>
 	
+	<div class="row">
+		<div class="small-12 column">
+		<section id="parcours" >
+			<div class="row">
+				<div class="column">
+					<div class="text-center title">
+					    <h2>Het Parcours</h2>
+						<div class="line"></div>
+					</div>
+					<div class="callout">
+						<h5>Ook dit jaar doen we ons best om u een leuk en verrassend parcours voor te schotelen. We zijn ervan overtuigd dat zelfs de hard-core Oelemnaar
+						plaatsen zal ontdekken die hij of zij nog niet kende. Bij deze kunt u uw supporters strategisch positioneren om u powerbars dan wel een aantal
+						wespen toe te werpen. Have fun!</h5>
+					</div>
+					<iframe src="https://www.google.be/maps/d/u/0/embed?mid=1Iqu10Ni8uaQmqt6z8diaDq5rHZM" width="100%" height="500em"></iframe>
+				</div>
+			</div>
+		</section>
+		</div>
+	</div>
+	
+	
 	<section id="pnlSponsors" >
 		<div class="row">
 			<div class="column">
