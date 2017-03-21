@@ -117,11 +117,27 @@ class SubscriptionController extends AppController
     	try {
     		$whereClause = $this->calculateWhereClause($this->request);
     		
-	    	$subscriptions = $this->Subscription
-	    							->find('all', ['contain' => ['Member']])
-	    							->where($whereClause);
-	    	
-	    	$result = $this->calculateRequestResult($subscriptions);
+    		$type = $this->request->query('type');
+    		
+    		$result = [];
+    		if (empty($type) || $type == 's') {
+		    	$subscriptions = $this->Subscription
+		    							->find('all', ['contain' => ['Member']])
+		    							->where($whereClause);
+		    	
+		    	$result = $this->calculateRequestResult($subscriptions);
+    		} else if ($type == 'm') {
+    			$members = $this->Member
+    								->find()
+    								->where($whereClause);
+    			
+    			foreach ($members as $member) {
+    				$subscription = $this->Subscription->get($member->subscriptionId);
+    				$member->subscription = $subscription;
+    			}
+    			
+    			$result = ["members" => $members];
+    		}
 	    	
 	    	$this->response->type('json');
 	    	$this->response->body($this->json_encode($result));
@@ -280,12 +296,17 @@ class SubscriptionController extends AppController
     	
     	$message = "";
     	$subscription = $this->Subscription->get($id, [
-    			'contain' => ['Participant']
+    			'contain' => ['Member']
     			]);
     	
     	if (!empty($subscription)) {
     		$code = $subscription->code;
     		Log::debug('Deleting subscription: ' . json_encode($subscription));
+    		
+    		foreach ($subscription->member as $member) {
+    			$this->Member->delete($member);
+    		}
+    		
     		$result = $this->Subscription->delete($subscription);
     		$message = 'Inschrijving met code ' . $code . ' is verwijderd.';
     	} else {

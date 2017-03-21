@@ -107,7 +107,7 @@ Router::scope('/api', function ($routes) {
 Router::scope('/api/manage', function ($routes) {
 	$routes->extensions(['json']);
 	$routes->resources('Subscription', [
-		'actions' => ['index' => 'request', 'create' => 'action'] 
+		'actions' => ['index' => 'request', 'create' => 'action', 'delete' => 'remove'] 
 	]);
 });
 
