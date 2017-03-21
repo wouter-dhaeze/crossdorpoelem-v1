@@ -54,6 +54,26 @@ $this->layout = false;
 	
 	<div class="row">
 		<div class="small-12 medium-9 column">
+			<section id="pnlNewsflash">
+				<div class="row">
+					<div class="small-12 column">
+						<div class="row">
+							<div class="text-center title">
+							    <h2>Newsflash!</h2>
+								<div class="line"></div>
+							</div>
+							<div class="callout warning">
+								<h3>PartyRun VOLZET.</h3>
+								<h5>Ja jongens en meisjes, jullie zijn hard gegaan dit weekend! Wat een enthousiasme! Helaas zullen we ook enkele feestzwijntjes moeten teleurstellen,
+								we hebben namelijk zopas beslist om de inschrijvingen voor de PartyRun vroegtijdig te stoppen.
+								</h5>
+								<h5>Maar geen nood, <b>de 5KM en 10KM zijn nog steeds open</b>!  
+								</h5>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
 			<section id="pnlSubscription">
 				<div class="row">
 					<div class="small-12 column">

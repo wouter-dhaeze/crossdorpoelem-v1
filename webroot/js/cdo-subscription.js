@@ -263,7 +263,7 @@
 	var waveOptions = [
                {id: '5KM', label: 'Crossdorp 5 KM', notAnOption: false, cost: 8},
                {id: '10KM', label: 'Crossdorp 10 KM', notAnOption: false, cost: 10},
-               {id: 'PARTY', label: 'Crossdorp Party Run', notAnOption: false, cost: 15}
+               {id: 'PARTY', label: 'Crossdorp Party Run', notAnOption: true, cost: 15}
            ];
 	
 	var emptyMember = {
