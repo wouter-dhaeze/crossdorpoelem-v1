@@ -183,6 +183,27 @@
 			$scope.applyFilter();
 		}
 		
+		$scope.getStatusColor = function(s) {
+			if (!s.validated) {
+				return { background: "red" };
+			}
+			
+			if (s.validated && !s.payed) {
+				return { background: "orange" };
+			}
+			
+			var numbersAssigned = true;
+			s.members.forEach(function(m) {
+				numbersAssigned = (numbersAssigned && !m.number.length == 0);
+			});
+			
+			if (numbersAssigned) {
+				return { background: "green" }; 
+			}
+			
+			return { background: "yellow" }; 
+		}
+		
 		function parseResult(response) {
 			$scope.subscriptions = models.populateSubscriptions(response.data.subscriptions);
 			

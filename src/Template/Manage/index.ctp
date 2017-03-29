@@ -93,7 +93,7 @@
 				<th>Betaald</th>
 				<th>Details</th>
 			</tr>
-			<tr ng-repeat="s in filteredSubscriptions track by $index">
+			<tr ng-repeat="s in filteredSubscriptions track by $index" ng-style="getStatusColor(s)">
 				<td>{{$index + 1}}</td>
 				<td>{{s.created}}</td>
 				<td>{{s.code}}</td>
