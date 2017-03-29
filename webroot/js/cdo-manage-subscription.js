@@ -13,6 +13,8 @@
 		$scope.showSubscriptionDetail = false;
 		$scope.showMemberDetail = false;
 		
+		$scope.isCommitNumbers = false;
+		
 		$scope.waveOptions = waveOptions;
 		
 		$scope.filterOptions = filterOptions;
@@ -98,7 +100,7 @@
 			$scope.member = null;
 			
 			$http.get('../api/manage/subscription.json?type=m&code=' + code).then(function(response) {
-				alert(angular.toJson(response, true));
+				//alert(angular.toJson(response, true));
 				$scope.member = models.populateMember(response.data.members[0]);
 				
 				$scope.showOverview = false;
@@ -184,12 +186,26 @@
 		}
 		
 		$scope.getStatusColor = function(s) {
-			if (!s.validated) {
+			var statusCode = $scope.getStatusCode(s);
+			
+			if (statusCode == 1) {
 				return { background: "red" };
+			} else if (statusCode == 2) {
+				return { background: "orange" };
+			} else if (statusCode == 3) {
+				return { background: "yellow" }; 
+			} else if (statusCode == 4) {
+				return { background: "green" }; 
+			}
+		}
+		
+		$scope.getStatusCode = function(s) {
+			if (!s.validated) {
+				return 1;
 			}
 			
 			if (s.validated && !s.payed) {
-				return { background: "orange" };
+				return 2;
 			}
 			
 			var numbersAssigned = true;
@@ -198,10 +214,69 @@
 			});
 			
 			if (numbersAssigned) {
-				return { background: "green" }; 
+				return 4; 
 			}
 			
-			return { background: "yellow" }; 
+			return 3; 
+		}
+		
+		$scope.numberButtonEnabled = function(s) {
+			return s.payed && $scope.getStatusCode(s) == 3;
+		}
+		
+		$scope.assignNumbers = function(s) {
+			$http.get('../api/number').then(function(response) {
+				//alert(angular.toJson(response, true));
+				var nparty = response.data["PARTY"];
+				var n5km = response.data["5KM"];
+				var n10km = response.data["10KM"];
+				
+				s.members.forEach(function (m) {
+					if (m.wave == "PARTY") {
+						m.number = nparty;
+						nparty++;
+					} else if (m.wave == "5KM") {
+						m.number = n5km;
+						n5km++;
+					} else if (m.wave == "10KM") {
+						m.number = n10km;
+						n10km++;
+					} 
+				});
+				
+				$scope.isCommitNumbers = true;
+			}, 
+			function(response) {
+				$scope.isCommitNumbers = true;
+				alert(angular.toJson(response, true));
+				
+				
+				//$('#modalWait').foundation('close');
+			});
+		}
+		
+		$scope.commitNumbers = function(s) {
+			$('#modalWait').foundation('open');
+			
+			$http.post('../api/manage/subscription.json?action=submit_numbers', $scope.subscription).then(
+				function(response) {
+					$scope.subscription = models.populateSubscription(response.data);
+					
+					alert("nummers toegekend!");
+					$scope.isCommitNumbers = false;
+					
+					$('#modalWait').foundation('close');
+					//alert(angular.toJson(response, true));
+				}, 
+				function(response) {
+					$scope.isCommitNumbers = false;
+					alert(angular.toJson(response, true));
+					
+					
+					//$('#modalWait').foundation('close');
+				});
+			
+			$scope.isCommitNumbers = false;
 		}
 		
 		function parseResult(response) {

@@ -186,16 +186,35 @@
 							ng-model="subscription.payed" ng-disabled="true"></input>
 				</div>
 			</div>
-			<div class="row">
-				<div>
+			<div class="row" ng-hide="isCommitNumbers">
+				<div class="small-3 column">
 					<button class="button large" role="button" 
 						ng-disabled="!subscription.validated || subscription.payed" ng-click="payedAction()">Betaald</button>
 				</div>
-				<div>
+				<div class="small-3 column">
+					<button class="button large" role="button" 
+						ng-disabled="!numberButtonEnabled(subscription)"
+						ng-click="assignNumbers(subscription)">Nummers toekennen</button>
+				</div>
+				<div class="small-3 column">
 					<button class="button large alert" role="button" 
 						ng-disabled="subscription.payed" ng-click="initiateDelete()">Verwijderen</button>
 				</div>
-				<div>
+				<div class="small-3">
+				
+				</div>
+			</div>
+			<div class="row" ng-show="isCommitNumbers">
+				<div class="callout warning">
+				  <h5>Nummers bevestigen?</h5>
+				  <p>Kijk de nummers na en klik op bevestigen. Daarna wordt naar de inschrijver en naar elk van de deelnemers een mail gestuurd.</p>
+				  <button class="button large" role="button" 
+				  		
+						ng-click="commitNumbers(subscription)">Nummers bevestigen</button>
+				</div>
+			</div>
+			<div class="row">
+				<div class="column">
 					<button class="button large" role="button" 
 						ng-click="showSubscriptionDetail = false; showMemberDetail = false; showOverview = true; subscription = null; loadSubscriptions()">Sluiten</button>
 				</div>

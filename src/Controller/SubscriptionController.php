@@ -272,6 +272,14 @@ class SubscriptionController extends AppController
     				throw new InternalErrorException('De inschrijving kon niet worden bewaard. Zijn alle velden correct ingevuld?');
     			}
     			
+    		} else if ($action == 'submit_numbers') {
+    			foreach ($subscription['members'] as $index => $m) {
+    				$member = $this->getMemberByCode($m['code'], true);
+    				$member->number = $m['number'];
+    				$this->Member->save($member);
+    			}
+    			
+    			$subscription = $this->getSubscriptionByCode($code, false);
     		}
 	    	
 	    	$this->response->type('json');
@@ -515,6 +523,31 @@ class SubscriptionController extends AppController
     	$count = $memberq->count();
     	
     	return $count > 0;
+    }
+    
+    private function getMemberByCode($code, $throw) {
+    	$memberq = $this->Member->findByCode($code);
+    	$count = $memberq->count();
+    	if ($count == 0) {
+    		Log::warning('Member code ' . $code . ' not found' , 'error');
+    		if ($throw) {
+    			throw new InternalErrorException("De gezochte deelnemers-code '" . $code . "' werd niet gevonden.");
+    		} else {
+    			return null;
+    		}
+    	}
+    	if ($count > 1) {
+    		Log::warning('Multiple members with code ' . $code . 'found.' , 'error');
+    		if ($throw) {
+    			throw new InternalErrorException("Er werden meerdere deelnemers met code '" . $code . "' gevonden.");
+    		} else {
+    			return null;
+    		}
+    	}
+    	 
+    	$member = $memberq->first();
+    	 
+    	return $this->Member->get($member->id);
     }
     
     private function saveSubscription($sdata) {
