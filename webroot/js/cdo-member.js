@@ -1,25 +1,24 @@
 (function() {
-	var modParticipant = angular.module('cdo.participant', []);
+	var modMember = angular.module('cdo.member', []);
 	
-	modParticipant.controller('participantCtrl', function($scope, $log, $http) {
-		$scope.debugHelp = "test";
-		
+	modMember.controller('memberCtrl', function($scope, $log, $http) {
 		$scope.errorMessage = null;
 		$scope.result = null;
 		
-		$scope.search = function() {
+		$scope.loadMembers = function() {
 			$('#modalSearching').foundation('open');
 			
-			var res = $http.get('../api/participant.json');
-			res.success(function(data, status, headers, config) {
+			$http.get('../api/member.json').then(function(response) {
+				//alert(angular.toJson(response, true));
 				$('#modalSearching').foundation('close');
-				$scope.result = data;
-			});
-			res.error(function(data, status, headers, config) {
+				$scope.result = response.data;
+			}, 
+			function(response) {
+				//alert(angular.toJson(response, true));
 				$('#modalSearching').foundation('close');
-				$scope.errorMessage = data.message;
+				$scope.errorMessage = response.data.message;
 				
-				$log.debug(data);
+				$log.debug(response.data);
 			});
 		};
  			

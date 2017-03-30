@@ -55,7 +55,22 @@ class MemberController extends AppController
 				$this->response->type('json');
 				$this->response->body($this->json_encode($member));
 				return $this->response;
-			} 
+			} else {
+				$query = $this->Member
+					->find()
+					->where(['validated =' => true])
+					->order(['number' => 'ASC']);
+				
+					
+				$memberTotal = $query->count();
+				$members = $query->toArray();
+					
+				$result = ["members" => $members, "count" => $memberTotal];
+					
+				$this->response->type('json');
+				$this->response->body(json_encode($result));
+				return $this->response;
+			}
 		} catch (PDOException $e) {
 			$this->log('PDOException occurred: ' . $e->getMessage() . '\n' . $e->getTraceAsString() , 'error');
 			throw new InternalErrorException('Er is een fout op de database gebeurd.');
