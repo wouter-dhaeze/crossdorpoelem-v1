@@ -210,7 +210,7 @@
 			
 			var numbersAssigned = true;
 			s.members.forEach(function(m) {
-				numbersAssigned = (numbersAssigned && !m.number.length == 0);
+				numbersAssigned = (numbersAssigned && (!m.participant || !m.number.length == 0));
 			});
 			
 			if (numbersAssigned) {

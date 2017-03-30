@@ -275,11 +275,21 @@ class SubscriptionController extends AppController
     		} else if ($action == 'submit_numbers') {
     			foreach ($subscription['members'] as $index => $m) {
     				$member = $this->getMemberByCode($m['code'], true);
-    				$member->number = $m['number'];
-    				$this->Member->save($member);
+    				if ($member->participant) {
+	    				$member->number = $m['number'];
+	    				$member->validated = true;
+	    				$member->consent = true;
+	    				$member->public_profile = true;
+	    				$this->Member->save($member);
+	    				
+	    				$this->sendParticipantNumberMail($member);
+    				}
     			}
     			
     			$subscription = $this->getSubscriptionByCode($code, false);
+    			if (!empty($subscription) && count($subscription->member) > 1) {
+    				$this->sendSubscriptionFinalMail($subscription);
+    			}
     		}
 	    	
 	    	$this->response->type('json');
@@ -346,6 +356,14 @@ class SubscriptionController extends AppController
     
     private function sendSubscriptionSuccessMail($subscription) {
     	EmailUtils::sendSubscriptionSuccessMail($subscription);
+    }
+    
+    private function sendParticipantNumberMail($member) {
+    	EmailUtils::sendParticipantNumberMail($member);
+    }
+    
+    private function sendSubscriptionFinalMail($subscription) {
+    	EmailUtils::sendSubscriptionFinalMail($subscription);
     }
     
     private function validateNewSubscription($subscription) {
