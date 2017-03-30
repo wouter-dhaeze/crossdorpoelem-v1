@@ -216,7 +216,7 @@
 			<div class="row">
 				<div class="column">
 					<button class="button large" role="button" 
-						ng-click="showSubscriptionDetail = false; showMemberDetail = false; showOverview = true; subscription = null; loadSubscriptions()">Sluiten</button>
+						ng-click="showSubscriptionDetail = false; showMemberDetail = false; showOverview = true; subscription = null; isCommitNumbers = false; loadSubscriptions()">Sluiten</button>
 				</div>
 			</div>
 			<div class="row">
