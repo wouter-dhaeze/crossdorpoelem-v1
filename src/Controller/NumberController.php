@@ -71,9 +71,15 @@ class NumberController extends AppController
 	}
 	
 	private function getNumber($wave, $defaultValue) {
+		$where = ['number <>' => "", 'wave =' => $wave];
+		
+		if ($wave == 'PARTY') {
+			$where['number >'] = '10';
+		}
+		
 		$query = $this->Member
 			->find()
-			->where(['number <>' => "", 'wave =' => $wave])
+			->where($where)
 			->order(['number' => 'DESC'])
 			->limit(1);
 		$max = $query->toArray();
