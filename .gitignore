@@ -1,5 +1,6 @@
 /vendor/*
 /config/app.php
+/config/app_dev.php
 /tmp/*
 /logs/*
 /tmp
@@ -22,3 +23,4 @@
 .metadata/
 webroot/css/
 /nbproject/private/
+/nbproject

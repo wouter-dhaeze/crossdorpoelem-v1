@@ -35,248 +35,237 @@ $this->layout = false;
 </head>
 <body ng-app="cdo.app">
 	
-	<?= $this->element('menu_bar'); ?>
-	<div id="header-main">
-		<div class="row">
-			<!-- <img src="../img/crossdorp_logo_02_med.png"></img>-->
-			<img src="../img/crossdorp_logo-02_low.png"></img>
-		</div>
-		<div class="row">
-			<div class="small-10 small-offset-1 medium-8 medium-offset-2 large-6 large-offset-3 column title">
-				Oelem gets "Urban Trailed" <br/>Part III <br/>
-				Zaterdag 31 maart 2018
-			</div>
-		</div>
-		
-	</div>
-    
+    <?= $this->element('menu_bar'); ?>
+    <div id="header-main">
         <div class="row">
-		<div class="small-12 column">
-			<section id="pnlSubscription">
-				<div class="row">
-					<div class="small-12 column">
-						<div class="row">
-							<div class="text-center title">
-							    <h2>Drie formules</h2>
-								<div class="line"></div>
-							</div>
-                                                    <div class="callout">
-						<h5>Inschrijven kan vanaf zaterdag 3 februari 2018.</h5>
-					</div>
-						</div>
-						<div class="row">
-							<div class="small-12 medium-4 column">
-								<h3>5KM voor de leute</h3>
-								<p>
-									Ben je een recreatieve loper en heb je zin in een leuk parcours, dan is "Crossdorp 5KM" iets voor jou. Je loopt door gebouwen waar u anders nooit komt, 
-									en je geniet nadien van de Oelemse gezelligheid. Deelname kost je 8 euro.
-								<p>
-								<div>
-									<a href="/subscription" class="hide button large">Ik schrijf in!</a>
-								</div>
-							</div>
-							<div class="small-12 medium-4 column">
-								<h3>11KM target run</h3>
-								<p>
-                                                                    Daar waar we vorig jaar de nadruk legden op het recreatieve, proberen we nu ook de honger van de echte wedstrijdbeesten te stillen. We introduceren graag onze
-                                                                    "target run", in de volksmond "the bunny run" genoemd. We sturen twee getrainde lopers voorop, aan jullie om die binnen de 11 KM in te halen. Hier is ook tijdsregistratie aan gekoppeld.
-                                                                    Deelname kost je 10 euro. Verdere info volgt.
-								<p>
-								<div>
-									<a href="/subscription" class="hide button large">Ik schrijf in!</a>
-								</div>
-							</div>
-							<div class="small-12 medium-4 column">
-								<h3>PartyRun voor de ravers</h3>
-								<p>
-                                                                    Na het succes van vorig jaar gaan we voor een tweede editie van onze PartyRun. We hebben opnieuw twee fuifkes verstopt op ons parcours. Wij dagen jullie uit om de sfeer van vorig jaar te verbreken. Onze huis DJ's zijn alvast gewaarschuwd...
-                                                                    Voor slechts 15 euro heeft u een namiddag gesport, gefuifd en van vette ambiance genoten.
-								<p>
-								<div>
-									<a href="/subscription" class="hide button large">Ik schrijf in!</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-		</div>
+            <img src="../img/crossdorp_logo-02_low.png"></img>
+        </div>
+        <div class="row">
+            <div class="small-10 small-offset-1 medium-8 medium-offset-2 large-6 large-offset-3 column title">
+                    Oelem gets "Urban Trailed" <br/>Part III <br/>
+                    Zaterdag 31 maart 2018
+            </div>
+        </div>
+    </div>
+    
+    <section id="pnlSubscription">
+            <div class="row">
+                    <div class="small-12 column">
+                            <div class="row">
+                                    <div class="text-center title">
+                                        <h2>Drie formules</h2>
+                                            <div class="line"></div>
+                                    </div>
+                                <div class="callout">
+                            <h5>Inschrijven kan vanaf zaterdag 3 februari 2018.</h5>
+                    </div>
+                            </div>
+                            <div class="row">
+                                    <div class="small-12 medium-4 column">
+                                            <h3>5KM voor de leute</h3>
+                                            <p>
+                                                    Ben je een recreatieve loper en heb je zin in een leuk parcours, dan is "Crossdorp 5KM" iets voor jou. Je loopt door gebouwen waar u anders nooit komt, 
+                                                    en je geniet nadien van de Oelemse gezelligheid. Deelname kost je 8 euro.
+                                            <p>
+                                            <div>
+                                                    <a href="/subscription" class="hide button large">Ik schrijf in!</a>
+                                            </div>
+                                    </div>
+                                    <div class="small-12 medium-4 column">
+                                            <h3>11KM target run</h3>
+                                            <p>
+                                                Daar waar we vorig jaar de nadruk legden op het recreatieve, proberen we nu ook de honger van de echte wedstrijdbeesten te stillen. We introduceren graag onze
+                                                "target run", in de volksmond "the bunny run" genoemd. We sturen twee getrainde lopers voorop, aan jullie om die binnen de 11 KM in te halen. Hier is ook tijdsregistratie aan gekoppeld.
+                                                Deelname kost je 10 euro. Verdere info volgt.
+                                            <p>
+                                            <div>
+                                                    <a href="/subscription" class="hide button large">Ik schrijf in!</a>
+                                            </div>
+                                    </div>
+                                    <div class="small-12 medium-4 column">
+                                            <h3>PartyRun voor de ravers</h3>
+                                            <p>
+                                                Na het succes van vorig jaar gaan we voor een tweede editie van onze PartyRun. We hebben opnieuw twee fuifkes verstopt op ons parcours. Wij dagen jullie uit om de sfeer van vorig jaar te verbreken. Onze huis DJ's zijn alvast gewaarschuwd...
+                                                Voor slechts 15 euro heeft u een namiddag gesport, gefuifd en van vette ambiance genoten.
+                                            <p>
+                                            <div>
+                                                    <a href="/subscription" class="hide button large">Ik schrijf in!</a>
+                                            </div>
+                                    </div>
+                            </div>
+                    </div>
+            </div>
+    </section>
+	
+    <section id="parcours" class="bleu" >
+            <div class="row">
+                    <div class="column">
+                            <div class="text-center title">
+                                <h2>Het Parcours</h2>
+                                    <div class="line"></div>
+                            </div>
+                            <div class="callout primary">
+                                    <h5>Ook dit jaar doen we ons best om u een leuk en verrassend parcours voor te schotelen. We zijn ervan overtuigd dat zelfs de hard-core Oelemnaar
+                                    plaatsen zal ontdekken die hij of zij nog niet kende. Bij deze kunt u uw supporters strategisch positioneren om u powerbars dan wel een aantal
+                                    wespen toe te werpen. Have fun!</h5>
+                            </div>
+                            <!--<iframe src="https://www.google.be/maps/d/u/0/embed?mid=1Iqu10Ni8uaQmqt6z8diaDq5rHZM" width="100%" height="500em"></iframe>-->
+                        <h3>5KM en Pary Run</h3>
+                        <div style="overflow:hidden;"><div style="position:relative;width:100%;padding-top:56.25%;overflow:visible;"/><iframe name="plotaroute_map_536871" src="https://www.plotaroute.com/embedmap/536871" style="position:absolute;top:0;left:0;bottom:0;right:0;width:100%; height:100%;" frameborder="0" scrolling="no" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe></div></div>
+                    <h3>11 KM</h3>    
+                    <div style="overflow:hidden;"><div style="position:relative;width:100%;padding-top:56.25%;overflow:visible;"/><iframe name="plotaroute_map_536877" src="https://www.plotaroute.com/embedmap/536877" style="position:absolute;top:0;left:0;bottom:0;right:0;width:100%; height:100%;" frameborder="0" scrolling="no" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe></div></div>
+                    </div>
+            </div>
+    </section>
 	
 	
-	
-	<div class="row">
-		<div class="small-12 column">
-		<section id="parcours" >
-			<div class="row">
-				<div class="column">
-					<div class="text-center title">
-					    <h2>Het Parcours</h2>
-						<div class="line"></div>
-					</div>
-					<div class="callout">
-						<h5>Ook dit jaar doen we ons best om u een leuk en verrassend parcours voor te schotelen. We zijn ervan overtuigd dat zelfs de hard-core Oelemnaar
-						plaatsen zal ontdekken die hij of zij nog niet kende. Bij deze kunt u uw supporters strategisch positioneren om u powerbars dan wel een aantal
-						wespen toe te werpen. Have fun!</h5>
-					</div>
-					<!--<iframe src="https://www.google.be/maps/d/u/0/embed?mid=1Iqu10Ni8uaQmqt6z8diaDq5rHZM" width="100%" height="500em"></iframe>-->
-                                    <h3>5KM en Pary Run</h3>
-                                    <div style="overflow:hidden;"><div style="position:relative;width:100%;padding-top:56.25%;overflow:visible;"/><iframe name="plotaroute_map_536871" src="https://www.plotaroute.com/embedmap/536871" style="position:absolute;top:0;left:0;bottom:0;right:0;width:100%; height:100%;" frameborder="0" scrolling="no" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe></div></div>
-                                <h3>11 KM</h3>    
-                                <div style="overflow:hidden;"><div style="position:relative;width:100%;padding-top:56.25%;overflow:visible;"/><iframe name="plotaroute_map_536877" src="https://www.plotaroute.com/embedmap/536877" style="position:absolute;top:0;left:0;bottom:0;right:0;width:100%; height:100%;" frameborder="0" scrolling="no" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe></div></div>
-				</div>
-			</div>
-		</section>
-		</div>
-	</div>
-	
-	
-	<section id="pnlSponsors" >
-		<div class="row">
-			<div class="column">
-				<div class="row">
-				  <div class="text-center title">
-				    <h1>Onze sponsors</h1>
-				    <div class="line"></div>
-				  </div>
-				</div>
-                            <h3>Hoofdsponsors</h3>
-			  	<div class="row">
-			  		<div class="small-6 medium-3 column">
-						<a href="https://nl-nl.facebook.com/The-Crocodile-217830311574780/" target="_blank">
-							<img class="img-responsive" src="sponsors/crocodile.jpg" />
-						</a>
-					</div>
-					<div class="small-6 medium-3 column">
-						<a href="http://www.tetard.be/" target="_blank">
-							<img class="img-responsive" src="sponsors/tetard.jpg" />
-						</a>
-					</div>
+    <section id="pnlSponsors" class="grey">
+            <div class="row">
+                    <div class="column">
+                            <div class="row">
+                              <div class="text-center title">
+                                <h1>Onze sponsors</h1>
+                                <div class="line"></div>
+                              </div>
+                            </div>
+                        <h3>Hoofdsponsors</h3>
+                            <div class="row">
                                     <div class="small-6 medium-3 column">
-						<a href="http://www.deformatie.be/" target="_blank">
-							<img class="img-responsive" src="sponsors/deformatie.jpg" />
-						</a>
-					</div>
-					<div class="small-6 medium-3 column">
-						<a href="http://www.alphamservice.be/" target="_blank">
-							<img class="img-responsive" src="sponsors/alphamservice.jpg" />
-						</a>
-					</div>
-			  		<div class="small-6 medium-3 column">
-			  			<a href="http://www.artifexevents.be/" target="_blank">
-							<img class="img-responsive" src="sponsors/artifex.jpg" />
-						</a>
-					</div>
+                                            <a href="https://nl-nl.facebook.com/The-Crocodile-217830311574780/" target="_blank">
+                                                    <img class="img-responsive" src="sponsors/crocodile.jpg" />
+                                            </a>
+                                    </div>
                                     <div class="small-6 medium-3 column">
-						<img class="img-responsive" src="sponsors/jomar.jpg" />
-					</div>
+                                            <a href="http://www.tetard.be/" target="_blank">
+                                                    <img class="img-responsive" src="sponsors/tetard.jpg" />
+                                            </a>
+                                    </div>
+                                <div class="small-6 medium-3 column">
+                                            <a href="http://www.deformatie.be/" target="_blank">
+                                                    <img class="img-responsive" src="sponsors/deformatie.jpg" />
+                                            </a>
+                                    </div>
                                     <div class="small-6 medium-3 column">
-			  			<a href="http://www.joxx.be/" target="_blank">
-							<img class="img-responsive" src="sponsors/joxx.jpg" />
-						</a>
-					</div>
-				</div>
-                            <h3>Sponsors</h3>
-			  	<div class="row">
-			  		<div class="small-6 medium-3 column">
-				  		<a href="http://www.houthandeldriekoningen.be/" target="_blank">
-							<img class="img-responsive" src="sponsors/driekoningen.jpg" />
-						</a>
-					</div>
-			  		<div class="small-12 medium-3 column">
-				  		<a href="http://mobilefoodbar.be/" target="_blank">
-							<img class="img-responsive" src="sponsors/mobilefoodbar.jpg" />
-						</a>
-					</div>
-					<div class="small-12 medium-3 column">
-						<a href="http://www.frietamientje.be/" target="_blank">
-							<img class="img-responsive" src="sponsors/frietamientje.jpg" />
-						</a>
-					</div>
-					<div class="small-6 medium-3 column">
-						<img class="img-responsive" src="sponsors/coucke.jpg" />
-					</div>
-			  	</div>
-			  	<div class="row">
-					<div class="small-6 medium-3 column">
-						<img class="img-responsive" src="sponsors/frituurgeert.jpg" />
-					</div>
-					<div class="small-6 medium-3 column">				
-						<a href="http://www.demess.be/" target="_blank">
-							<img class="img-responsive" src="sponsors/demess.jpg" />
-						</a>
-					</div>
-					<div class="small-6 medium-3 column">			
-						<a href="http://vloerenfranssens.be/" target="_blank">
-							<img class="img-responsive" src="sponsors/vloerenfranssens.jpg" />
-						</a>
-					</div>
-					<div class="small-6 medium-3 column">
-						<a href="http://www.debokke.be/" target="_blank">
-							<img class="img-responsive" src="sponsors/debokke.jpg" />
-						</a>
-					</div>
-			  	</div>
-			  	<div class="row">
-			  		<div class="small-6 medium-3 column">
-				  		<a href="http://rikbeuselinck.be/" target="_blank">
-							<img class="img-responsive" src="sponsors/rikbeuselinck.jpg" />
-						</a>
-					</div>
-					<div class="small-6 medium-3 column">					
-						<a href="http://www.dressedroom.be/" target="_blank">
-							<img class="img-responsive" src="sponsors/dressedroom1.jpg" />
-						</a>
-					</div>
-					<div class="small-6 medium-3 column">				
-						<a href="http://www.maximsfashion.be/" target="_blank">
-							<img class="img-responsive" src="sponsors/maxims.jpg" />
-						</a>
-					</div>
-					<div class="small-6 medium-3 column">
-						<img class="img-responsive" src="sponsors/kleinebeer.png" />
-					</div>
-			  	</div>
-			  	<div class="row">
-			  		<div class="small-6 medium-3 column">		  		
-				  		<a href="http://www.garagedebaene.be/" target="_blank">
-							<img class="img-responsive" src="sponsors/debaene.jpg" />
-						</a>
-					</div>
-					<div class="small-6 medium-3 column">		  		
-				  		<a href="https://nl-nl.facebook.com/PapierhandelKiekeboek/" target="_blank">
-							<img class="img-responsive" src="sponsors/kiekeboek.jpg" />
-						</a>
-					</div>
-					<div class="small-6 medium-3 column">
-						<a href="https://nl-nl.facebook.com/Caf%C3%A9-Mitra-341235192573657/" target="_blank">
-							<img class="img-responsive" src="sponsors/mitra.jpg" />
-						</a>
-					</div>
-					<div class="small-6 medium-3 column">
-						<a href="http://www.baristas.be/" target="_blank">
-							<img class="img-responsive" src="sponsors/patscoffee.jpg" />
-						</a>
-					</div>
-			  	</div>
-			  	<div class="row">
-			  		<div class="small-6 medium-3 column">
-				  		<a href="http://www.schepens-partners.be/" target="_blank">
-							<img class="img-responsive" src="sponsors/schepens_advocaten.jpg" />
-						</a>
-					</div>
-					<div class="small-6 medium-3 column">
-						<img class="img-responsive" src="sponsors/mens.jpg" />
-					</div>
-					<div class="small-6 medium-3 column">
-						<img class="img-responsive" src="sponsors/harlekijn.jpg" />
-					</div>
-					<div class="small-6 medium-3 column">
-						
-					</div>
-			  	</div>
-			</div>
-		</div>
-	</section>
+                                            <a href="http://www.alphamservice.be/" target="_blank">
+                                                    <img class="img-responsive" src="sponsors/alphamservice.jpg" />
+                                            </a>
+                                    </div>
+                                    <div class="small-6 medium-3 column">
+                                            <a href="http://www.artifexevents.be/" target="_blank">
+                                                    <img class="img-responsive" src="sponsors/artifex.jpg" />
+                                            </a>
+                                    </div>
+                                <div class="small-6 medium-3 column">
+                                            <img class="img-responsive" src="sponsors/jomar.jpg" />
+                                    </div>
+                                <div class="small-6 medium-3 column">
+                                            <a href="http://www.joxx.be/" target="_blank">
+                                                    <img class="img-responsive" src="sponsors/joxx.jpg" />
+                                            </a>
+                                    </div>
+                            </div>
+                        <h3>Sponsors</h3>
+                            <div class="row">
+                                    <div class="small-6 medium-3 column">
+                                            <a href="http://www.houthandeldriekoningen.be/" target="_blank">
+                                                    <img class="img-responsive" src="sponsors/driekoningen.jpg" />
+                                            </a>
+                                    </div>
+                                    <div class="small-12 medium-3 column">
+                                            <a href="http://mobilefoodbar.be/" target="_blank">
+                                                    <img class="img-responsive" src="sponsors/mobilefoodbar.jpg" />
+                                            </a>
+                                    </div>
+                                    <div class="small-12 medium-3 column">
+                                            <a href="http://www.frietamientje.be/" target="_blank">
+                                                    <img class="img-responsive" src="sponsors/frietamientje.jpg" />
+                                            </a>
+                                    </div>
+                                    <div class="small-6 medium-3 column">
+                                            <img class="img-responsive" src="sponsors/coucke.jpg" />
+                                    </div>
+                            </div>
+                            <div class="row">
+                                    <div class="small-6 medium-3 column">
+                                            <img class="img-responsive" src="sponsors/frituurgeert.jpg" />
+                                    </div>
+                                    <div class="small-6 medium-3 column">				
+                                            <a href="http://www.demess.be/" target="_blank">
+                                                    <img class="img-responsive" src="sponsors/demess.jpg" />
+                                            </a>
+                                    </div>
+                                    <div class="small-6 medium-3 column">			
+                                            <a href="http://vloerenfranssens.be/" target="_blank">
+                                                    <img class="img-responsive" src="sponsors/vloerenfranssens.jpg" />
+                                            </a>
+                                    </div>
+                                    <div class="small-6 medium-3 column">
+                                            <a href="http://www.debokke.be/" target="_blank">
+                                                    <img class="img-responsive" src="sponsors/debokke.jpg" />
+                                            </a>
+                                    </div>
+                            </div>
+                            <div class="row">
+                                    <div class="small-6 medium-3 column">
+                                            <a href="http://rikbeuselinck.be/" target="_blank">
+                                                    <img class="img-responsive" src="sponsors/rikbeuselinck.jpg" />
+                                            </a>
+                                    </div>
+                                    <div class="small-6 medium-3 column">					
+                                            <a href="http://www.dressedroom.be/" target="_blank">
+                                                    <img class="img-responsive" src="sponsors/dressedroom1.jpg" />
+                                            </a>
+                                    </div>
+                                    <div class="small-6 medium-3 column">				
+                                            <a href="http://www.maximsfashion.be/" target="_blank">
+                                                    <img class="img-responsive" src="sponsors/maxims.jpg" />
+                                            </a>
+                                    </div>
+                                    <div class="small-6 medium-3 column">
+                                            <img class="img-responsive" src="sponsors/kleinebeer.png" />
+                                    </div>
+                            </div>
+                            <div class="row">
+                                    <div class="small-6 medium-3 column">		  		
+                                            <a href="http://www.garagedebaene.be/" target="_blank">
+                                                    <img class="img-responsive" src="sponsors/debaene.jpg" />
+                                            </a>
+                                    </div>
+                                    <div class="small-6 medium-3 column">		  		
+                                            <a href="https://nl-nl.facebook.com/PapierhandelKiekeboek/" target="_blank">
+                                                    <img class="img-responsive" src="sponsors/kiekeboek.jpg" />
+                                            </a>
+                                    </div>
+                                    <div class="small-6 medium-3 column">
+                                            <a href="https://nl-nl.facebook.com/Caf%C3%A9-Mitra-341235192573657/" target="_blank">
+                                                    <img class="img-responsive" src="sponsors/mitra.jpg" />
+                                            </a>
+                                    </div>
+                                    <div class="small-6 medium-3 column">
+                                            <a href="http://www.baristas.be/" target="_blank">
+                                                    <img class="img-responsive" src="sponsors/patscoffee.jpg" />
+                                            </a>
+                                    </div>
+                            </div>
+                            <div class="row">
+                                    <div class="small-6 medium-3 column">
+                                            <a href="http://www.schepens-partners.be/" target="_blank">
+                                                    <img class="img-responsive" src="sponsors/schepens_advocaten.jpg" />
+                                            </a>
+                                    </div>
+                                    <div class="small-6 medium-3 column">
+                                            <img class="img-responsive" src="sponsors/mens.jpg" />
+                                    </div>
+                                    <div class="small-6 medium-3 column">
+                                            <img class="img-responsive" src="sponsors/harlekijn.jpg" />
+                                    </div>
+                                    <div class="small-6 medium-3 column">
+
+                                    </div>
+                            </div>
+                    </div>
+            </div>
+    </section>
             
         <div class="hide row">
 		<div class="small-12 column">

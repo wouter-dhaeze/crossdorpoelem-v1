@@ -1,6 +1,13 @@
 section {
-	margin: 10px auto;
-	/*padding: 50px 0;*/
+	padding: 50px 0;
+}
+
+section.grey {
+    background-color: #f2f2f2;
+}
+
+section.bleu {
+    background-color: #eff7fd;
 }
 
 section .title h1 {
