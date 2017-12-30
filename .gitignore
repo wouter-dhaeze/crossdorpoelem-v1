@@ -21,3 +21,4 @@
 .bowerrc
 .metadata/
 webroot/css/
+/nbproject/private/

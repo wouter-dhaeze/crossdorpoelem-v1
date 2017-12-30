@@ -1,42 +1,27 @@
 <?php 
 
-use Cake\I18n\Time;
-Time::setToStringFormat('dd/MM/yyyy');
-
 $this->layout = 'cdo-detail';
 $this->assign('title', 'Deelnemers');
 $this->assign('ogmetadata', 'fb_participants');
 
 ?>
 
-<div ng-controller="participantCtrl" ng-init="showMessage = true; search()">
+<div ng-controller="memberCtrl" ng-init="loadMembers()">
 	<div class="row">
-		<div class="alert alert-danger" ng-show="errorMessage">{{errorMessage}}</div>
-	</div>
-	<div class="row" ng-show="showMessage">
-		<div class="callout">
-	        <button class="close-button" aria-label="Close alert" type="button" ng-click="showMessage = false">
-	          <span aria-hidden="true">&times;</span>
-	        </button>
-	        <div class="alert alert-warning lead">Indien u uw naam niet in de lijst terug vindt, hebben we uw storing nog niet onvangen. OPGELET!
-	        U kunt pas aan de wedstrijd deelnemen nadat we uw storting hebben ontvangen. Nadien krijgt u een borstnummer toegekend.<br/>
-	        Het kan evenwel enkele dagen duren om uw betaling te registreren.</div>
-	    </div>
+		<div class="callout warning" ng-show="errorMessage">{{errorMessage}}</div>
 	</div>
 	<div class="row" ng-show="result">
 		<h4>Aantal ingeschreven deelnemers: {{result.count}}</h4>
 		<table border="1">
 			<tr>
-				<th>Borstnummer</th>
-				<th>Wave</th>
 				<th>Naam</th>
-				<th>Geboortedatum</th>
+				<th>Wave</th>
+				<th>Borstnummer</th>
 			</tr>
-			<tr ng-repeat="p in result.participants">
-				<td>{{p.number}}</td>
-				<td>{{p.s.wave}}</td>
-				<td>{{p.fname + ' ' + p.lname}}</td>
-				<td>{{p.dob | date:'dd/MM/yyyy'}}</td>
+			<tr ng-repeat="m in result.members">
+				<td>{{m.fname + ' ' + m.lname}}</td>
+				<td>{{m.wave}}</td>
+				<td>{{m.number}}</td>
 			</tr>
 		</table>
 	</div>
@@ -45,3 +30,13 @@ $this->assign('ogmetadata', 'fb_participants');
   		<p class="lead">Even geduld...</p>
 	</div>
 </div>
+
+<?php 
+$this->start('script');
+?>
+
+	<script src="/js/cdo-member.js"></script>
+
+<?php 
+$this->end();
+?>

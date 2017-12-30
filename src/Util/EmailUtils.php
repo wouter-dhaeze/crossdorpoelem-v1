@@ -20,6 +20,66 @@ class EmailUtils
     	EmailUtils::sendMail('subscription_payed', 'Crossdorp Oelem - Betaling ontvangen', $subscription);
     }
     
+    public static function sendParticipantNumberMail($member) {
+    	//EmailUtils::sendMail('subscription_participant_number', 'Crossdorp Oelem - Ziehier uw borstnummer', $member);
+    	
+    	Log::info("Sending 'participant_number' to " . $member->email);
+    	
+    	$wwwRoot = Configure::read('App.fullBaseUrl');
+    	 
+    	$viewVars = ['member' => $member,
+    			'baseUrl' => $wwwRoot];
+    	
+    	$email = new Email('default');
+    	$email->template('participant_number', 'cdo')
+    	->emailFormat('html')
+    	->to($member->email)
+    	->subject('Crossdorp Oelem - Ziehier uw borstnummer')
+    	->viewVars($viewVars);
+    	$email->send();
+    }
+    
+    public static function sendParticipantInfo($subscription) {
+    	//EmailUtils::sendMail('subscription_participant_number', 'Crossdorp Oelem - Ziehier uw borstnummer', $member);
+    	
+    	foreach($subscription->member as $member) {
+    		if ($member->participant) {
+		    	Log::info("Sending 'participant_info' to " . $member->email . ". (id: " . $member->id . ")");
+		    	 
+		    	$wwwRoot = Configure::read('App.fullBaseUrl');
+		    
+		    	$viewVars = ['subscription' => $subscription,
+		    			'member' => $member,
+		    			'baseUrl' => $wwwRoot];
+		    	 
+		    	$email = new Email('default');
+		    	$email->template('participant_info', 'cdo')
+		    	->emailFormat('html')
+		    	->to($member->email)
+		    	->subject('Crossdorp Oelem - Laatste info')
+		    	->viewVars($viewVars);
+		    	$email->send();
+    		}
+    	}
+    }
+    
+    public static function sendSubscriptionFinalMail($subscription) {
+    	Log::info("Sending 'subscription_final' to " . $subscription->member[0]->email);
+    	 
+    	$wwwRoot = Configure::read('App.fullBaseUrl');
+    	
+    	$viewVars = ['subscription' => $subscription,
+    			'baseUrl' => $wwwRoot];
+    	 
+    	$email = new Email('default');
+    	$email->template('subscription_final', 'cdo')
+    	->emailFormat('html')
+    	->to($subscription->member[0]->email)
+    	->subject('Crossdorp Oelem - Overzicht inschrijving')
+    	->viewVars($viewVars);
+    	$email->send();
+    }
+    
     public static function sendReminderMail($subscription) {
     	EmailUtils::sendMail('subscription_reminder', 'Crossdorp Oelem - Inschrijving herinnering', $subscription);
     }

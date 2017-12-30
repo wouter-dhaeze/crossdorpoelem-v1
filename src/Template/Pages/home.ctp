@@ -43,17 +43,15 @@ $this->layout = false;
 		</div>
 		<div class="row">
 			<div class="small-10 small-offset-1 medium-8 medium-offset-2 large-6 large-offset-3 column title">
-				Oelem gets "Urban Trailed" <br/>Part II <br/>
-				Zaterdag 15 april 2017
+				Oelem gets "Urban Trailed" <br/>Part III <br/>
+				Zaterdag 31 maart 2018
 			</div>
 		</div>
-		<div class="buttons">
-			<a href="#pnlSubscription" class="button large" role="button" data-uk-smooth-scroll>Inschrijven</a>
-		</div>
+		
 	</div>
-	
-	<div class="row">
-		<div class="small-12 medium-9 column">
+    
+        <div class="row">
+		<div class="small-12 column">
 			<section id="pnlSubscription">
 				<div class="row">
 					<div class="small-12 column">
@@ -62,46 +60,40 @@ $this->layout = false;
 							    <h2>Drie formules</h2>
 								<div class="line"></div>
 							</div>
-							<div class="callout">
-								<h5>In tegenstelling tot vorig jaar, waar we een korte jeugrun van 2KM en een volwassen run van 5KM organiseerden,
-								hebben we voor dit jaar 3 formules uitgewerkt. Het parcours baant zich nog steeds een weg door diverse gebouwen binnen de Oelemse dorpskern, 
-								maar dit jaar kunt u kiezen tussen een parcours van 5KM of 10KM. </h5>
-								<p>Welke formule u ook kiest, start en aankomst liggen in <b>sportcomplex Den Akker</b>. De wedstrijd start om <b>15u</b> aan. Het tijdstip van aankomst wordt bepaald door welke afstand en hoe snel je loopt.</p>
-							</div>
+                                                    <div class="callout">
+						<h5>Inschrijven kan vanaf zaterdag 3 februari 2018.</h5>
+					</div>
 						</div>
 						<div class="row">
 							<div class="small-12 medium-4 column">
 								<h3>5KM voor de leute</h3>
 								<p>
-									Bent u een recreatieve loper en heeft u zin in een leuk parcours, dan is "Crossdorp 5KM" iets voor jou. U loopt door gebouwen waar u anders nooit komt, 
-									en u geniet nadien van de Oelemse gezelligheid. 
-									Het parcours is wat aangepast ten opzichte van vorig jaar, maar zeker niet minder verrassend.
-									Deelname kost u amper 8 eurootjes.
+									Ben je een recreatieve loper en heb je zin in een leuk parcours, dan is "Crossdorp 5KM" iets voor jou. Je loopt door gebouwen waar u anders nooit komt, 
+									en je geniet nadien van de Oelemse gezelligheid. Deelname kost je 8 euro.
 								<p>
 								<div>
-									<a href="/subscription" class="button large">Ik schrijf in!</a>
+									<a href="/subscription" class="hide button large">Ik schrijf in!</a>
 								</div>
 							</div>
 							<div class="small-12 medium-4 column">
-								<h3>10KM voor de d'echte</h3>
+								<h3>11KM target run</h3>
 								<p>
-									Voor 5KM staat u niet op, maar een origineel parcours onder het lentezonnetje ziet u wel zitten? Op ons parcours bezoekt u dezelfde gebouwen,
-									maar u geeft een extra zetje door de landelijke rand van Oelem. Voor 10 euro trakteert u zichzelf op een namiddag plezier.
+                                                                    Daar waar we vorig jaar de nadruk legden op het recreatieve, proberen we nu ook de honger van de echte wedstrijdbeesten te stillen. We introduceren graag onze
+                                                                    "target run", in de volksmond "the bunny run" genoemd. We sturen twee getrainde lopers voorop, aan jullie om die binnen de 11 KM in te halen. Hier is ook tijdsregistratie aan gekoppeld.
+                                                                    Deelname kost je 10 euro. Verdere info volgt.
 								<p>
 								<div>
-									<a href="/subscription" class="button large">Ik schrijf in!</a>
+									<a href="/subscription" class="hide button large">Ik schrijf in!</a>
 								</div>
 							</div>
 							<div class="small-12 medium-4 column">
 								<h3>PartyRun voor de ravers</h3>
 								<p>
-									Omdat we zelf graag het aangename aan het nog leukere koppelen, organiseren we dit jaar ook een PartyRun. 
-									U haspelt het parcours van 5 KM af maar onderweg houdt u halt aan een aantal mini-fuifkes! Daar verhogen we 
-									de hartslag op de beat en genieten van wat hydratatie. Na 15 minuten raven vat u het vervolg van het parcours aan, op zoek naar de volgende mini-fuif. 
-									Voor slechts 15 euro heeft u een namiddag gesport, gefuifd en van vette ambiance genoten.
+                                                                    Na het succes van vorig jaar gaan we voor een tweede editie van onze PartyRun. We hebben opnieuw twee fuifkes verstopt op ons parcours. Wij dagen jullie uit om de sfeer van vorig jaar te verbreken. Onze huis DJ's zijn alvast gewaarschuwd...
+                                                                    Voor slechts 15 euro heeft u een namiddag gesport, gefuifd en van vette ambiance genoten.
 								<p>
 								<div>
-									<a href="/subscription" class="button large">Ik schrijf in!</a>
+									<a href="/subscription" class="hide button large">Ik schrijf in!</a>
 								</div>
 							</div>
 						</div>
@@ -109,43 +101,8 @@ $this->layout = false;
 				</div>
 			</section>
 		</div>
-		<div class="small-12 medium-3 column">
-			<section>
-				
-				<div class="callout secondary">
-					<div>
-						<h3>Ook interessant</h3>
-					</div>
-					<div>
-						<h4>Natuurloop</h4>
-						<p>
-							Natuurloop Beernem gaat door op zaterdag 1 april. Voor meer details klik <a href="http://natuurloopbeernem.blogspot.be/" target="_blank">hier</a>.
-						</p>
-					</div>
-					<div>
-						<h4>RugyFit</h4>
-						<p>
-							RugbyFit is gebaseerd op 5 facetten: uithouding, kracht, snelheid, lenigheid en euh... Meer info zie 
-							<a href="http://www.rugbyfit.be/" target="_blank">hier</a>.	
-						</p>
-					</div>
-					<div>
-						<h4>Ter Muiden</h4>
-						<p>
-							VZW Ter Muiden nodigt iedereen op zaterdag 15 april uit om de CrossDorp deelnemers aan te moedigen vanop hun terras.
-							<br/><a href="http://www.termuiden.be/">http://www.termuiden.be/</a>
-						</p>
-					</div>
-					<div>
-						<h4>Guest act</h4>
-						<p>
-							Een van onze sponsors wenst na de wedstrijd een "Special Guest Act" op te voeren. KVB zal - en we citeren - "zijn broek afsteken". Dat wordt lachen!
-						</p>
-					</div>
-				</div>
-			</section>
-		</div>
-	</div>
+	
+	
 	
 	<div class="row">
 		<div class="small-12 column">
@@ -160,9 +117,12 @@ $this->layout = false;
 						<h5>Ook dit jaar doen we ons best om u een leuk en verrassend parcours voor te schotelen. We zijn ervan overtuigd dat zelfs de hard-core Oelemnaar
 						plaatsen zal ontdekken die hij of zij nog niet kende. Bij deze kunt u uw supporters strategisch positioneren om u powerbars dan wel een aantal
 						wespen toe te werpen. Have fun!</h5>
-						<p>Voor alle duidelijkheid: de rode lijn is de 5 KM en wordt door iedereen gelopen. De groene lijn is de extra lus die door de mensen van de 10 KM wordt gelopen.</p>
 					</div>
-					<iframe src="https://www.google.be/maps/d/u/0/embed?mid=1Iqu10Ni8uaQmqt6z8diaDq5rHZM" width="100%" height="500em"></iframe>
+					<!--<iframe src="https://www.google.be/maps/d/u/0/embed?mid=1Iqu10Ni8uaQmqt6z8diaDq5rHZM" width="100%" height="500em"></iframe>-->
+                                    <h3>5KM en Pary Run</h3>
+                                    <div style="overflow:hidden;"><div style="position:relative;width:100%;padding-top:56.25%;overflow:visible;"/><iframe name="plotaroute_map_536871" src="https://www.plotaroute.com/embedmap/536871" style="position:absolute;top:0;left:0;bottom:0;right:0;width:100%; height:100%;" frameborder="0" scrolling="no" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe></div></div>
+                                <h3>11 KM</h3>    
+                                <div style="overflow:hidden;"><div style="position:relative;width:100%;padding-top:56.25%;overflow:visible;"/><iframe name="plotaroute_map_536877" src="https://www.plotaroute.com/embedmap/536877" style="position:absolute;top:0;left:0;bottom:0;right:0;width:100%; height:100%;" frameborder="0" scrolling="no" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe></div></div>
 				</div>
 			</div>
 		</section>
@@ -176,10 +136,10 @@ $this->layout = false;
 				<div class="row">
 				  <div class="text-center title">
 				    <h1>Onze sponsors</h1>
-				    <div class="subtitle">En zonder hen kunnen wij niet le-even..., allie..., alloo..., niet le-even</div>
 				    <div class="line"></div>
 				  </div>
 				</div>
+                            <h3>Hoofdsponsors</h3>
 			  	<div class="row">
 			  		<div class="small-6 medium-3 column">
 						<a href="https://nl-nl.facebook.com/The-Crocodile-217830311574780/" target="_blank">
@@ -189,6 +149,11 @@ $this->layout = false;
 					<div class="small-6 medium-3 column">
 						<a href="http://www.tetard.be/" target="_blank">
 							<img class="img-responsive" src="sponsors/tetard.jpg" />
+						</a>
+					</div>
+                                    <div class="small-6 medium-3 column">
+						<a href="http://www.deformatie.be/" target="_blank">
+							<img class="img-responsive" src="sponsors/deformatie.jpg" />
 						</a>
 					</div>
 					<div class="small-6 medium-3 column">
@@ -201,7 +166,16 @@ $this->layout = false;
 							<img class="img-responsive" src="sponsors/artifex.jpg" />
 						</a>
 					</div>
+                                    <div class="small-6 medium-3 column">
+						<img class="img-responsive" src="sponsors/jomar.jpg" />
+					</div>
+                                    <div class="small-6 medium-3 column">
+			  			<a href="http://www.joxx.be/" target="_blank">
+							<img class="img-responsive" src="sponsors/joxx.jpg" />
+						</a>
+					</div>
 				</div>
+                            <h3>Sponsors</h3>
 			  	<div class="row">
 			  		<div class="small-6 medium-3 column">
 				  		<a href="http://www.houthandeldriekoningen.be/" target="_blank">
@@ -249,8 +223,8 @@ $this->layout = false;
 						</a>
 					</div>
 					<div class="small-6 medium-3 column">					
-						<a href="http://www.pjp-autoverhuur.be/" target="_blank">
-							<img class="img-responsive" src="sponsors/LogoPJP.gif" />
+						<a href="http://www.dressedroom.be/" target="_blank">
+							<img class="img-responsive" src="sponsors/dressedroom1.jpg" />
 						</a>
 					</div>
 					<div class="small-6 medium-3 column">				
@@ -268,8 +242,10 @@ $this->layout = false;
 							<img class="img-responsive" src="sponsors/debaene.jpg" />
 						</a>
 					</div>
-					<div class="small-6 medium-3 column">
-						<img class="img-responsive" src="sponsors/jomar.jpg" />
+					<div class="small-6 medium-3 column">		  		
+				  		<a href="https://nl-nl.facebook.com/PapierhandelKiekeboek/" target="_blank">
+							<img class="img-responsive" src="sponsors/kiekeboek.jpg" />
+						</a>
 					</div>
 					<div class="small-6 medium-3 column">
 						<a href="https://nl-nl.facebook.com/Caf%C3%A9-Mitra-341235192573657/" target="_blank">
@@ -301,6 +277,76 @@ $this->layout = false;
 			</div>
 		</div>
 	</section>
+            
+        <div class="hide row">
+		<div class="small-12 column">
+			<div class="row">
+				<div class="text-center title">
+				    <h2>Special Thanks To...</h2>
+					<div class="line"></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="small-12 medium-6 column">
+					<div>
+						<h3>Onze deelnemers</h3>
+						<p>
+							Dit jaar waren we in totaal met om en bij de <b>340 deelnemers</b>. Dat is meer dan we hadden verhoopt. We danken alle deelnemers
+							voor hun opkomst, inzet en enthousiasme. We hopen jullie volgend jaar opnieuw te ontvangen. Stip alvast <b>31 maart 2018</b> aan in jullie agenda's.
+						<p>
+						<p>
+							We danken ook de partyrunners voor de sfeer. Hoewel sommigen naar het einde toe meer de nadruk legden op het "party" gedeelte, dan op het "run" gedeelte,
+							zijn we blij dat iedereen zonder kleerscheuren aangekomen is.
+						<p>
+					</div>
+					<div>
+						<h3>Onze medewerkers</h3>
+						<p>Dank aan onze medewerkers en medewerksters: onze <b>50 seingevers en begeleiders</b>, ons <b>barpersoneel</b> en onze <b>sporthalhulpjes</b>. Zonder jullie hulp zou iedereen verkeerd
+						lopen, zouden we geen enkele pint verkopen, zouden we de zaal niet op tijd klaar zetten en opruimen, zou niemand een borstnummer krijgen, kortom zou Crossdorp Oelem nooit kunnen doorgaan.</p>
+						<p>Ook een special thanks to <b>onze vrouwkes</b> voor jullie geduld. We hebben jullie de laatste weken te veel verwaarloosd. Maar we maken het elk op onze manier weer goed.</p> 
+					</div>
+					<div>
+						<h3>De gemeente Beernem</h3>
+						<p>We danken ook de gemeente Beernem om onze opzet te steunen en voor alle logistieke steun.</p> 
+					</div>
+					<div>
+						<h3>Onze sponsors</h3>
+						<p>Zie onderaan deze pagina.</p> 
+					</div>
+				</div>
+				<div class="small-12 medium-6 column">
+					<h3>Onze huis DJ's</h3>
+					<div class="row">
+						<div class="small-12 column">
+							<h4>DJ Sam</h4>
+							<div>
+								<p><img align="left" src="img/sam.jpg" width="200em" alt="DJ Sam" style="padding-right: .5em"></img>Alom bekend in Beernem en een sfeerschepper van nature.</p>
+							</div>
+						</div>
+						<div class="small-12 column">
+							<h4>Jaywall</h4>
+							<div>
+								<p><img align="left" src="img/jaywall.jpg" width="200em" alt="Jaywall" style="padding-right: .5em"></img>Een jong opkomend talent, die vanuit Katriens bierhut hard timmert aan zijn carriere.</p>
+							</div>
+						</div>
+						<div class="small-12 column">
+							<h4>DJ Alpaski</h4>
+							<div>
+								<p><img align="left" src="img/mattiasdejaegher.jpg" width="200em" alt="DJ Alpaski" style="padding-right: .5em"></img>Vooral bekend van apresski-hutten in Zuid-Oostenrijk. Niemand weet wie hij echt is, hij 
+								draagt altijd een alpacamasker.</p>
+							</div>
+						</div>
+						<div class="small-12 column">
+							<h4>Koen van Belleghem</h4>
+							<div>
+								<p><img align="left" src="img/koenvanbelleghem.jpg" width="200em" alt="Koen" style="padding-right: .5em"></img>Een oud-gediende die ons uit de nood wou helpen, waarvoor dank!</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 	
 	<?= $this->element('footer', ["class" => ""]); ?>
 

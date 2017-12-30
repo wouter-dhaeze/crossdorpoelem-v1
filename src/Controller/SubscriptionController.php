@@ -117,11 +117,27 @@ class SubscriptionController extends AppController
     	try {
     		$whereClause = $this->calculateWhereClause($this->request);
     		
-	    	$subscriptions = $this->Subscription
-	    							->find('all', ['contain' => ['Member']])
-	    							->where($whereClause);
-	    	
-	    	$result = $this->calculateRequestResult($subscriptions);
+    		$type = $this->request->query('type');
+    		
+    		$result = [];
+    		if (empty($type) || $type == 's') {
+		    	$subscriptions = $this->Subscription
+		    							->find('all', ['contain' => ['Member']])
+		    							->where($whereClause);
+		    	
+		    	$result = $this->calculateRequestResult($subscriptions);
+    		} else if ($type == 'm') {
+    			$members = $this->Member
+    								->find()
+    								->where($whereClause);
+    			
+    			foreach ($members as $member) {
+    				$subscription = $this->Subscription->get($member->subscriptionId);
+    				$member->subscription = $subscription;
+    			}
+    			
+    			$result = ["members" => $members];
+    		}
 	    	
 	    	$this->response->type('json');
 	    	$this->response->body($this->json_encode($result));
@@ -256,6 +272,24 @@ class SubscriptionController extends AppController
     				throw new InternalErrorException('De inschrijving kon niet worden bewaard. Zijn alle velden correct ingevuld?');
     			}
     			
+    		} else if ($action == 'submit_numbers') {
+    			foreach ($subscription['members'] as $index => $m) {
+    				$member = $this->getMemberByCode($m['code'], true);
+    				if ($member->participant) {
+	    				$member->number = $m['number'];
+	    				$member->validated = true;
+	    				$member->consent = true;
+	    				$member->public_profile = true;
+	    				$this->Member->save($member);
+	    				
+	    				$this->sendParticipantNumberMail($member);
+    				}
+    			}
+    			
+    			$subscription = $this->getSubscriptionByCode($code, false);
+    			if (!empty($subscription) && count($subscription->member) > 1) {
+    				$this->sendSubscriptionFinalMail($subscription);
+    			}
     		}
 	    	
 	    	$this->response->type('json');
@@ -280,12 +314,17 @@ class SubscriptionController extends AppController
     	
     	$message = "";
     	$subscription = $this->Subscription->get($id, [
-    			'contain' => ['Participant']
+    			'contain' => ['Member']
     			]);
     	
     	if (!empty($subscription)) {
     		$code = $subscription->code;
     		Log::debug('Deleting subscription: ' . json_encode($subscription));
+    		
+    		foreach ($subscription->member as $member) {
+    			$this->Member->delete($member);
+    		}
+    		
     		$result = $this->Subscription->delete($subscription);
     		$message = 'Inschrijving met code ' . $code . ' is verwijderd.';
     	} else {
@@ -317,6 +356,14 @@ class SubscriptionController extends AppController
     
     private function sendSubscriptionSuccessMail($subscription) {
     	EmailUtils::sendSubscriptionSuccessMail($subscription);
+    }
+    
+    private function sendParticipantNumberMail($member) {
+    	EmailUtils::sendParticipantNumberMail($member);
+    }
+    
+    private function sendSubscriptionFinalMail($subscription) {
+    	EmailUtils::sendSubscriptionFinalMail($subscription);
     }
     
     private function validateNewSubscription($subscription) {
@@ -494,6 +541,31 @@ class SubscriptionController extends AppController
     	$count = $memberq->count();
     	
     	return $count > 0;
+    }
+    
+    private function getMemberByCode($code, $throw) {
+    	$memberq = $this->Member->findByCode($code);
+    	$count = $memberq->count();
+    	if ($count == 0) {
+    		Log::warning('Member code ' . $code . ' not found' , 'error');
+    		if ($throw) {
+    			throw new InternalErrorException("De gezochte deelnemers-code '" . $code . "' werd niet gevonden.");
+    		} else {
+    			return null;
+    		}
+    	}
+    	if ($count > 1) {
+    		Log::warning('Multiple members with code ' . $code . 'found.' , 'error');
+    		if ($throw) {
+    			throw new InternalErrorException("Er werden meerdere deelnemers met code '" . $code . "' gevonden.");
+    		} else {
+    			return null;
+    		}
+    	}
+    	 
+    	$member = $memberq->first();
+    	 
+    	return $this->Member->get($member->id);
     }
     
     private function saveSubscription($sdata) {

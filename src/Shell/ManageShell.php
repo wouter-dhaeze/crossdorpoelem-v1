@@ -121,6 +121,20 @@ class ManageShell extends Shell
 		}
 	}
 	
+	/**
+	 * bin\cake manage send_member_info
+	 */
+	public function sendMemberInfo() {
+		$subscriptions = $this->Subscription;
+		$query = $subscriptions->find('all')->contain(['Member']);
+		
+		foreach ($query as $s) {
+			$this->out('Sending info to ' . $s->id);
+			//EmailUtils::sendParticipantInfo($s);
+			sleep(10);
+		}
+	}
+	
 	public function test($input) {
 		$time = Time::createFromFormat('d/m/Y',$input);
 		

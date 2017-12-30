@@ -19,7 +19,7 @@ class NumberController extends AppController
 	{
 		parent::initialize();
 		
-		$this->loadModel('Participant');
+		$this->loadModel('Member');
 		
 		$this->Auth->deny(['index']);
 	}
@@ -38,33 +38,17 @@ class NumberController extends AppController
 	 */
 	public function get()
 	{
-		$plus = $this->request->query('plus');
-		
 		$result = null;
 		try {
-			$query = $this->Participant
-						->find()
-						->where(['number <>' => "N/A"])
-						->order(['number' => 'DESC'])
-						->limit(1);
-			$max = $query->toArray();
-			//$this->log($this->Participant->lastQuery(), 'debug');
-			//$this->element('sql_dump');
-			//$this->getLastQuery($this->getLastQuery(), 'debug');
+			$result = [
+				"PARTY" => $this->getNumber('PARTY', 1),
+				"5KM" => $this->getNumber('5KM', 100),
+				"10KM" => $this->getNumber('10KM', 200),
+			];
 			
-			$result = $max[0]->number + $plus;
-			
-			if ($result > 500) {
-				$query = $this->Participant
-							->find()
-							->where(['number <>' => "N/A", 'number <' => "351"])
-							->order(['number' => 'DESC'])
-							->limit(1);
-				$max = $query->toArray();
-				$result = $max[0]->number + $plus;
-			}
-			
-			$result = str_pad($result, 3, "0", STR_PAD_LEFT);
+			$this->response->type('json');
+			$this->response->body(json_encode($result));
+			return $this->response;
 		} catch (PDOException $e) {
 			$this->log('PDOException occurred: ' . $e->getMessage() . '\n' . $e->getTraceAsString() , 'error');
 			debug($this->Participant->lastQuery());
@@ -76,13 +60,6 @@ class NumberController extends AppController
     			
     		throw new InternalErrorException('Kon geen borstnummer ophalen.');
     	}
-		
-		//$query = $this->Participant->find('all', ['number<>' => 'N/A']);
-		//$max = $query->select(['number' => $query->func()->max()])->first();
-		
-		$this->response->type('json');
-    	$this->response->body(json_encode($result));
-    	return $this->response;
 	}
 	
 	function getLastQuery()
@@ -91,6 +68,42 @@ class NumberController extends AppController
 		$logs = $dbo->getLog();
 		$lastLog = end($logs['log']);
 		return $lastLog['query'];
+	}
+	
+	private function getNumber($wave, $defaultValue) {
+		$where = ['number <>' => "", 'wave =' => $wave];
+		
+		if ($wave == 'PARTY') {
+			//$where['number <>'] = '1';
+			//$where['number <>'] = '2';
+			//$where['number <>'] = '3';
+			//$where['number <>'] = '4';
+			//$where['number <>'] = '5';
+			//$where['number <>'] = '6';
+			//$where['number <>'] = '7';
+			//$where['number <>'] = '8';
+			//$where['number <>'] = '9';
+			//$where['number >'] = '10';
+		}
+		
+		$query = $this->Member
+			->find()
+			->where($where)
+			->andWhere(function ($exp, $q) {
+				return $exp->notIn('number', ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']);
+			})
+			->order(['number' => 'DESC'])
+			->limit(1);
+		$max = $query->toArray();
+			
+		if (empty($max)) {
+			//Log::info("Returning default for wave " . $wave . ": " . $defaultValue);
+			return $defaultValue;
+		} else {
+			$value = intval($max[0]->number) + 1;
+			//Log::info("Returning value for wave " . $wave . ": " . $value);
+			return $value;
+		}
 	}
 	
 }

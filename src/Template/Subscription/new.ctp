@@ -8,6 +8,10 @@ $this->assign('ogmetadata', 'fb_subscription');
 
 <div ng-controller="subscriptionCtrl">
 	<div id="pnlInfo" class="row animate-show" ng-show="step == 1">
+		<h2>Inschrijvingen gesloten</h2>
+		<div class="callout primary">De voorinschrijvingen zijn gesloten. U kunt echter wel nog de dag zelf inschrijven voor de 5KM of de 10 KM.</div>
+	</div>
+	<div id="pnlInfo" class="row animate-show" ng-show="step == 1000">
 		<h2>Instructies</h2>
 		<p class="lead">Om in te schrijven voor Crossdorp Oelem volgt u onderstaande instructies.</p>
 		<p>Gelieve deze aandachtig te lezen. De inschrijving gebeurt in 4 stappen:</p>
