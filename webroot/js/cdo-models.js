@@ -6,6 +6,7 @@ var models = new function() {
 			price: 0,
 			payed: false,
 			validated: false,
+                        code: '',
 			members: []
 		};
 	
@@ -66,6 +67,7 @@ var models = new function() {
 		subscription.price = s.price;
 		subscription.payed = s.payed;
 		subscription.validated = s.validated;
+                subscription.code = s.code;
 		subscription.members = [];
 		
 		if (s.member) {

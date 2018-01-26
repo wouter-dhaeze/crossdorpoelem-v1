@@ -21,20 +21,16 @@
 		$scope.subscriberMail = '';
 		
 		$scope.start = function() {
-			$("html, body").animate({ scrollTop: 0 }, "slow", function() {
-				$('#modalStartSubscription').foundation('open');
-			});
+                    $scope.createSubscriber(true);
 		};
 		
 		$scope.createSubscriber = function(isParticipant) {
-			$('#modalStartSubscription').foundation('close');
-			
 			$scope.newMember(true, isParticipant);						
 		};
 		
 		$scope.newMember = function(isSubscriber, isParticipant) {
 			$scope.currentMember = createNewMember();
-			//$scope.currentMember = dummyMember;
+			//$scope.currentMember = angular.copy(dummyMember);
 			$scope.currentMember.subscriber = isSubscriber;
 			$scope.currentMember.participant = isParticipant;
 			if (!isParticipant) {
@@ -200,12 +196,13 @@
 		}
 		
 		function populateSubscription(result) {
-			$scope.subscription = angular.copy(dummySubscription);
+			$scope.subscription = angular.copy(emptySubscription);
 			$scope.subscription.id = result.data.id;
 			$scope.subscription.created = result.data.created;
 			$scope.subscription.price = result.data.price;
 			$scope.subscription.payed = result.data.payed;
 			$scope.subscription.validated = result.data.validated;
+                        $scope.subscription.code = result.data.code;
 			$scope.subscription.members = [];
 			
 			result.data.member.forEach(function (m, index) {
@@ -262,7 +259,7 @@
 	
 	var waveOptions = [
                {id: '5KM', label: 'Crossdorp 5 KM', notAnOption: false, cost: 8},
-               {id: '10KM', label: 'Crossdorp 10 KM', notAnOption: false, cost: 10},
+               {id: '10KM', label: 'Crossdorp 11 KM', notAnOption: false, cost: 10},
                {id: 'PARTY', label: 'Crossdorp Party Run', notAnOption: false, cost: 15}
            ];
 	
@@ -292,6 +289,7 @@
 		price: 0,
 		payed: false,
 		validated: false,
+                code: '',
 		members: []
 	};
 	
@@ -321,6 +319,7 @@
 		price: 16,
 		payed: false,
 		validated: false,
+                code: '',
 		members: [
 			{id: '',
 				created: '',
@@ -367,6 +366,7 @@
 			price: 0,
 			payed: false,
 			validated: false,
+                        code: '',
 			members: [
 				{id: '',
 					created: '',

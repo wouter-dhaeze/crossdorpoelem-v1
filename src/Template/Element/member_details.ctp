@@ -92,9 +92,9 @@
 		</div>
 		<div class="large-10 columns">
 			<input type="text" id="code<?= $ngMemberIndex?>" name="code<?= $ngMemberIndex?>"
-				placeholder="Sponsorcode"
+				placeholder="Kortingscode"
 				ng-model="<?= $ngmodelCode ?>" ng-readonly="<?= $ngReadonly ?>"></input>
-			<small ng-hide="<?= $ngReadonly ?>">Indien u een sponsor bent, vul dan hier uw code in. (Enkel geldig voor 5 en 10 km.)</small>
+			<small ng-hide="<?= $ngReadonly ?>">Kortingscode zijn enkel van toepassing op de 5 en 11 KM.</small>
 		</div>
 	</div>
 </div>

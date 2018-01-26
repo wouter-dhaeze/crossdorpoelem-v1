@@ -9,8 +9,7 @@
 <p>Beste <?= $addressing ?>,</p>
 <br/>
 <div>
-	<h2>Stap 3 is voltooid!</h2>
-	<p>We hebben uw betaling goed ontvangen! U bent bij deze <b>officieel</b> ingeschreven voor de tweede editie van <b>Crossdorp Oelem</b>!</p>
+	<h3>Driewerf hoera! We hebben uw betaling goed ontvangen! U bent bij deze <b>officieel</b> ingeschreven voor de derde editie van <b>Crossdorp Oelem</b>!</h3>
 </div>
 <br/>
 <div>

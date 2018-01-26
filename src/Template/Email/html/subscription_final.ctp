@@ -7,7 +7,7 @@
 <div>
 	<p>Zopas hebben we de deelnemers die u heeft ingeschreven een borstnummer toegekend. Met dit borstnummer kan elke 
 	deelnemer zich aanmelden aan de inschrijvingsstand.</p>
-	<p>Hieronder vind je een overzicht van de toegekende borstnummers. Indien u uw deelnemers onder eenzelfde borstnummer inschreef,
+	<p>Hieronder vind je een overzicht van de toegekende borstnummers. Indien je je deelnemers onder eenzelfde e-mailadres inschreef,
 	gelieve dit nummer dan door te geven aan de desbetreffende persoon.</p>
 	<table>
 		<?php foreach ($subscription->member as $m) { 

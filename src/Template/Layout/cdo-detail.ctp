@@ -17,7 +17,7 @@
 
 <title>Crossdorp Oelem - <?= h($this->fetch('title')) ?></title>
 
-<link href="/css/uikit.min.css" rel="stylesheet" type="text/css" />
+<!--<link href="/css/uikit.min.css" rel="stylesheet" type="text/css" />-->
 <link href="/css/app.css" rel="stylesheet" type="text/css" />
 <link href="/css/crossdorpoelem.css" rel="stylesheet" type="text/css" />
 

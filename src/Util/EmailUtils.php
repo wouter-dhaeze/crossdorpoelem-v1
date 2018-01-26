@@ -13,7 +13,7 @@ class EmailUtils
     }
     
     public static function sendPaymentMail($subscription) {
-    	EmailUtils::sendMail('subscription_payment', 'Crossdorp Oelem - Inschrijving gevalideerd', $subscription);
+    	EmailUtils::sendMail('subscription_payment', 'Crossdorp Oelem - Inschrijving - Betaalgegevens', $subscription);
     }
     
     public static function sendSubscriptionSuccessMail($subscription) {

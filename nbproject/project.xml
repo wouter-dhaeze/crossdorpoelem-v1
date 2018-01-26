@@ -6,7 +6,9 @@
             <name>crossdorpoelem-v1</name>
         </data>
         <spellchecker-wordlist xmlns="http://www.netbeans.org/ns/spellchecker-wordlist/1">
+            <word>Bzse</word>
             <word>onze</word>
+            <word>parcours</word>
         </spellchecker-wordlist>
     </configuration>
 </project>

@@ -188,6 +188,7 @@ class SubscriptionController extends AppController
     		//Log::debug("Subscription: " . implode($this->request->data));  		
     		
     		$subscription = $this->request->data;
+                $subscription[validated] = true;
     		$subscription['code'] = ModelUtils::generateSubscriptionCode();
     		
     		foreach ($subscription['members'] as $index => $m) {
@@ -222,7 +223,8 @@ class SubscriptionController extends AppController
 	    			]);
 	    		
 	    		$code = $subscription->code;
-	    		$this->sendValidationMail($code);
+	    		//$this->sendValidationMail($code);
+                        $this->sendPaymentMail($code);
 	    	} else {
 	    		$this->log('Save returned false' , 'error');
 	    		throw new InternalErrorException('De inschrijving kon niet worden bewaard. Zijn alle velden correct ingevuld?');

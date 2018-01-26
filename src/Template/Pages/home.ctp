@@ -68,18 +68,20 @@ $this->layout = false;
                                                     en je geniet nadien van de Oelemse gezelligheid. Deelname kost je 8 euro.
                                             <p>
                                             <div>
-                                                    <a href="/subscription" class="hide button large">Ik schrijf in!</a>
+                                                    <a href="/pages/info" class="button large">Meer</a>
+                                                    <a href="/subscription" class="button large">Inschrijven</a>
                                             </div>
                                     </div>
                                     <div class="small-12 medium-4 column">
                                             <h3>11KM target run</h3>
                                             <p>
                                                 Daar waar we vorig jaar de nadruk legden op het recreatieve, proberen we nu ook de honger van de echte wedstrijdbeesten te stillen. We introduceren graag onze
-                                                "target run", in de volksmond "the bunny run" genoemd. We sturen twee getrainde lopers voorop, aan jullie om die binnen de 11 KM in te halen. Hier is ook tijdsregistratie aan gekoppeld.
+                                                "target run", in de volksmond "the bunny run" genoemd. We sturen twee getrainde lopers voorop, aan jullie om die binnen de 11 KM in te halen. 
                                                 Deelname kost je 10 euro. Verdere info volgt.
                                             <p>
                                             <div>
-                                                    <a href="/subscription" class="hide button large">Ik schrijf in!</a>
+                                                    <a href="/pages/info" class="button large">Meer</a>
+                                                    <a href="/subscription" class="button large">Inschrijven</a>
                                             </div>
                                     </div>
                                     <div class="small-12 medium-4 column">
@@ -89,7 +91,8 @@ $this->layout = false;
                                                 Voor slechts 15 euro heeft u een namiddag gesport, gefuifd en van vette ambiance genoten.
                                             <p>
                                             <div>
-                                                    <a href="/subscription" class="hide button large">Ik schrijf in!</a>
+                                                    <a href="/pages/info" class="button large">Meer</a>
+                                                    <a href="/subscription" class="button large">Inschrijven</a>
                                             </div>
                                     </div>
                             </div>
@@ -110,7 +113,7 @@ $this->layout = false;
                                     wespen toe te werpen. Have fun!</h5>
                             </div>
                             <!--<iframe src="https://www.google.be/maps/d/u/0/embed?mid=1Iqu10Ni8uaQmqt6z8diaDq5rHZM" width="100%" height="500em"></iframe>-->
-                        <h3>5KM en Pary Run</h3>
+                        <h3>5KM en Party Run</h3>
                         <div style="overflow:hidden;"><div style="position:relative;width:100%;padding-top:56.25%;overflow:visible;"/><iframe name="plotaroute_map_536871" src="https://www.plotaroute.com/embedmap/536871" style="position:absolute;top:0;left:0;bottom:0;right:0;width:100%; height:100%;" frameborder="0" scrolling="no" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe></div></div>
                     <h3>11 KM</h3>    
                     <div style="overflow:hidden;"><div style="position:relative;width:100%;padding-top:56.25%;overflow:visible;"/><iframe name="plotaroute_map_536877" src="https://www.plotaroute.com/embedmap/536877" style="position:absolute;top:0;left:0;bottom:0;right:0;width:100%; height:100%;" frameborder="0" scrolling="no" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe></div></div>

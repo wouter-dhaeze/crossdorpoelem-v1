@@ -41,9 +41,9 @@ class NumberController extends AppController
 		$result = null;
 		try {
 			$result = [
-				"PARTY" => $this->getNumber('PARTY', 1),
-				"5KM" => $this->getNumber('5KM', 100),
-				"10KM" => $this->getNumber('10KM', 200),
+				"PARTY" => $this->getNumber('PARTY', '001'),
+				"5KM" => $this->getNumber('5KM', '100'),
+				"10KM" => $this->getNumber('10KM', '200'),
 			];
 			
 			$this->response->type('json');
@@ -102,7 +102,8 @@ class NumberController extends AppController
 		} else {
 			$value = intval($max[0]->number) + 1;
 			//Log::info("Returning value for wave " . $wave . ": " . $value);
-			return $value;
+                        $n = str_pad($value, 3, '0', STR_PAD_LEFT);
+			return $n;
 		}
 	}
 	

@@ -136,13 +136,28 @@ class ManageShell extends Shell
 	}
 	
 	public function test($input) {
-		$time = Time::createFromFormat('d/m/Y',$input);
+		//$time = Time::createFromFormat('d/m/Y',$input);
 		
-		$this->out('Day: ' . $time->day);
-		$this->out('Month: ' . $time->month);
-		$this->out('Year: ' . $time->year);
-		$this->out('Date: ' . $time->format('Y-m-d'));
+		//$this->out('Day: ' . $time->day);
+		//$this->out('Month: ' . $time->month);
+		//$this->out('Year: ' . $time->year);
+		//$this->out('Date: ' . $time->format('Y-m-d'));
 		
+                $value = '1';
+                $n = str_pad($value, 3, '0', STR_PAD_LEFT);
+                $this->out($value);
+                $this->out($n);
+                
+                $value = '10';
+                $n = str_pad($value, 3, '0', STR_PAD_LEFT);
+                $this->out($value);
+                $this->out($n);
+                
+                $value = '100';
+                $n = str_pad($value, 3, '0', STR_PAD_LEFT);
+                $this->out($value);
+                $this->out($n);
+                
 		//EmailUtils::mailSubscriptionReceived();
 	}
 	

@@ -1,5 +1,7 @@
 <?php 
 
+use Cake\Core\Configure;
+
 $this->layout = 'cdo-detail';
 $this->assign('title', 'Inschrijving');
 $this->assign('ogmetadata', 'fb_subscription');
@@ -7,28 +9,33 @@ $this->assign('ogmetadata', 'fb_subscription');
 ?>
 
 <div ng-controller="subscriptionCtrl">
-	<div id="pnlInfo" class="row animate-show" ng-show="step == 1">
+    <div id="pnlInfo" class="row animate-show" ng-show="step == 1">
+		<h2>Inschrijvingen nog niet open</h2>
+		<div class="callout primary">Sorry beste sportvriend, de inschrijvingen zijn nog niet geopend. Maar we bewonderen je enthousiasme! Kom op zaterdag 3 februari opnieuw langs.</div>
+	</div>
+	<div id="pnlInfo" class="row animate-show" ng-show="step == 1000">
 		<h2>Inschrijvingen gesloten</h2>
 		<div class="callout primary">De voorinschrijvingen zijn gesloten. U kunt echter wel nog de dag zelf inschrijven voor de 5KM of de 10 KM.</div>
 	</div>
-	<div id="pnlInfo" class="row animate-show" ng-show="step == 1000">
+	<div id="pnlInfo" class="row animate-show" ng-show="step == 99">
 		<h2>Instructies</h2>
 		<p class="lead">Om in te schrijven voor Crossdorp Oelem volgt u onderstaande instructies.</p>
-		<p>Gelieve deze aandachtig te lezen. De inschrijving gebeurt in 4 stappen:</p>
+		<p>Gelieve deze aandachtig te lezen. De inschrijving gebeurt in 3 stappen:</p>
 		<ol>
 			<li><b><i>Vul uw gegevens in</i></b><br/>Vul het inschrijvingsformulier in. U kunt uzelf en/of anderen inschrijven.
 				<div class="callout warning">Let op: de inschrijver stort het volledige bedrag, ook indien die meerdere deelnemers inschrijft.</div>
 			</li>
-			<li><b><i>Valideer uw inschrijving</i></b><br/>Na het versturen van uw inschrijvingsformulier zal u een eerste e-mail ontvangen. Volg de  instructies in de e-mail om uw inschrijving te valideren. Het is dus van uiterst belang dat u een e-mailadres gebruikt waar u toegang toe heeft.
-				<div class="callout warning">Inschrijvingen die niet binnen 7 dagen worden gevalideerd, worden verwijderd.</div>
+			<li><b><i>Uw inschrijving betalen</i></b><br/>Na het invullen van uw gegevens wordt het totaal bedrag en een rekeningnummer op het scherm getoond. Gelieve het verschuldigd bedrag
+                                    onmiddellijk over te schrijven. Indien we na 7 dagen uw inschrijvingsgeld niet hebben ontvangen, zullen we uw inschrijving schrappen. U kan dan later uiteraard opnieuw inschrijven.
+                                    De betaalgegevens worden u ook per e-mail toegestuurd. Mocht u die niet ontvangen, controleer dan even uw SPAM mailbox.
+				<div class="callout primary">Indien u van een kortingscode gebruik maakt hoeft u enkel het restbedrag over te schrijven.</div>
 			</li>
-			<li><b><i>Uw inschrijving betalen</i></b><br/>Na validatie zal u een tweede e-mail ontvangen met daarin de betaalgegevens. Volg opnieuw de instructies in de e-mail.
-				<div class="callout primary">Indien u van een sponsorkorting gebruik maakt hoeft u enkel het restbedrag over te schrijven.</div>
-			</li>
-			<li><b><i>Uw inschrijving is voltooid</i></b><br/>Na ontvangst van de betaling ontvangt u een betaalbevestiging per e-mail (dit kan enkele dagen duren). De ingeschreven deelnemers krijgen hun borstnummer per e-mail toegestuurd.</li>
+			<li><b><i>Uw inschrijving is voltooid</i></b><br/>Na ontvangst van de betaling sturen we u een betaalbevestiging per e-mail (dit kan enkele dagen duren). De ingeschreven deelnemers krijgen hun borstnummer per e-mail toegestuurd.
+                            <div class="callout alert">Let op: u bent pas officieel ingeschreven nadat we uw betaling per bankverrichting ontvangen hebben! Wanneer u wacht om te betalen tot de dag zelf betaalt u iets meer en bestaat de kans dat de wedstrijd reeds volzet is.</div>
+                        </li>
 		</ol>
-		<div class="callout alert">Let op: u bent pas officieel ingeschreven nadat we uw betaling per bankverrichting ontvangen hebben! Wanneer u wacht om te betalen tot de dag zelf bestaat de kans dat de wedstrijd reeds volzet is.</div>
-		<button class="button large" role="button" ng-click="start()">Ik begrijp de instructies, start de inschijving!</button>
+		
+		<button class="button large" role="button" ng-click="start()">Ik begrijp de instructies, start de inschrijving!</button>
 	</div>
 	<div ng-show="step == 2" class="row animate-show">
 		<h2>
@@ -103,21 +110,24 @@ $this->assign('ogmetadata', 'fb_subscription');
 	<div class="row" ng-show="step == 3">
 		<div class="small-8 small-centered column">
 			<h3>Inschrijving ontvangen</h3>
-			<p>Er wordt momenteel een e-mail naar <b>{{subscriberMail}}</b> gestuurd. 
-			Deze mail bevat een link waarmee u uw <b>inschrijving</b> valideert, alsook uw <b>inschrijvingscode</b> die u kunt gebruiken om de status van uw inschrijving te bekijken.
-			Gelieve de instructies in de e-mail goed te volgen om uw inschrijving verder af te handelen.</p>
-			<p class="callout">Voor alle duidelijkheid: naast de <b>inschrijvingscode</b> krijgt elke deelnemer (na betaling door de inschrijver) ook een <b>deelnemerscode</b> toegekend. Deze code kan door de deelnemer gebruikt worden om de gegevens van de deelnemer te bekijken (bvb het toegekende borstnummer).</p>
-			<p ng-show="isSponsored">U maakte gebruik van &#233;&#233;n of meerdere <b>geldige sponsorcodes</b>. Het restbedrag bedraagt <b>{{subscription.price}} euro</b>. Ook u, lieve sponsor, verzoeken we vriendelijk uw inschrijving te valideren via de mail die u ontvangt op <b>{{subscriberMail}}</b>.</p>
-			<div class="callout secondary warning">
-				Let op: inschrijvingen die niet binnen 7 dagen worden gevalideerd, worden verwijderd.
-			</div>
-		</div>
-	</div>
-	<div id="modalStartSubscription" class="reveal" data-reveal aria-hidden="true" role="dialog">
-		<div ng-show="step == 1">
-			<p class="lead">Kies een optie</p>
-			<button class="button" role="button" ng-click="createSubscriber(true)">Ik schrijf mezelf en eventueel ook anderen in</button> of 
-			<button class="button" role="button" ng-click="createSubscriber(false)">Ik schrijf enkel anderen in</button>
+                        <div ng-show="subscription.price > 0">
+                            <p>We hebben uw gegevens goed ontvangen. Gelieve zo spoedig mogelijk het inschrijvingsgeld op onderstaande rekening over te maken. Vergeet hierbij niet <b>uw inschrijvingscode in de vrije mededeling</b> te noteren.</p>
+                            <p>Rekening: <b><i><?= Configure::read('CDO.bank_account')?></i></b><br/>
+                                Naam: <b><i><?= Configure::read('CDO.bank_name')?></i></b><br/>
+                                Bedrag: <b><i>{{subscription.price}} euro</i></b><br/>
+            Mededeling: <b><i>{{subscription.code}}</i></b><br/></p>
+                            <p>Er wordt momenteel een e-mail naar <b>{{subscriberMail}}</b> gestuurd. 
+                            Deze bevat nogmaals de betaalgegevens, alsook uw <b>inschrijvingscode</b> die u kunt gebruiken om de status van uw inschrijving te bekijken.
+                            </p>
+                            <p ng-show="isSponsored">U maakte gebruik van &#233;&#233;n of meerdere <b>geldige kortingscodes</b>. Het restbedrag bedraagt <b>{{subscription.price}} euro</b>.</p>
+                            <div class="callout secondary warning">
+                                    Let op: inschrijvingen die niet binnen 7 dagen worden betaald, worden geschrapt.
+                            </div>
+                        </div>
+                        <div ng-show="subscription.price == 0">
+                            <p>We hebben uw gegevens goed ontvangen.</p>
+                            <p>Door gebruik te maken van &#233;&#233;n of meerdere <b>geldige kortingscodes</b> bent u geen inschrijvingsgeld verschuldigd. U krijgt binnenkort uw borstnummers toegestuurd.</p>
+                        </div>
 		</div>
 	</div>
 	<div id="modalEditMember" class="full reveal" data-reveal>
@@ -126,11 +136,6 @@ $this->assign('ogmetadata', 'fb_subscription');
 				<h2 id="modalTitle">Vul uw gegevens in</h2>
 			</div>
 			<form name="memberForm" novalidate>
-				<div class="row">
-					<div class="callout primary">
-						U koos ervoor om niet zelf deel te nemen maar de inschrijving voor iemand anders te registreren. Vul eerst zelf uw gegevens in, klik op de "Toevoegen" knop, en voeg daarna een of meerdere deelnemers aan de inschrijving toe.
-					</div>
-				</div>
 				<div class="row">
 					<?= $this->element('member_details', 
 						["formName" => 'memberForm',
@@ -181,7 +186,7 @@ $this->assign('ogmetadata', 'fb_subscription');
 		<p class="lead">Weet u zeker dat alle gegevens correct zijn?</p>
 		<div>
 			<button class="button success" role="button" ng-click="submitSubscription()">Ja, bevestig mijn inschrijving</button>
-			<a ng-click="cancelFinalize()">Nee, gegevens aanpassen</a>
+			<a ng-click="cancelFinalize()">Nee, ik wil mijn gegevens nog nakijken</a>
 		</div>  
 	</div>
 	<div id="modalErrorSubscription" class="reveal" data-reveal>
@@ -201,10 +206,11 @@ $this->assign('ogmetadata', 'fb_subscription');
 		</button>
 	</div>
 	<div id="modalSaving" class="reveal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
-  		<h2 id="modalTitle">Inschrijving versturen naar Zork</h2>
+  		<h2 id="modalTitle">Inschrijving versturen</h2>
   		<p class="lead">Even geduld... Uw gegevens worden gecontroleerd.</p>
 	</div>
 </div>
+	
 
 <?php 
 $this->start('script');

@@ -28,7 +28,7 @@
 			var id = $(this).attr('id');
 			var loc = window.location.href;
 			if(id != 'menu-home' && loc.startsWith(this.href.trim()))
-				$(this).parent("li").addClass("menu-text selected");
+				$(this).parent("li").addClass("is-active");
             });
 	});
 
