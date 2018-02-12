@@ -9,15 +9,19 @@ $this->assign('ogmetadata', 'fb_subscription');
 ?>
 
 <div ng-controller="subscriptionCtrl">
-    <div id="pnlInfo" class="row animate-show" ng-show="step == 1">
+    <div id="pnlInfo" class="row animate-show" ng-show="step == 1000">
 		<h2>Inschrijvingen nog niet open</h2>
 		<div class="callout primary">Sorry beste sportvriend, de inschrijvingen zijn nog niet geopend. Maar we bewonderen je enthousiasme! Kom op zaterdag 3 februari opnieuw langs.</div>
 	</div>
 	<div id="pnlInfo" class="row animate-show" ng-show="step == 1000">
 		<h2>Inschrijvingen gesloten</h2>
-		<div class="callout primary">De voorinschrijvingen zijn gesloten. U kunt echter wel nog de dag zelf inschrijven voor de 5KM of de 10 KM.</div>
+		<div class="callout primary">De voorinschrijvingen zijn gesloten. U kunt echter wel nog de dag zelf inschrijven voor de 5KM of de 11 KM.</div>
 	</div>
-	<div id="pnlInfo" class="row animate-show" ng-show="step == 99">
+	<div id="pnlInfo" class="row animate-show" ng-show="step == 1">
+		<h2>Inschrijvingen gesloten</h2>
+		<div class="callout primary">De inschrijvingen voor de Party Run zijn gesloten. U kunt nog inschrijven voor de 5 KM en de 11 KM.</div>
+	</div>
+	<div id="pnlInfo" class="row animate-show" ng-show="step == 1">
 		<h2>Instructies</h2>
 		<p class="lead">Om in te schrijven voor Crossdorp Oelem volgt u onderstaande instructies.</p>
 		<p>Gelieve deze aandachtig te lezen. De inschrijving gebeurt in 3 stappen:</p>

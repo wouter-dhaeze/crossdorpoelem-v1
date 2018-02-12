@@ -257,10 +257,14 @@
 		  };
 		});
 	
-	var waveOptions = [
+	var waveOptions2 = [
                {id: '5KM', label: 'Crossdorp 5 KM', notAnOption: false, cost: 8},
                {id: '10KM', label: 'Crossdorp 11 KM', notAnOption: false, cost: 10},
                {id: 'PARTY', label: 'Crossdorp Party Run', notAnOption: false, cost: 15}
+           ];
+        var waveOptions = [
+               {id: '5KM', label: 'Crossdorp 5 KM', notAnOption: false, cost: 8},
+               {id: '10KM', label: 'Crossdorp 11 KM', notAnOption: false, cost: 10}
            ];
 	
 	var emptyMember = {
